@@ -2,8 +2,8 @@
     <div>
         <div class="bg-[#F4E8C1] border-t rounded-t-3xl border-black">
             <div @click="selectedTab == 1 ? selectedTab = null : selectedTab = 1 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
-                <div class="p-2 md:border md:border-black font-black rounded-lg">What ?</div>
-                <div class="hidden md:block">
+                <div class="p-2 border border-black font-black rounded-lg">What ?</div>
+                <div >
                     <img src="img/arrow-down-circle.svg" alt="">
                 </div>
             </div>
@@ -20,8 +20,8 @@
             </div>
             <div class="bg-[#C5D6B6] border-t rounded-t-3xl border-black">
                 <div @click="selectedTab == 2 ? selectedTab = null : selectedTab = 2 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
-                    <div class="p-2 md:border md:border-black font-black rounded-lg">How ?</div>
-                    <div class="hidden md:block">
+                    <div class="p-2 border border-black font-black rounded-lg">How ?</div>
+                    <div >
                         <img src="img/arrow-down-circle.svg" alt="">
                     </div>
                 </div>
@@ -36,8 +36,8 @@
                 </div>
                 <div class="bg-[#81C2A7] border-t rounded-t-3xl border-black">
                     <div @click="selectedTab == 3 ? selectedTab = null : selectedTab = 3 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
-                        <div class="p-2 md:border md:border-black font-black rounded-lg">Why ?</div>
-                        <div class="hidden md:block">
+                        <div class="p-2 border border-black font-black rounded-lg">Why ?</div>
+                        <div >
                             <img src="img/arrow-down-circle.svg" alt="">
                         </div>
                     </div>

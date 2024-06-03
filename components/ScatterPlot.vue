@@ -1,42 +1,50 @@
 <template>
-  <div ref="graph" style="overflow-x: auto; overflow-y: auto; max-height: 500px; max-width: 800px; width: 100%;"></div>
+  <div ref="graph" class="graph-container"></div>
 </template>
 
 <script>
+// import * as d3 from 'd3';
+
 export default {
   data() {
     return {
       chartData: Array.from({ length: 50 }, (_, i) => ({
-        x: i % 10,
-        y: Math.floor(i / 10),
-        value: Math.floor(Math.random() * 10) + 2,  // Random natural numbers between 1 and 10
+        x: i % 8 + 1,
+        y: Math.floor(i / 8),
+        value: Math.floor(Math.random() * 8) + 2,  // Random natural numbers between 2 and 11
         imgUrl: `https://picsum.photos/seed/${Math.floor(Math.random() * 1000)}/30`
       }))
     };
   },
   mounted() {
     this.createGraph();
+    window.addEventListener('resize', this.createGraph);  // Recreate the graph on resize
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.createGraph);
   },
   methods: {
     createGraph() {
-      const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-      const spacing = 70;
-      const numFaces = this.chartData.length;
+      const container = this.$refs.graph;
+      container.innerHTML = '';  // Clear any existing content
+      
+      const margin = { top: 20, right: 20, bottom: 50, left: 50 };
+      const spacing = 60;
       const facesPerRow = 10;
 
-      // Filter out data points where either x or y value is zero
-      const filteredData = this.chartData.filter(d => d.x !== 0 && d.y !== 0);
-
+      // Get container width
+      const containerWidth = container.clientWidth;
+      
       // Calculate the required width and height
-      const width = facesPerRow * (spacing / 2);
-      const numRows = Math.ceil(filteredData.length / facesPerRow);
+      const width = containerWidth - margin.left - margin.right;
+      const numRows = Math.ceil(this.chartData.length / facesPerRow);
       const height = numRows * spacing + margin.top + margin.bottom;
 
-      const svg = d3.select(this.$refs.graph)
+      const svg = d3.select(container)
         .append("svg")
         .attr("width", "100%")
-        .attr("height", height + margin.top + margin.bottom)
-        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .attr("height", height)
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
         .style("overflow", "visible");
 
@@ -44,15 +52,20 @@ export default {
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
       const xScale = d3.scaleLinear()
-        .domain([0, facesPerRow - 1])
+        .domain([1, facesPerRow])
         .range([0, width]);
 
       const yScale = d3.scaleLinear()
-        .domain([1, d3.max(filteredData, d => d.value)])
+        .domain([0, d3.max(this.chartData, d => d.value)])
         .range([height - margin.top - margin.bottom, 0]);
 
-      const xAxis = d3.axisBottom(xScale).ticks(facesPerRow).tickFormat(d3.format("d"));
-      const yAxis = d3.axisLeft(yScale).ticks(d3.max(filteredData, d => d.value)).tickFormat(d3.format("d"));
+      const xAxis = d3.axisBottom(xScale)
+        .ticks(facesPerRow)
+        .tickFormat((d, i) => (i % 2 === 0 ? d : ""));
+
+      const yAxis = d3.axisLeft(yScale)
+        .ticks(d3.max(this.chartData, d => d.value))
+        .tickFormat(() => "");  // Hide y-axis tick values
 
       g.append("g")
         .attr("class", "x axis")
@@ -60,11 +73,25 @@ export default {
         .call(xAxis);
 
       g.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);
+        .attr("class", "y axis");
+
+      // Add vertical lines for each x tick
+      g.selectAll(".x.axis .tick")
+        .each(function(d) {
+          d3.select(this)
+            .append("line")
+            .attr("class", "grid-line")
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", 0)
+            .attr("y2", -(height - margin.top - margin.bottom))
+            .attr("stroke", "lightgray")
+            .attr("stroke-width", "1")
+            .attr("shape-rendering", "crispEdges");
+        });
 
       const faces = g.selectAll("g.face")
-        .data(filteredData)
+        .data(this.chartData)
         .enter()
         .append("g")
         .attr("class", "face")
@@ -87,12 +114,15 @@ export default {
 }
 </script>
 
-
 <style scoped>
-div {
+.graph-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;  /* Ensure the div takes full width of the parent */
+  overflow: auto;
+}
+.x.axis path {
+  display: none;
 }
 </style>

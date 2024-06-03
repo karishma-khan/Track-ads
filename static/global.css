@@ -32,8 +32,8 @@ body{
 }
 
 @font-face {
-    font-family: "Eurostile New";
-    src: url("font/Eurostile-Extended-Bold.ttf") format("truetype");
+    font-family: "Eurostile Extd Bold";
+    src: url("font/eurostileextendedblack.ttf") format("truetype");
 }
 
 .abtHead{
@@ -290,12 +290,17 @@ body{
     padding-top: 15%;
 }
 
+
 .bggrid{
     background-size: 10px 10px;    
     background-size: 10px 10px;    
     background-image: repeating-linear-gradient(0deg, #f3eee3, #f3eee3 1px, transparent 1px, transparent 40px),repeating-linear-gradient(-90deg, #f3eee3, #f3eee3 1px, transparent 1px, transparent 40px);
 }
-
+.bggridHome{
+    background-size: 10px 10px;    
+    background-size: 10px 10px;    
+    background-image: repeating-linear-gradient(0deg, #333333, #333333 1px, transparent 1px, transparent 40px),repeating-linear-gradient(-90deg, #333333, #333333 1px, transparent 1px, transparent 40px);
+}
 .teamHead{
     font-family: Eurostile Extd;
     font-size: 30px;
