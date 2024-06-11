@@ -1,102 +1,90 @@
 <template>
-    <div class="container">
-      <div class="animated-div" ref="animatedDiv">
-        <p>Hello, I animate on scroll!</p>
-      </div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        lastScrollY: 0,
-        scrollDirection: null
-      };
-    },
-    mounted() {
-      this.$nextTick(() => {
-        const animatedDiv = this.$refs.animatedDiv;
-  
-        if (animatedDiv) {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                animatedDiv.classList.add('in-view');
-              } else {
-                animatedDiv.classList.remove('in-view');
-              }
-            });
-          }, {
-            threshold: 0.1
-          });
-  
-          observer.observe(animatedDiv);
+  <div class="container text-red-500">
+    <section v-for="(section, index) in sections"
+             :key="index"
+             :class="['section', { active: currentSection === index }]"
+             :id="'section' + (index + 1)">
+      <h2>{{ section.title }}</h2>
+      <p>{{ section.content }}</p>
+    </section>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      sections: [
+        { title: 'Section 1', content: 'Content for section 1...' },
+        { title: 'Section 2', content: 'Content for section 2...' },
+        { title: 'Section 3', content: 'Content for section 3...' }
+      ],
+      currentSection: 0
+    };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+
+      if (scrollPosition > (this.currentSection + 1) * viewportHeight - viewportHeight / 2) {
+        if (this.currentSection < this.sections.length - 1) {
+          this.currentSection++;
         }
-  
-        window.addEventListener('scroll', this.handleScroll);
-      });
-    },
-    beforeDestroy() {
-      window.removeEventListener('scroll', this.handleScroll);
-    },
-    methods: {
-      handleScroll() {
-        const currentScrollY = window.scrollY;
-        this.scrollDirection = currentScrollY > this.lastScrollY ? 'down' : 'up';
-        this.lastScrollY = currentScrollY;
-  
-        const animatedDiv = this.$refs.animatedDiv;
-        if (animatedDiv) {
-          if (this.scrollDirection === 'down') {
-            animatedDiv.classList.add('scrolling-down');
-            animatedDiv.classList.remove('scrolling-up');
-          } else {
-            animatedDiv.classList.add('scrolling-up');
-            animatedDiv.classList.remove('scrolling-down');
-          }
+      } else if (scrollPosition < this.currentSection * viewportHeight - viewportHeight / 2) {
+        if (this.currentSection > 0) {
+          this.currentSection--;
         }
       }
     }
-  };
-  </script>
-  
-  <style scoped>
-  body, html {
-    height: 200%;
-    margin: 0;
-    font-family: Arial, sans-serif;
   }
-  
-  .container {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .animated-div {
-    width: 300px;
-    height: 200px;
-    background-color: lightblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    transition: transform 0.5s ease;
-  }
-  
-  .animated-div.in-view {
-    /* base state when in view */
-  }
-  
-  .animated-div.scrolling-down {
-    transform: translateY(-50px); /* Move up by 50px when scrolling down */
-  }
-  
-  .animated-div.scrolling-up {
-    transform: translateY(50px); /* Move down by 50px when scrolling up */
-  }
-  </style>
-  
+};
+</script>
+
+<style scoped>
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 300vh; /* Adjust based on your content */
+}
+
+.section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: height 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.section h2 {
+  margin: 20px;
+}
+
+.section p {
+  margin: 20px;
+}
+
+.section:not(.active) {
+  height: 0;
+  visibility: hidden;
+}
+
+.section.active {
+  visibility: visible;
+}
+</style>

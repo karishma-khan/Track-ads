@@ -1,128 +1,107 @@
 <template>
-  <div ref="graph" class="graph-container"></div>
+  <div ref="chartContainer"></div>
 </template>
 
 <script>
-// import * as d3 from 'd3';
-
 export default {
-  data() {
-    return {
-      chartData: Array.from({ length: 50 }, (_, i) => ({
-        x: i % 8 + 1,
-        y: Math.floor(i / 8),
-        value: Math.floor(Math.random() * 8) + 2,  // Random natural numbers between 2 and 11
-        imgUrl: `https://picsum.photos/seed/${Math.floor(Math.random() * 1000)}/30`
-      }))
-    };
-  },
   mounted() {
-    this.createGraph();
-    window.addEventListener('resize', this.createGraph);  // Recreate the graph on resize
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.createGraph);
-  },
-  methods: {
-    createGraph() {
-      const container = this.$refs.graph;
-      container.innerHTML = '';  // Clear any existing content
-      
-      const margin = { top: 20, right: 20, bottom: 50, left: 50 };
-      const spacing = 60;
-      const facesPerRow = 10;
-
-      // Get container width
-      const containerWidth = container.clientWidth;
-      
-      // Calculate the required width and height
-      const width = containerWidth - margin.left - margin.right;
-      const numRows = Math.ceil(this.chartData.length / facesPerRow);
-      const height = numRows * spacing + margin.top + margin.bottom;
-
-      const svg = d3.select(container)
-        .append("svg")
-        .attr("width", "100%")
-        .attr("height", height)
-        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`)
-        .attr("preserveAspectRatio", "xMidYMid meet")
-        .style("overflow", "visible");
-
-      const g = svg.append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
-
-      const xScale = d3.scaleLinear()
-        .domain([1, facesPerRow])
-        .range([0, width]);
-
-      const yScale = d3.scaleLinear()
-        .domain([0, d3.max(this.chartData, d => d.value)])
-        .range([height - margin.top - margin.bottom, 0]);
-
-      const xAxis = d3.axisBottom(xScale)
-        .ticks(facesPerRow)
-        .tickFormat((d, i) => (i % 2 === 0 ? d : ""));
-
-      const yAxis = d3.axisLeft(yScale)
-        .ticks(d3.max(this.chartData, d => d.value))
-        .tickFormat(() => "");  // Hide y-axis tick values
-
-      g.append("g")
-        .attr("class", "x axis")
-        .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
-        .call(xAxis);
-
-      g.append("g")
-        .attr("class", "y axis");
-
-      // Add vertical lines for each x tick
-      g.selectAll(".x.axis .tick")
-        .each(function(d) {
-          d3.select(this)
-            .append("line")
-            .attr("class", "grid-line")
-            .attr("x1", 0)
-            .attr("y1", 0)
-            .attr("x2", 0)
-            .attr("y2", -(height - margin.top - margin.bottom))
-            .attr("stroke", "lightgray")
-            .attr("stroke-width", "1")
-            .attr("shape-rendering", "crispEdges");
-        });
-
-      const faces = g.selectAll("g.face")
-        .data(this.chartData)
-        .enter()
-        .append("g")
-        .attr("class", "face")
-        .attr("transform", d => `translate(${xScale(d.x)},${yScale(d.value)})`);
-
-      faces.append("circle")
-        .attr("r", 15)  // Circle to create the border
-        .attr("fill", "none")
-        .attr("stroke", "#000");
-
-      faces.append("image")
-        .attr("xlink:href", d => d.imgUrl)
-        .attr("x", -15)
-        .attr("y", -15)
-        .attr("width", 30)
-        .attr("height", 30)
-        .attr("clip-path", "circle(15px)");  // Clip the image to make it circular
+    if (typeof Highcharts === 'undefined') {
+      console.error('Highcharts is not defined');
+      return;
     }
+
+    Highcharts.chart(this.$refs.chartContainer, {
+      chart: {
+        type: 'scatter',
+        zoomType: 'xy',
+        panning: {
+        enabled: true, 
+        type: 'xy'
+      },
+      panKey: 'shift',
+        backgroundColor: 'transparent'
+      },
+      legend:{
+          enabled: false
+      },
+      exporting: {
+          enabled: false
+      },
+      title: {
+        enabled: false,
+        text: ''
+      },
+      xAxis: {
+        visible: true,
+        title: {
+          enabled: true,
+          text: 'Money Spent'
+        },
+        lineWidth: 1,
+        gridLineWidth: 1
+      },
+      yAxis: {
+        visible: true,
+        title: {
+          enabled: true,
+          text: 'No of Ads'
+        },
+        labels: {
+          enabled: false
+        },
+        lineWidth: 0,
+        gridLineWidth: 0
+      },
+      plotOptions: {
+        scatter: {
+          marker: {
+            states: {
+              hover: {
+                enabled: true,
+                lineColor: 'rgb(100,100,100)'
+              }
+            }
+          },
+          states: {
+            hover: {
+              marker: {
+                enabled: false
+              }
+            }
+          },
+          tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: 'X: {point.x}, Y: {point.y}, Size: {point.marker.radius}, Color: {point.color}'
+          }
+        }
+      },
+      series: [{
+        name: 'Customized Points',
+        data: [
+          { x: 1, y: 3, marker: { radius: 10, fillColor: 'red' } },
+          { x: 2, y: 5, marker: { radius: 15, fillColor: 'blue' } },
+          { x: 3, y: 7, marker: { radius: 8, fillColor: 'green' } },
+          { x: 4, y: 2, marker: { radius: 12, fillColor: 'yellow' } },
+          { x: 5, y: 4, marker: { radius: 14, fillColor: 'purple' } },
+          { x: 6, y: 6, marker: { radius: 11, fillColor: 'orange' } },
+          { x: 7, y: 1, marker: { radius: 9, fillColor: 'pink' } },
+          { x: 8, y: 8, marker: { radius: 13, fillColor: 'cyan' } },
+          { x: 9, y: 10, marker: { radius: 16, fillColor: 'magenta' } },
+          { x: 10, y: 9, marker: { radius: 7, fillColor: 'brown' } },
+          { x: 11, y: 11, marker: { radius: 17, fillColor: 'lime' } },
+          { x: 10, y: 10, marker: { radius: 6, fillColor: 'aqua' } },
+          { x: 13, y: 12, marker: { radius: 18, fillColor: 'teal' } },
+          { x: 14, y: 15, marker: { radius: 5, fillColor: 'gold' } },
+          { x: 15, y: 14, marker: { radius: 20, fillColor: 'silver' } },
+          { x: 16, y: 16, marker: { radius: 4, fillColor: 'maroon' } },
+          { x: 17, y: 18, marker: { radius: 19, fillColor: 'navy' } },
+          { x: 18, y: 17, marker: { radius: 3, fillColor: 'olive' } },
+          { x: 19, y: 19, marker: { radius: 22, fillColor: 'violet' } },
+          { x: 20, y: 20, marker: { radius: 2, fillColor: 'indigo' } }
+        ]
+      }]
+    });
   }
 }
 </script>
 
-<style scoped>
-.graph-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;  /* Ensure the div takes full width of the parent */
-  overflow: auto;
-}
-.x.axis path {
-  display: none;
-}
-</style>

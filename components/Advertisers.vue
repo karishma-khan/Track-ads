@@ -7,7 +7,6 @@
             </span>
         </div>
         <scatter-plot></scatter-plot>
-        <!-- <test-scatter></test-scatter> -->
     </div>
 </template>
 <script>

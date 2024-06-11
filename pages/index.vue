@@ -6,7 +6,7 @@
             <p class="heroHead">Transparency</p>
             <p class="heroHead">For Democracy</p>
             <p class="mt-3 heroUnlock">Unlock the insights on political ad</p>
-            <button class="bg-black hover:bg-black text-white mt-4 font-bold py-2 flex items-center px-8 rounded-3xl">
+            <button class="bg-black hover:bg-black text-white mt-4 font-bold py-2 flex items-center px-8 rounded-3xl" @click="$router.push('/overview')">
               Enter <span><img style="height: 22px !important;" src="img/arrowUpRight.svg" alt=""></span>
             </button>
           </div>
@@ -14,9 +14,10 @@
         <div class="min-h-[50vh] heroHead flex items-center justify-center text-white">
             How It Works?
         </div>
-        <div class="px-[15%]">
+        <div class="md:px-[15%]">
 
-        <about-detail></about-detail>
+        <how-it-works></how-it-works>
+        <!-- <scroll-div></scroll-div> -->
         </div>
     </div>
 </template>
