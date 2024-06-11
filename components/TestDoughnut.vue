@@ -22,7 +22,7 @@
                 '#86937F'
               ],
             borderWidth: 0,
-            spacing:2
+            spacing:1
 
             }]
           },

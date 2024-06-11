@@ -2,7 +2,7 @@
     <div class="bg-[#FFFBEF] text-black common-container">
         <div class="flex justify-between">
             <div class="flex gap-4">
-                <img src="img/overviewLogo.svg" alt="">
+                <img src="img/Audience.svg" alt="">
                 <span class="common-heading">
                     {{ title }}
                 </span>

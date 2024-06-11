@@ -1,7 +1,6 @@
 <template>
     <div>
-        this is Hexamap
-        <div id="map" class="z-10" style="height: 490px;background-color: #FFFBEF;"></div>
+        <div id="map" class="z-10" style="height: 473px;background-color: #FFFBEF;"></div>
     </div>
 </template>
 
@@ -31,7 +30,7 @@ export default {
     },
     async mounted()
     {
-        this.map = await L.map('map').setView([29.1937, 78.9629], 5);
+        this.map = await L.map('map').setView([29.4737, 78.9629], 5);
         this.loadIndianBoundary();
     }
 }

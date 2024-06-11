@@ -1,13 +1,13 @@
 <template>
     <div class="bg-[#FFFBEF] common-container">
         <div class="flex gap-4">
-            <img src="img/overviewLogo.svg" alt="">
+            <img src="img/imageGallery.svg" alt="">
             <span class="common-heading">
                 {{ title }}
             </span>
         </div>
         <div class="w-full pt-10 flex justify-center">
-            <div class="w-[85%]">
+            <div class="w-[100%] md-w-[85%]">
                 <vue-word-cloud :data="words" :rotate="rotate"
                 :color="getColors"
                  :options="options" />

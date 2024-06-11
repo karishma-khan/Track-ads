@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#FFFBEF] text-black common-container">
     <div class="flex gap-4">
-        <img src="img/overviewLogo.svg" alt="">
+        <img src="img/webww.svg" alt="">
         <span class="common-heading">
             {{ title }}
         </span>
@@ -27,17 +27,17 @@ export default {
 
     const option = {
       tooltip: {
-        trigger: 'axis',
-        formatter: function (params) {
-            var index = params[0].dataIndex; // Get the index of the data point
-            var tooltipHtml = '<div style="background-color:rgba(50,50,50,0.7); padding: 10px; border-radius: 5px;">';
-            tooltipHtml += '<p style="color:#fff; font-size:12px;">Custom Tooltip</p>';
-            tooltipHtml += '<p style="color:#fff; font-size:14px;">Index: ' + index + '</p>'; // Add index to tooltip
-            tooltipHtml += '<p style="color:#fff; font-size:14px;">' + params[index].name + ': ' + params[index].value + '</p>';
-            tooltipHtml += '</div>';
-            return tooltipHtml;
-        }
-    },
+    trigger: 'item',
+    formatter: function (params) {
+      console.log(params);
+        var tooltipHtml = '<div style="background-color:black; padding: 10px; border-radius: 5px;">';
+        tooltipHtml += '<p style="color:#fff; font-size:12px;">Custom Tooltip</p>';
+        tooltipHtml += '<p style="color:#fff; font-size:14px;">X: ' + params.name + ', Y: ' + params.value + '</p>';
+        tooltipHtml += '</div>';
+        return tooltipHtml;
+    }
+},
+
       grid: {
         left: '3%',
         right: '4%',

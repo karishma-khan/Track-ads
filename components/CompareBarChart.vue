@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { color } from 'echarts';
+
 export default {
   mounted() {
     const categories = [
@@ -30,15 +32,15 @@ export default {
         }
       },
       legend: {
-        enabled: false // Hide legend
+        enabled: false
       },
       navigation: {
         buttonOptions: {
-          enabled: false // Hide option menu
+          enabled: false
         }
       },
       title: {
-        text: null // Hide chart title
+        text: null
       },
       xAxis: [{
         categories: categories,
@@ -66,12 +68,22 @@ export default {
       plotOptions: {
         series: {
           stacking: 'normal',
-          pointWidth: 58,
+          pointWidth: 76,
           borderRadius: '12px'
         }
       },
       tooltip: {
-        pointFormat: '<b>{series.name}, age {point.category}</b><br/>Population: {point.y:.1f}%'
+        useHTML:true,
+        backgroundColor: 'black',
+        borderRadius: 16,
+        padding:15,
+        style: {
+          color:'white',
+          width:'300px',
+          borderRadius: '16px',
+        },
+        headerFormat: '<div class="tooltip-header text-[15px] mb-2" style="color:#FFFFFF80"> <span class="mdi mdi-account-multiple"></span> Demographics </div>',
+        pointFormat: '<div  style="color:#FFFFFF90" class="block">On average, <b class="text-white">{point.y:.1f}% {series.name}</b> audience between the age of <b class="text-white"> {point.category} </b> were targeted for the ads during <b class="text-white"> 12 March 2022 to 16 March 2022. </b></div>'
       },
       series: [{
         name: 'Male',
@@ -97,8 +109,12 @@ export default {
 </script>
 
 <style scoped>
+.tooltip-header{
+  font-size: 30px;
+}
+
 #container {
-  height: 400px;
+  height: 510px;
 }
 
 .highcharts-figure,
