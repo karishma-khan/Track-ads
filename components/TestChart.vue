@@ -1,6 +1,6 @@
 <template>
   <div class="chart-wrapper">
-    <canvas id="myChart" style="height: 360px !important;"></canvas>
+    <canvas id="myChart" height="360px"></canvas>
     <div id="chartjs-tooltip" class="custom-tooltip" style="opacity: 0;"></div>
   </div>
 </template>
@@ -32,6 +32,7 @@ export default {
         },
         options: {
           responsive: true,
+          maintainAspectRatio:false,
           scales: {
             y: {
               beginAtZero: true,
@@ -104,6 +105,10 @@ export default {
   transform: translateX(-50%);
   white-space: nowrap;
   padding: 10px;
+}
+
+.canvas{
+  height: 300px !important;
 }
 
 .head{

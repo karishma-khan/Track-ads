@@ -25,8 +25,8 @@ export default{
             title:'Spending Over Time',
             description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, molestiae? lorem ipsum dolor sit amet lorem. Lorem ipsum dolor sit sit amet consectetur adipisicing elit. Nemo, molestiae? lorem ipsum dolor sit amet lorem. Lorem ipsum dolor sit sit amet consectetur adipisicing elit. Nemo, molestiae?',
             chartData:{
-                labels:['12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar'],
-                values:[18, 21, 31, 24, 38, 41]
+                labels:['12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar'],
+                values:[18, 21, 31, 24, 38, 41, 18, 44, 31, 24, 38, 41, 24, 38, 41,18]
             },
             ylabel:'(in million rupees)'
         }
