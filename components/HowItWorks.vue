@@ -6,7 +6,8 @@
             </div>
             <div class="px-[5%]" v-if="selectedTab == 1">
                 <div class="flex flex-col justify-center items-center">
-                    <img class="w-full mb-8 md:h-[160px]" src="img/What.svg" alt="">
+                    <img class="w-full block md:hidden mb-8 md:h-[160px]" src="img/What.svg" alt="">
+                    <img class="w-full md:block hidden mb-8 md:h-[160px]" src="img/whatLong.svg" alt="">
                     <p class="aboutDetailDescription py-10">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
                     </p>
@@ -20,7 +21,8 @@
                     <div class="p-2 font-black rounded-lg">How ?</div>
                 </div>
                 <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 2">
-                    <img class="w-full mb-8 md:h-[160px]" src="img/Where.svg" alt="">
+                    <img class="w-full block md:hidden mb-8 md:h-[160px]" src="img/Where.svg" alt="">
+                    <img class="w-full md:block hidden mb-8 md:h-[160px]" src="img/whereLong.svg" alt="">
                     <p class="aboutDetailDescription py-10">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
                     </p>
@@ -33,7 +35,8 @@
                         <div class="p-2 font-black rounded-lg">Why ?</div>
                     </div>
                     <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 3">
-                        <img class="w-full mb-8 md:h-[160px]" src="img/Why.svg" alt="">
+                        <img class="w-full block md:hidden mb-8 md:h-[160px]" src="img/Why.svg" alt="">
+                        <img class="w-full md:block hidden mb-8 md:h-[160px]" src="img/whyLong.svg" alt="">
                         <p class="aboutDetailDescription py-10">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
                         </p>
