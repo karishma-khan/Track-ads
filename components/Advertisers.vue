@@ -9,6 +9,9 @@
         <p class="mt-3 mb-6 common-description">
             {{ description }}
         </p>
+        <div class="sm:flex items-center mb-6">
+            Ads <img class="w-[90%]" src="img/advRange.svg" alt="">
+        </div>
         <scatter-plot></scatter-plot>
     </div>
 </template>

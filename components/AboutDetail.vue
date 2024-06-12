@@ -7,15 +7,13 @@
                     <img src="img/arrow-down-circle.svg" alt="">
                 </div>
             </div>
-            <div class="px-[5%]" v-if="selectedTab == 1">
+            <div class="px-[5%]" v-if="selectedTab == 1" id=whatDetail>
                 <div class="flex flex-col justify-center items-center">
-                    <img class="w-full mb-8 md:h-[160px]" src="img/What.svg" alt="">
-                    <p class="aboutDetailDescription py-10">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
+                    <p class="aboutDetailDescription pb-10">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices iaculis neque. Mauris quis magna quis arcu interdum convallis. Curabitur non nulla eu urna ullamcorper euismod at ut urna. Pellentesque ut augue diam. Cras quis dapibus odio. Aliquam erat volutpat. Pellentesque rutrum euismod metus at malesuada. Morbi diam sem, tincidunt eget purus at, vulputate iaculis sem.
+                        </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.
+                        </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.
                     </p>
-                </div>
-                <div class="knowMore">
-                    Know More <img src="img/knowmore.svg" alt="">
                 </div>
             </div>
             <div class="bg-[#C5D6B6] border-t rounded-t-3xl border-black">
@@ -25,14 +23,12 @@
                         <img src="img/arrow-down-circle.svg" alt="">
                     </div>
                 </div>
-                <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 2">
-                    <img class="w-full mb-8 md:h-[160px]" src="img/Where.svg" alt="">
-                    <p class="aboutDetailDescription py-10">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
+                <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 2" id="howDetail">
+                    <p class="aboutDetailDescription pb-10">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices iaculis neque. Mauris quis magna quis arcu interdum convallis. Curabitur non nulla eu urna ullamcorper euismod at ut urna. Pellentesque ut augue diam. Cras quis dapibus odio. Aliquam erat volutpat. Pellentesque rutrum euismod metus at malesuada. Morbi diam sem, tincidunt eget purus at, vulputate iaculis sem.
+                        </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.
+                        </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.
                     </p>
-                    <div class="knowMore">
-                        Know More <img src="img/knowmore.svg" alt="">
-                    </div>
                 </div>
                 <div class="bg-[#81C2A7] border-t rounded-t-3xl border-black">
                     <div @click="selectedTab == 3 ? selectedTab = null : selectedTab = 3 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
@@ -41,14 +37,12 @@
                             <img src="img/arrow-down-circle.svg" alt="">
                         </div>
                     </div>
-                    <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 3">
-                        <img class="w-full mb-8 md:h-[160px]" src="img/Why.svg" alt="">
-                        <p class="aboutDetailDescription py-10">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
+                    <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 3" id="whyDetail">
+                        <p class="aboutDetailDescription pb-10">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices iaculis neque. Mauris quis magna quis arcu interdum convallis. Curabitur non nulla eu urna ullamcorper euismod at ut urna. Pellentesque ut augue diam. Cras quis dapibus odio. Aliquam erat volutpat. Pellentesque rutrum euismod metus at malesuada. Morbi diam sem, tincidunt eget purus at, vulputate iaculis sem.
+                            </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.
+                            </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.
                         </p>
-                        <div class="knowMore">
-                            Know More <img src="img/knowmore.svg" alt="">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -61,6 +55,18 @@ export default{
         return {
             selectedTab:null
         }
+    },
+    mounted()
+    {
+        let hash = this.$route.hash
+        if(hash == '#whatDetail')
+            this.selectedTab = 1
+        else
+            if(hash == '#howDetail')
+                this.selectedTab = 2
+            else
+                if(hash == '#whyDetail')
+                    this.selectedTab = 3
     }
 }
 </script>

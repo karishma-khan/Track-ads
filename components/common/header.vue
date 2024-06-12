@@ -1,7 +1,7 @@
 <template>
     <div>
         <header class="h-[60px] z-100 bg-[#FFFFFF] border-b border-black px-[5%] items-center flex justify-between">
-            <div class="flex h-full items-center">
+            <div @click="$router.push('/')" class="flex h-full items-center cursor-pointer">
                 <img src="img/logo.svg" alt="">
                 <span class="logoHead capitalize flex flex-col pl-2">
                     <div>political ads</div> 

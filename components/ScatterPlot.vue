@@ -1,9 +1,14 @@
 <template>
-  <div ref="chartContainer" class="h-[300px]"></div>
+  <div ref="chartContainer" class="h-[270px]"></div>
 </template>
 
 <script>
 export default {
+  data(){
+    return{
+      randomColors:['#FBE69F99','#C5D6B699','#4CB2AC99','#32628499','#13375199']
+    }
+  },
   mounted() {
     if (typeof Highcharts === 'undefined') {
       console.error('Highcharts is not defined');
@@ -33,6 +38,8 @@ export default {
       },
       xAxis: {
         visible: true,
+        min:0,
+        max:11,
         title: {
           enabled: true,
           text: 'Money Spent'
@@ -41,6 +48,8 @@ export default {
         gridLineWidth: 1
       },
       yAxis: {
+        min:0,
+        max:11,
         visible: true,
         title: {
           enabled: true,
@@ -78,26 +87,26 @@ export default {
       series: [{
         name: 'Customized Points',
         data: [
-          { x: 1, y: 3, marker: { radius: 10, fillColor: 'red' } },
-          { x: 2, y: 5, marker: { radius: 15, fillColor: 'blue' } },
-          { x: 3, y: 7, marker: { radius: 8, fillColor: 'green' } },
-          { x: 4, y: 2, marker: { radius: 12, fillColor: 'yellow' } },
-          { x: 5, y: 4, marker: { radius: 14, fillColor: 'purple' } },
-          { x: 6, y: 6, marker: { radius: 11, fillColor: 'orange' } },
-          { x: 7, y: 1, marker: { radius: 9, fillColor: 'pink' } },
-          { x: 8, y: 8, marker: { radius: 13, fillColor: 'cyan' } },
-          { x: 9, y: 10, marker: { radius: 16, fillColor: 'magenta' } },
-          { x: 10, y: 9, marker: { radius: 7, fillColor: 'brown' } },
-          { x: 11, y: 11, marker: { radius: 17, fillColor: 'lime' } },
-          { x: 10, y: 10, marker: { radius: 6, fillColor: 'aqua' } },
-          { x: 13, y: 12, marker: { radius: 18, fillColor: 'teal' } },
-          { x: 14, y: 15, marker: { radius: 5, fillColor: 'gold' } },
-          { x: 15, y: 14, marker: { radius: 20, fillColor: 'silver' } },
-          { x: 16, y: 16, marker: { radius: 4, fillColor: 'maroon' } },
-          { x: 17, y: 18, marker: { radius: 19, fillColor: 'navy' } },
-          { x: 18, y: 17, marker: { radius: 3, fillColor: 'olive' } },
-          { x: 19, y: 19, marker: { radius: 22, fillColor: 'violet' } },
-          { x: 20, y: 20, marker: { radius: 2, fillColor: 'indigo' } }
+          { "x": 5, "y": 8, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 2, "y": 9, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 7, "y": 3, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 6, "y": 5, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 4, "y": 7, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 9, "y": 2, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 3, "y": 6, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 1, "y": 10, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 10, "y": 1, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 8, "y": 4, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 5, "y": 5, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 2, "y": 3, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 7, "y": 10, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 4, "y": 8, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 9, "y": 9, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 1, "y": 2, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 10, "y": 5, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 8, "y": 7, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 6, "y": 10, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
+          { "x": 3, "y": 4, "marker": { "radius": Math.floor(Math.random() * 30), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } }
         ]
       }]
     });

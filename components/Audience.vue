@@ -30,8 +30,8 @@
         <div v-if="isActive == 1">
             <div class="sm:flex items-center mb-6">
                 Ads
-                <img class="md:block hidden ml-4" src="img/AdsRange.svg" alt="">
-                <img class="block md:hidden" src="img/smallAdsRange.svg" alt="">
+                <img class="md:block hidden ml-4 w-[90%]" src="img/AdsRange.svg" alt="">
+                <img class="block md:hidden w-[90%]" src="img/smallAdsRange.svg" alt="">
             </div>
             <hexa-map></hexa-map>
         </div>

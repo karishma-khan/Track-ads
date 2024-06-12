@@ -8,9 +8,7 @@
         </div>
         <div class="w-full pt-10 flex justify-center">
             <div class="w-[100%] md-w-[85%]">
-                <vue-word-cloud :data="words" :rotate="rotate"
-                :color="getColors"
-                 :options="options" />
+                <vue-word-cloud :data="words" :rotate="rotate" :color="getColors" :options="options" />
             </div>
         </div>
     </div>
@@ -122,6 +120,8 @@
         };
 </script>
 
-<style scoped>
-/* Add any custom styles here */
+<style>
+.tooltip {
+    display: none !important;
+}
 </style>
