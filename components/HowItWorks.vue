@@ -50,7 +50,7 @@
 export default{
     data(){
         return {
-            selectedTab:null,
+            selectedTab:0,
             currentSection: 0
         }
     },
@@ -59,17 +59,24 @@ export default{
     },
     methods: {
         handleScroll() {
-        const scrollPosition = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        console.log(scrollPosition,viewportHeight,this.$refs.what.offsetTop);
-
-        if ((scrollPosition + viewportHeight) >= (this.$refs.what.offsetTop) &&  (scrollPosition + viewportHeight) < (this.$refs.how.offsetTop +200)) {
-            this.selectedTab = 1
-        } else if ((scrollPosition + viewportHeight) >= (this.$refs.how.offsetTop)&&  (scrollPosition + viewportHeight) < (this.$refs.why.offsetTop+ 200 )) {
-            this.selectedTab = 2
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight;
+            if (scrollTop + clientHeight >= scrollHeight - 5 && this.selectedTab == 0) {
+                this.selectedTab ++;
             }
             else
-            this.selectedTab = 3
+            if(this.selectedTab != 0){
+                const scrollPosition = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                if ((scrollPosition + viewportHeight) >= (this.$refs.what.offsetTop) &&  (scrollPosition + viewportHeight) < (this.$refs.how.offsetTop +200)) {
+                    this.selectedTab = 1
+                } else if ((scrollPosition + viewportHeight) >= (this.$refs.how.offsetTop)&&  (scrollPosition + viewportHeight) < (this.$refs.why.offsetTop+ 200 )) {
+                        this.selectedTab = 2
+                    }
+                    else
+                        this.selectedTab = 3
+            }
         }
     }
 }

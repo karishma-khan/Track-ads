@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div class="bg-[#F4E8C1] border-t rounded-t-3xl border-black">
+        <div class="bg-[#F4E8C1] border-t rounded-t-3xl border-black" id="whatDetail">
             <div @click="selectedTab == 1 ? selectedTab = null : selectedTab = 1 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
                 <div class="p-2 border border-black font-black rounded-lg">What ?</div>
                 <div >
                     <img src="img/arrow-down-circle.svg" alt="">
                 </div>
             </div>
-            <div class="px-[5%]" v-if="selectedTab == 1" id=whatDetail>
+            <div class="px-[5%]" v-if="selectedTab == 1">
                 <div class="flex flex-col justify-center items-center">
                     <p class="aboutDetailDescription pb-10">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices iaculis neque. Mauris quis magna quis arcu interdum convallis. Curabitur non nulla eu urna ullamcorper euismod at ut urna. Pellentesque ut augue diam. Cras quis dapibus odio. Aliquam erat volutpat. Pellentesque rutrum euismod metus at malesuada. Morbi diam sem, tincidunt eget purus at, vulputate iaculis sem.
@@ -16,28 +16,28 @@
                     </p>
                 </div>
             </div>
-            <div class="bg-[#C5D6B6] border-t rounded-t-3xl border-black">
+            <div class="bg-[#C5D6B6] border-t rounded-t-3xl border-black" id="howDetail">
                 <div @click="selectedTab == 2 ? selectedTab = null : selectedTab = 2 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
                     <div class="p-2 border border-black font-black rounded-lg">How ?</div>
                     <div >
                         <img src="img/arrow-down-circle.svg" alt="">
                     </div>
                 </div>
-                <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 2" id="howDetail">
+                <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 2">
                     <p class="aboutDetailDescription pb-10">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices iaculis neque. Mauris quis magna quis arcu interdum convallis. Curabitur non nulla eu urna ullamcorper euismod at ut urna. Pellentesque ut augue diam. Cras quis dapibus odio. Aliquam erat volutpat. Pellentesque rutrum euismod metus at malesuada. Morbi diam sem, tincidunt eget purus at, vulputate iaculis sem.
                         </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.
                         </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.
                     </p>
                 </div>
-                <div class="bg-[#81C2A7] border-t rounded-t-3xl border-black">
+                <div class="bg-[#81C2A7] border-t rounded-t-3xl border-black" id="whyDetail">
                     <div @click="selectedTab == 3 ? selectedTab = null : selectedTab = 3 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
                         <div class="p-2 border border-black font-black rounded-lg">Why ?</div>
                         <div >
                             <img src="img/arrow-down-circle.svg" alt="">
                         </div>
                     </div>
-                    <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 3" id="whyDetail">
+                    <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 3">
                         <p class="aboutDetailDescription pb-10">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices iaculis neque. Mauris quis magna quis arcu interdum convallis. Curabitur non nulla eu urna ullamcorper euismod at ut urna. Pellentesque ut augue diam. Cras quis dapibus odio. Aliquam erat volutpat. Pellentesque rutrum euismod metus at malesuada. Morbi diam sem, tincidunt eget purus at, vulputate iaculis sem.
                             </br></br>Sed eu egestas velit, ac facilisis lectus. Vestibulum orci tellus, blandit sed ipsum a, interdum posuere enim. Maecenas sodales orci ut sapien hendrerit, in porta odio cursus. Vivamus eget auctor nunc. Suspendisse sed ex et odio vestibulum cursus in sed neque. Fusce vehicula sapien.

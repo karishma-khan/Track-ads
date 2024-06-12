@@ -21,7 +21,7 @@
             <div @click="navigate('/')" class="md:w-1/4 menuItem min-h-[135px] border-b md:border-b-0 md:border-r border-r-0">
                 <span>Home</span><span><img src="img/arrowUpRight.svg" alt=""></span>
             </div>
-            <div  @click="navigate('/advertiser')" class="md:w-1/4 menuItem min-h-[135px] border-b md:border-b-0 md:border-r border-r-0">
+            <div  @click="navigate('/overview')" class="md:w-1/4 menuItem min-h-[135px] border-b md:border-b-0 md:border-r border-r-0">
                 <span>Dashboard</span><span><img src="img/arrowUpRight.svg" alt=""></span>
             </div>
             <div  @click="navigate('/about')" class="md:w-1/4 menuItem min-h-[135px] border-b md:border-b-0 md:border-r border-r-0">

@@ -3,7 +3,7 @@
     <div class="flex gap-4 mb-8">
       <img src="img/imageGallery.svg" alt="">
       <span class="common-heading">
-        {{ title }}{{ tooltip }}
+        {{ title }}
       </span>
     </div>
     <div class="card">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <!-- Tooltip div -->
-    <div v-if="tooltip.visible" class="tooltip z-100" :style="{ top: tooltip.y + 'px', left: tooltip.x + 'px' }">
+    <div v-if="false" class="tooltip z-100" :style="{ top: tooltip.y + 'px', left: tooltip.x + 'px' }">
       Hello
     </div>
   </div>

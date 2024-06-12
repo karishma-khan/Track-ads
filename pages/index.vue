@@ -1,6 +1,7 @@
 <template>
     <div class="bggridHome">
         <div class="bg-white flex flex-col rounded-b-[70px] text-center justify-center" style="text-align: -webkit-center;">
+          <!-- <test></test> -->
           <hero-bubbles></hero-bubbles>
           <div class="my-10">
             <p class="heroHead">Transparency</p>
