@@ -12,12 +12,13 @@
         <div class="sm:flex items-start mb-6">
             Ads <img class="w-[90%] ml-4" src="img/advRange.svg" alt="">
         </div>
-        <scatter-plot></scatter-plot>
+        <scatter-plot :chartData="chartData"></scatter-plot>
     </div>
 </template>
 <script>
 import containerBox from './common/containerBox.vue'
 export default{
+    props:['chartData'],
     data(){
         return {
             title: 'Advertisers',

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="map" class="z-10" style="height: 473px;background-color: #FFFBEF;"></div>
+        <div v-if="computeData" id="map" class="z-10" style="height: 473px;background-color: #FFFBEF;"></div>
     </div>
 </template>
 
@@ -9,21 +9,55 @@ import IndiaHexBoundary from "../data/india_state_hex.geojson"
 export default {
     data(){
         return{
+            geoData:{},
+            maxUsers:0,
             map:null,
             hexGeoJson:IndiaHexBoundary,
             hexLayer:null,
             indianBoundary:null,
-            randomColors:['#162C3B','#4CB2AC','#326284','#81C2A7','#C5D6B6']
+            randomColors:['#C5D6B6','#81C2A7','#4CB2AC','#326284','#162C3B'] 
+        }
+    },
+    props:['chartData'],
+    computed:{
+        computeData(){
+            this.geoData = {}
+            let data = this.chartData.data
+            for( let item in data ){
+                if( data[item] )
+                {
+                    this.geoData[data[item].state] = data[item].users
+                    if( data[item].users > this.maxUsers )
+                    {
+                        this.maxUsers = data[item].users
+                    }
+                }
+            }
+            return this.geoData
         }
     },
     methods:{
+        getColor(users)
+        {
+            if(users <= (this.maxUsers / 5))
+                return this.randomColors[0]
+            if(users <= (this.maxUsers * (2/5)))
+                return this.randomColors[1]
+            if(users <= (this.maxUsers / (3/5)))
+                return this.randomColors[2]
+            if(users <= (this.maxUsers / (4/5)))
+                return this.randomColors[3]
+            if(users <= (this.maxUsers))
+                return this.randomColors[4]
+            return '#ebe7e7'
+        },
         styleFeature(feature) {
             return {
                 color: 'white',
                 weight: 3,
                 opacity: 1,
                 fillOpacity: 1,
-                fillColor: this.randomColors[Math.floor(Math.random() * 5)]
+                fillColor: this.getColor(this.geoData[feature?.properties['State/UT']])
             };
         },
         loadIndianBoundary()

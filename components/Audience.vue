@@ -33,10 +33,10 @@
                 <img class="md:block hidden ml-4 w-[90%]" src="img/AdsRange.svg" alt="">
                 <img class="block md:hidden w-[90%]" src="img/smallAdsRange.svg" alt="">
             </div>
-            <hexa-map></hexa-map>
+            <hexa-map :chartData="hexData"></hexa-map>
         </div>
         <div v-if="isActive == 2">
-            <compare-bar-chart></compare-bar-chart>
+            <compare-bar-chart :chartData="ageData"></compare-bar-chart>
         </div>
     </div>
 </template>
@@ -46,9 +46,30 @@ export default{
     components:{
         containerBox
     },
+    watch:{
+        chartData()
+        {
+        this.getSepData()
+        }
+    },
+    methods:{
+        getSepData()
+        {
+            for(let data in this.chartData)
+            {
+                if(this.chartData[data].mode == 'age_and_gender')
+                    this.ageData = this.chartData[data]
+                else
+                    this.hexData = this.chartData[data]
+            }
+        }
+    },
+    props:['chartData'],
     data(){
         return{
             title:'Audience',
+            hexData:{},
+            ageData:{},
             description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, molestiae?',
             isActive:2,
         }

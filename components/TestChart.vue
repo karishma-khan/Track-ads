@@ -9,15 +9,29 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 export default {
+  data() {
+    return {
+      chartInstance: null 
+    };
+  },
   mounted() {
     if (this.chartData)
       this.renderChart();
   },
+  watch:{
+    chartData()
+    {
+      this.renderChart()
+    }
+  },
   props: ['chartData'],
   methods: {
     renderChart() {
+      if (this.chartInstance) {
+        this.chartInstance.destroy();
+      }
       const ctx = document.getElementById('myChart').getContext('2d');
-      new Chart(ctx, {
+      this.chartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: this.chartData.labels,

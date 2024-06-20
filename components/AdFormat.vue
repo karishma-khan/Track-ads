@@ -11,11 +11,11 @@
                 {{ description }}
             </p>
         </div>
-        <test-doughnut></test-doughnut>
+        <test-doughnut :chartData="chartData"></test-doughnut>
         <div>
-            <div class="flex justify-between common-tile py-5" v-for="(item,index) in tileData" :key="index">
-                <div class="tile-label">{{ item.name }}</div>
-                <div class="tile-value"> {{ item.name == 'Money Spent' ? '&#8377;' : '' }}  {{ item.value }}</div>
+            <div class="flex justify-between common-tile py-5" v-for="(item,index) in chartData" :key="index">
+                <div class="tile-label">{{ item.format }}</div>
+                <div class="tile-value">{{ item.percent }}</div>
             </div>
         </div>
     </div>
@@ -26,13 +26,11 @@ export default{
     components:{
         containerBox
     },
+    props:['chartData'],
     data(){
         return{
             title:'Ad Format',
             description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, molestiae?',
-            chartData:{
-                label:[]
-            },
             tileData:[
                 {
                     name:'Placeholder',

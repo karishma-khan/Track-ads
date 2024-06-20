@@ -6,17 +6,40 @@
   
   <script>
   export default {
+  data() {
+    return {
+      chartInstance: null 
+    };
+  },
     mounted() {
       this.renderChart();
     },
+    watch:{
+      chartData()
+      {
+        this.renderChart()
+      }
+    },
+    props:['chartData'],
     methods: {
+      getData()
+      {
+        let res = []
+        for(let item in this.chartData){
+          res.push(this.chartData[item].percent)
+        }
+        return res;
+      },
       renderChart() {
+      if (this.chartInstance) {
+        this.chartInstance.destroy();
+      }
         const ctx = document.getElementById('myDoughnutChart').getContext('2d');
-        new Chart(ctx, {
+        this.chartInstance = new Chart(ctx, {
           type: 'doughnut', // Change chart type to 'doughnut'
           data: {
             datasets: [{
-              data: [75,25],
+              data: this.getData(),
               backgroundColor: [
                 '#00060B',
                 '#86937F'

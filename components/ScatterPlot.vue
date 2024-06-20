@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  props:['chartData'],
   data(){
     return{
       randomColors:['#FBE69F99','#C5D6B699','#4CB2AC99','#32628499','#13375199']

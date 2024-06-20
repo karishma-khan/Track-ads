@@ -12,9 +12,9 @@
             </p>
         </div>
         <div>
-            <div class="flex justify-between common-tile py-5" v-for="(item,index) in tileData" :key="index">
-                <div class="tile-label">{{ item.name }}</div>
-                <div class="tile-value"> {{ item.name == 'Money Spent' ? '&#8377;' : '' }}  {{ item.value }}</div>
+            <div class="flex justify-between common-tile py-5" v-for="(item,index) in chartData" :key="index">
+                <div class="tile-label capitalize">{{ item.param }}</div>
+                <div class="tile-value"> {{ item.param == 'Money Spent' ? '&#8377;' : '' }}  {{ item.value }}</div>
             </div>
         </div>
     </div>
@@ -24,6 +24,13 @@ import containerBox from './common/containerBox.vue'
 export default{
     components:{
         containerBox
+    },
+    props:['chartData'],
+    computed:{
+        getChartData()
+        {
+            return this.chartData;
+        }
     },
     data(){
         return{
