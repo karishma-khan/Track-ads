@@ -2,20 +2,32 @@
     <div class="bg-[#326284] text-white px-[5%] py-10 md:py-[100px]">
        <p class="teamHead mb-10">Meet the team</p>
        <div class="flex flex-wrap justify-center w-full gap-6">
-        <div class="teamTile text-black flex flex-col justify-between" v-for="(item,idx) in teamData" :key="idx">
-            <div @mouseover="isHover=true; isHoverId = idx" @mouseleave="isHover=false" class="teamImg">
-                <div v-if="isHover && isHoverId == idx" class="teamTileHover text-white flex h-full flex-col justify-between">
-                    <div class="teamDetail">Surbhi is a part-time visual storyteller and a full-time observer who enjoys exploring beauty within our ordinary lives.</div>
-                    <div class="getInTouch flex justify-between pt-[10px] border-dashed border-t border-white">
-                        Get in touch
-                        <img src="img/linkedin.svg" alt="">
+        <div class="teamTile text-black rounded-md overflow-hidden" v-for="(item,idx) in teamData" :key="idx">
+            <div @mouseover="isHover=true; isHoverId = idx" @mouseleave="isHover=false" class="flex h-full rounded-md overflow-hidden">
+                <div v-if="isHover && isHoverId == idx" class="flex grow items-center border border-black bg-[#2E5876] rounded-md">
+                    <img class="max-w-max px-4 rounded-md" src="img/team1.svg" alt="">
+                    <div class="grow flex flex-col justify-center items-center rounded-md">
+                        <div class="border-l border-dashed border-white py-3 px-5 getInTouch text-white">
+                            Get in touch
+                            <div class="flex justify-between px-3 items-center">
+                                <img src="img/linkedin.svg" alt="">
+                                <img src="img/twitter-x.svg" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <img v-else src="img/teamPlaceholder.png" alt="" class="">
-            </div>
-            <div>
-                <div class="teamName mb-4">{{ item.name }}</div>
-                <div class="teamRole">{{ item.role }}</div>
+                <div v-else class="flex grow items-center border border-black bg-[#2E5876] rounded-md">
+                    <img class="max-w-max px-4 rounded-md" src="img/team1.svg" alt="">
+                </div>
+                <div  v-if="!isHover || (isHover && isHoverId != idx)" class="px-5 flex flex-col bg-white h-full justify-between">
+                    <div>
+                        <div class="teamName mb-4 text-[24px]">{{ item.name }}</div>
+                        <div class="teamRole text-[20px]">{{ item.role }}</div>
+                    </div>
+                    <div class="text-[#2E5876] text-[12px] md:text-[14px] border-t border-black text-sm pt-3 border-dashed">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    </div>
+                </div>
             </div>
         </div>
        </div>
@@ -42,14 +54,6 @@ export default{
                 },
                 {
                     name:"Karishma Khan",
-                    role:"Lorem ipsum"
-                },
-                {
-                    name:"Lorem Ipsum",
-                    role:"Lorem ipsum"
-                },
-                {
-                    name:"Lorem Ipsum",
                     role:"Lorem ipsum"
                 },
                 {

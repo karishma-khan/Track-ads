@@ -22,11 +22,14 @@ export default {
         legend: { enabled: false },
         navigation: { buttonOptions: { enabled: false } },
         title: { text: null },
+        credits: {
+        enabled: false
+    },
         xAxis: [
           { categories: categories, reversed: false, labels: { step: 1 }},
           { opposite: true, reversed: false, categories: categories, linkedTo: 0, labels: { step: 1 } }],
         yAxis: { title: { text: null }, labels: { format: '{value}%' } },
-        plotOptions: { series: { stacking: 'normal', pointWidth: 65, borderRadius: '12px' } },
+        plotOptions: { series: { stacking: 'normal', pointWidth: 57, borderRadius: '12px' } },
         tooltip: { useHTML:true, backgroundColor: 'black', borderRadius: 16, padding:15,
           style: { color:'white', width:'300px', borderRadius: '16px', },
           headerFormat: '<div class="tooltip-header text-[15px] mb-2" style="color:#FFFFFF80"> <span class="mdi mdi-account-multiple"></span> Demographics </div>',

@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       title: 'Image Wall',
-      items: Array.from({ length: 100 }, (_, i) => i),
+      items: Array.from({ length: 98 }, (_, i) => i),
       tooltip: {
         visible: false,
         text: '',

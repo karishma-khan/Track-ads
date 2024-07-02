@@ -1,9 +1,42 @@
 <template>
   <div class="Herocontainer">
     <div ref="semicircle" class="semicircle relative overflow-hidden">
-      <div class="heroSubtitle">
+      <div class="heroSubtitle z-10">
+        <div :class="infoDetail ? 'md:block hidden' : ''">
           Top Political Advertisers on Meta
-          <p>As on 30 Mar,2024</p>
+          <p class="flex justify-center text-[14px] items-center">As on 30 Mar,2024 <img @click="infoDetail=true" class="mx-2" src="img/heroInfo.svg" /> </p>
+        </div>
+          <div class="heroInfo bg-[white]" v-if="infoDetail">
+            <div class="flex justify-between items-top">
+              <div class="text-[12px] text-left leading-[14px]">Each circle represents an advertiser.</div>
+              <img @click="infoDetail = false" class="h-[12px] w-[12px] mt-1" src="img/infoClose.svg" alt="">
+            </div>
+            <div>
+              <div class="text-[12px] text-left mt-[5px]">Ads :</div>
+              <div class="flex flex-wrap justify-between items-center">
+                <div class="flex items-center mr-2">
+                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">100 - 200</div>
+                </div>
+                <div class="flex items-center mr-2">
+                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">100 - 200</div>
+                </div>
+                <div class="flex items-center mr-2">
+                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">100 - 200</div>
+                </div>
+                <div class="flex items-center mr-2">
+                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">100 - 200</div>
+                </div>
+                <div class="flex items-center mr-2">
+                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">100 - 200</div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
       <div class="circle-container overflow-hidden">
         <div v-for="(circle, index) in circles" :key="index"
@@ -12,20 +45,20 @@
              class="circle"></div>
       </div>
     <div v-if="isToolTip" class="absolute bottom-0 w-full flex justify-center">
-      <div class="px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly">
+      <div class="z-[20] px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly">
         <div class="flex justify-between">
-          <div @click="$router.push('/advertiser')" class="border-b border-white">The Narative Builders</div>
-          <div @click="isToolTip = false">X</div>
+          <div @click="$router.push('/advertiser')" class="border-b pb-2 border-white cursor-pointer">The Narative Builders</div>
+          <div @click="isToolTip = false"><img src="img/x.svg" alt=""></div>
         </div>
-        <div>
+        <div class="mt-4 mb-2">
           <div class="heroToolHead">685</div>
           <div class="heroToolValue">Total Ads</div>
         </div>
-        <div>
+        <div class="my-2">
           <div class="heroToolHead">$ 190.7k - $273.7k</div>
           <div class="heroToolValue">Total Ads Spent</div>
         </div>
-        <div>
+        <div class="my-2">
           <div class="heroToolHead">7.883M+</div>
           <div class="heroToolValue">Total Impressions</div>
         </div>
@@ -40,6 +73,7 @@ export default {
   data() {
     return {
       isToolTip:false,
+      infoDetail:false,
       toolTipVal:0,
       randomColors:['#FBE69F','#C5D6B6','#4CB2AC','#326284','#133751'],
       circles: [

@@ -14,11 +14,11 @@
                 </div>
             </div>
             <div class="md:w-3/5">
-                <input type="text" placeholder="Your name" name="" id="" class="block p-4 my-4 w-full rounded-lg bg-black border h-[48px] border-[#FFFFFF66]">
-                <input type="email" placeholder="Your email" name="" id="" class="block p-4 my-4 w-full rounded-lg bg-black border h-[48px] border-[#FFFFFF66]">
-                <input type="text" placeholder="Subject" name="" id="" class="block p-4 my-4 w-full rounded-lg bg-black border h-[48px] border-[#FFFFFF66]">
-                <textarea name="" placeholder="Message" id="" rows="10" class="block p-4 my-4 w-full rounded-lg bg-black border  border-[#FFFFFF66]"></textarea>
-                <input type="submit" value="Submit" class="bg-[#212121] block  w-full rounded-lg border h-[48px] border-[#FFFFFF66]">
+                <input type="text" placeholder="Your name" name="" id="" class="text-[12px] md:text-[16px] block p-4 my-4 w-full rounded-lg bg-black border h-[48px] border-[#FFFFFF66]">
+                <input type="email" placeholder="Your email" name="" id="" class="text-[12px] md:text-[16px] block p-4 my-4 w-full rounded-lg bg-black border h-[48px] border-[#FFFFFF66]">
+                <input type="text" placeholder="Subject" name="" id="" class="text-[12px] md:text-[16px] block p-4 my-4 w-full rounded-lg bg-black border h-[48px] border-[#FFFFFF66]">
+                <textarea name="" placeholder="Message" id="" rows="10" class="text-[12px] md:text-[16px] block p-4 my-4 w-full rounded-lg bg-black border  border-[#FFFFFF66]"></textarea>
+                <input type="submit" value="Submit" class="bg-[#212121] text-[14px] md:text-[20px] block  w-full rounded-lg border h-[48px] border-[#FFFFFF66]">
             </div>
         </div>
     </div>

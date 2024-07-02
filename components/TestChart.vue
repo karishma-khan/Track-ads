@@ -52,6 +52,11 @@ export default {
               beginAtZero: true,
               ticks: {
                 color: 'white'
+              },
+              title:{
+                display: true,
+                text: '(in million rupees)',
+                color: 'white',
               }
             },
             x: {
@@ -61,9 +66,12 @@ export default {
             }
           },
           plugins: {
+            legend: {
+              display: false
+            },
             tooltip: {
-              enabled: false, // Disable default tooltip
-              external: this.customTooltip // Custom tooltip function
+              enabled: false,
+              external: this.customTooltip
             }
           }
         }

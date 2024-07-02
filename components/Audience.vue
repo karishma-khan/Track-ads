@@ -64,6 +64,14 @@ export default{
             }
         }
     },
+    mounted()
+    {
+        this.getSepData()
+    },
+    updated()
+    {
+        this.getSepData()
+    },
     props:['chartData'],
     data(){
         return{

@@ -13,8 +13,10 @@
         </div>
         <test-doughnut :chartData="chartData"></test-doughnut>
         <div>
-            <div class="flex justify-between common-tile py-5" v-for="(item,index) in chartData" :key="index">
-                <div class="tile-label">{{ item.format }}</div>
+            <div class="flex justify-between common-tile py-5" :class="item.format=='video' ? 'text-[#86937F]' : ''" v-for="(item,index) in chartData" :key="index">
+                <div class="tile-label" :class="item.format=='video' ? 'text-[#86937F]' : ''">{{ item.format }} Format
+                    <span>(${{ (item.impressions / 1000000) }}B)</span>
+                </div>
                 <div class="tile-value">{{ item.percent }}</div>
             </div>
         </div>

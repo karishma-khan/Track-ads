@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="chart-container">
       <canvas id="myDoughnutChart"></canvas>
     </div>
   </template>
@@ -70,5 +70,12 @@
   
   <style scoped>
   /* Optional: Add any styles you need here */
+  .chart-container {
+  display: flex;
+  justify-content: center; /* Aligns content horizontally to center */
+  align-items: center; /* Aligns content vertically to center */
+  max-height: 363px;
+  /* height: 400px; Adjust as needed */
+}
   </style>
   
