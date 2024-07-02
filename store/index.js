@@ -2,7 +2,7 @@ export const state = () => ({
     dashboardDataObj:{},
     adviserDataObj:{},
     noiseOutput:{},
-    searchResponse:{}
+    searchResponse:[]
   });
 
 export const mutations = {
@@ -25,7 +25,7 @@ export const mutations = {
     },
     set_advertisers_data(state, value) {
       console.log('from mutation',value);
-      state.searchResponse = value;
+      state.searchResponse = value[0].data;
     }
 };
 

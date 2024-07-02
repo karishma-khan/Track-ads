@@ -48,6 +48,7 @@ export default {
   plugins: [
     {src: './plugins/leaflet.js', ssr:false},
     { src: "~/plugins/axios", ssr: true },
+    { src: '~/plugins/datePicker.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
