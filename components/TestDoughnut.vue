@@ -1,6 +1,10 @@
 <template>
-    <div class="chart-container">
+    <div class="chart-container relative">
       <canvas id="myDoughnutChart"></canvas>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="adFormatSpent">Money Spent</div>
+        <div class="adFormatAmt pt-2"> &#8377; {{ (amtSpend/1000000).toFixed(2) }} m</div>
+      </div>
     </div>
   </template>
   
@@ -8,7 +12,8 @@
   export default {
   data() {
     return {
-      chartInstance: null 
+      chartInstance: null ,
+      amtSpend:0
     };
   },
     mounted() {
@@ -26,6 +31,7 @@
       {
         let res = []
         for(let item in this.chartData){
+          this.amtSpend += this.chartData[item].amount
           res.push(this.chartData[item].percent)
         }
         return res;
@@ -74,7 +80,7 @@
   display: flex;
   justify-content: center; /* Aligns content horizontally to center */
   align-items: center; /* Aligns content vertically to center */
-  max-height: 363px;
+  height: 363px;
   /* height: 400px; Adjust as needed */
 }
   </style>

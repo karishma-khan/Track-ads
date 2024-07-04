@@ -12,7 +12,7 @@
                 </div>
                 <date-range-picker class="ml-4"></date-range-picker>
             </div>
-            <div class="hidden md:block relative z-[10]">
+            <div class="hidden md:block relative">
                 <input type="text" class="chip searchAdv" v-model="searchText" @input="search()" style="padding-left: 34px;" placeholder="Search for an advertiser here...">
                 <span class="mdi mdi-magnify absolute left-2 top-1 text-2xl"></span>
                 <select name="" id="" class="absolute right-2 top-[8px] w-[5px]">

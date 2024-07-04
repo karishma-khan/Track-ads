@@ -8,7 +8,7 @@
             <p class="heroHead">For Democracy</p>
             <p class="mt-3 heroUnlock">Unlock the insights on political ad</p>
             <button class="bg-black hover:bg-black text-white mt-4 font-bold py-2 flex items-center px-8 rounded-3xl" @click="$router.push('/overview')">
-              Enter <span><img class="ml-[4px] relative top-[2px]" style="height: 22px !important;" src="img/arrowUpRight.svg" alt=""></span>
+              Enter <span><img class="ml-[4px] relative top-[2px]" style="height: 22px !important;" src="../static/img/arrowUpRight.svg" alt=""></span>
             </button>
           </div>
         </div>

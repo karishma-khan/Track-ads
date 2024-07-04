@@ -6,7 +6,7 @@
                 <span @click="scrollToTop()" class="mdi mdi-arrow-up ml-6 text-2xl cursor-pointer"></span>
             </div>
             <div>
-                <img src="img/uni.svg" alt="">
+                <img src="../../static/img/uni.svg" alt="">
             </div>
         </div>
         <div class="flex justify-center items-center h-[60px] copyrightText">

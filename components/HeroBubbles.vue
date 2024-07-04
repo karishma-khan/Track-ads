@@ -4,12 +4,12 @@
       <div class="heroSubtitle z-10">
         <div :class="infoDetail ? 'md:block hidden' : ''">
           Top Political Advertisers on Meta
-          <p class="flex justify-center text-[14px] items-center">As on 30 Mar,2024 <img @click="infoDetail=true" class="mx-2" src="img/heroInfo.svg" /> </p>
+          <p class="flex justify-center text-[14px] items-center">As on 30 Mar,2024 <img @click="infoDetail=true" class="mx-2" src="../static/img/heroInfo.svg" /> </p>
         </div>
           <div class="heroInfo bg-[white]" v-if="infoDetail">
             <div class="flex justify-between items-top">
               <div class="text-[12px] text-left leading-[14px]">Each circle represents an advertiser.</div>
-              <img @click="infoDetail = false" class="h-[12px] w-[12px] mt-1" src="img/infoClose.svg" alt="">
+              <img @click="infoDetail = false" class="h-[12px] w-[12px] mt-1" src="../static/img/infoClose.svg" alt="">
             </div>
             <div>
               <div class="text-[12px] text-left mt-[5px]">Ads :</div>
@@ -48,7 +48,7 @@
       <div class="z-[20] px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly">
         <div class="flex justify-between">
           <div @click="$router.push('/advertiser')" class="border-b pb-2 border-white cursor-pointer">The Narative Builders</div>
-          <div @click="isToolTip = false"><img src="img/x.svg" alt=""></div>
+          <div @click="isToolTip = false"><img src="../static/img/x.svg" alt=""></div>
         </div>
         <div class="mt-4 mb-2">
           <div class="heroToolHead">685</div>

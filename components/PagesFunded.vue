@@ -1,7 +1,7 @@
 <template>
     <div class="bg-[#326284] text-white common-container">
         <div class="flex gap-4">
-            <img src="img/pages.svg" alt="">
+            <img src="../static/img/pages.svg" alt="">
             <span class="common-heading">
                 {{ title }}
             </span>
@@ -9,7 +9,7 @@
         <p class="mt-3 mb-6 common-description">
             {{ description }}
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div v-for="(item,index) in chartData" :key="index">
                 <div class="fundTile relative box-border overflow-hidden" :class=" selectedTile == index ? 'border-2 border-black' : '' ">
                     <div v-if="selectedTile == index" class="absolute rounded-bl-xl top-0 right-0 h-6 w-6 items-center flex font-black justify-center text-white bg-black">
@@ -44,4 +44,4 @@ export default{
         }
     }
 }
-</script>326284
+</script>

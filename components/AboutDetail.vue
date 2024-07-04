@@ -4,7 +4,7 @@
             <div @click="selectedTab == 1 ? selectedTab = null : selectedTab = 1 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
                 <div class="p-2 border border-black text-[20px] md:text-[24px] font-black rounded-lg">What ?</div>
                 <div >
-                    <img src="img/arrow-down-circle.svg" alt="">
+                    <img src="../static/img/arrow-down-circle.svg" alt="">
                 </div>
             </div>
             <div class="px-[5%]" v-if="selectedTab == 1">
@@ -20,7 +20,7 @@
                 <div @click="selectedTab == 2 ? selectedTab = null : selectedTab = 2 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
                     <div class="p-2 border border-black text-[20px] md:text-[24px] font-black rounded-lg">How ?</div>
                     <div >
-                        <img src="img/arrow-down-circle.svg" alt="">
+                        <img src="../static/img/arrow-down-circle.svg" alt="">
                     </div>
                 </div>
                 <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 2">
@@ -34,7 +34,7 @@
                     <div @click="selectedTab == 3 ? selectedTab = null : selectedTab = 3 " class="h-[107px] md:h-[125px] flex items-center justify-between px-[5%]">
                         <div class="p-2 border border-black text-[20px] md:text-[24px] font-black rounded-lg">Why ?</div>
                         <div >
-                            <img src="img/arrow-down-circle.svg" alt="">
+                            <img src="../static/img/arrow-down-circle.svg" alt="">
                         </div>
                     </div>
                     <div class="flex flex-col px-[5%] justify-center items-center" v-if="selectedTab == 3">

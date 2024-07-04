@@ -2,7 +2,7 @@
     <div class="bg-[#FFFBEF] text-black common-container">
         <div class="flex justify-between">
             <div class="flex gap-4">
-                <img src="img/Audience.svg" alt="">
+                <img src="../static/img/Audience.svg" alt="">
                 <span class="common-heading">
                     {{ title }}
                 </span>
@@ -30,8 +30,8 @@
         <div v-if="isActive == 1">
             <div class="sm:flex items-center mb-6">
                 Ads
-                <img class="md:block hidden ml-4 w-[90%]" src="img/AdsRange.svg" alt="">
-                <img class="block md:hidden w-[90%]" src="img/smallAdsRange.svg" alt="">
+                <img class="md:block hidden ml-4 w-[90%]" src="../static/img/AdsRange.svg" alt="">
+                <img class="block md:hidden w-[90%]" src="../static/img/smallAdsRange.svg" alt="">
             </div>
             <hexa-map :chartData="hexData"></hexa-map>
         </div>

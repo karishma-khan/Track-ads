@@ -2,7 +2,7 @@
     <div class="bg-[#C5D6B6] flex flex-col justify-between text-black common-container">
         <div>
             <div class="flex gap-4">
-                <img src="img/overviewLogo.svg" alt="">
+                <img src="../static/img/overviewLogo.svg" alt="">
                 <span class="common-heading">
                     {{ title }}
                 </span>

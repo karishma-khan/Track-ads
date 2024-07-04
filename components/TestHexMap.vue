@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#FFFBEF] text-black common-container">
     <div class="flex gap-4">
-        <img src="img/webww.svg" alt="">
+        <img src="../static/img/webww.svg" alt="">
         <span class="common-heading">
             {{ title }}
         </span>

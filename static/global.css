@@ -23,18 +23,36 @@ body{
 }
 
 @font-face {
-    font-family: "SF Pro Black";
+    font-family: ""Nuni Sans", sans-serif;";
     src: url("font/SF-Pro-Display-Black.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "SF Pro Bold";
+    font-family: ""Nuni Sans", sans-serif;";
     src: url("font/sf-pro-text-semibold.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Eurostile Extd Bold";
     src: url("font/Eurostile-Extd-Black.ttf") format("truetype");
+}
+
+.adFormatSpent{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 18.35px;
+    font-weight: 500;
+    line-height: 16.06px;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+
+.adFormatAmt{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 27.53px;
+    font-weight: 800;
+    line-height: 16.06px;
+    letter-spacing: 0.02em;
+    text-align: center;
 }
 
 .abtHead{
@@ -156,7 +174,23 @@ body{
     .footerTitle{
         font-size: 16px !important;
     }
+    .advTitle{
+        font-size: 20px !important;
+    }
+    .fundHead{
+        font-size: 14px !important;
+    }
+    .fundSubHead{
+        font-size: 12px !important;
+    }
+    .fundSpend{
+        font-size: 14px !important;
+    }
 }
+
+.leaflet-control-attribution {
+    display: none !important;
+  }
 
 .aboutDetailDescription{
     font-family: "Nunito Sans", sans-serif;
@@ -217,7 +251,7 @@ body{
 }
 
 .tile-value{
-    font-family: SF Pro Bold;
+    font-family: "Nuni Sans", sans-serif;
     font-size: 20px;
     font-weight: 900;
     line-height: 20px;
@@ -268,7 +302,7 @@ body{
 }
 
 .advTitle{
-    font-family: SF Pro Black;
+    font-family: "Nuni Sans", sans-serif;
     font-size: 24px;
     font-weight: 800;
     line-height: 28px;
@@ -283,7 +317,7 @@ body{
 }
 
 .fundHead{
-    font-family: SF Pro BOLD;
+    font-family: "Nuni Sans", sans-serif;
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
@@ -300,7 +334,7 @@ body{
 }
 
 .fundSpend{
-    font-family: SF Pro Black;
+    font-family: "Nuni Sans", sans-serif;
     font-size: 16px;
     font-weight: 900;
     line-height: 20px;
@@ -398,7 +432,7 @@ body{
 }
 
 .teamName{
-    font-family: SF Pro Bold;
+    font-family: "Nuni Sans", sans-serif;
     font-size: 24px;
     font-weight: 500;
     line-height: 26.13px;

@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#FFFBEF] text-black common-container" style="overflow: unset;">
     <div class="flex gap-4 mb-8">
-      <img src="img/imageGallery.svg" alt="">
+      <img src="../static/img/imageGallery.svg" alt="">
       <span class="common-heading">
         {{ title }}
       </span>

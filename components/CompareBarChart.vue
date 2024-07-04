@@ -1,5 +1,9 @@
 <template>
   <div class="highcharts-figure">
+    <div class="flex justify-around">
+      <div>Male</div>
+      <div>Female</div>
+    </div>
     <div v-if="computeData" id="container"></div>
   </div>
 </template>
@@ -26,9 +30,9 @@ export default {
         enabled: false
     },
         xAxis: [
-          { categories: categories, reversed: false, labels: { step: 1 }},
-          { opposite: true, reversed: false, categories: categories, linkedTo: 0, labels: { step: 1 } }],
-        yAxis: { title: { text: null }, labels: { format: '{value}%' } },
+          { categories: categories, reversed: false, labels: { step: 1 },  title:{text :'Age (in Years)'},},
+          { opposite: true, reversed: false, title:'', categories: categories, linkedTo: 0, labels: { step: 1 } }],
+        yAxis: { title: { text: 'Audience Demographics (in%)' }, labels: { format: '{value}%' } },
         plotOptions: { series: { stacking: 'normal', pointWidth: 57, borderRadius: '12px' } },
         tooltip: { useHTML:true, backgroundColor: 'black', borderRadius: 16, padding:15,
           style: { color:'white', width:'300px', borderRadius: '16px', },

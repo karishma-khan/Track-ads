@@ -54,7 +54,7 @@ export const actions = {
     },
     async set_advertisers_action({ commit }, value) {
       try {
-          let resp = await fetch('http://34.131.71.160:8085/api/data?country=IN&start=2024-04-07&end=2024-04-09&advertiser_ad_id=1266099907681747')
+          let resp = await fetch('http://34.131.71.160:8085/api/data?country=IN&start=2024-04-07&end=2024-04-09&advertiser_ad_id=960055112177032')
           resp = await resp.json()
           commit("set_adviser_data", resp);
           return resp

@@ -5,19 +5,19 @@
         <div class="teamTile text-black rounded-md overflow-hidden" v-for="(item,idx) in teamData" :key="idx">
             <div @mouseover="isHover=true; isHoverId = idx" @mouseleave="isHover=false" class="flex h-full rounded-md overflow-hidden">
                 <div v-if="isHover && isHoverId == idx" class="flex grow items-center border border-black bg-[#2E5876] rounded-md">
-                    <img class="max-w-max px-4 rounded-md" src="img/team1.svg" alt="">
+                    <img class="max-w-max px-4 rounded-md" src="../static/img/team1.svg" alt="">
                     <div class="grow flex flex-col justify-center items-center rounded-md">
                         <div class="border-l border-dashed border-white py-3 px-5 getInTouch text-white">
                             Get in touch
                             <div class="flex justify-between px-3 items-center">
-                                <img src="img/linkedin.svg" alt="">
-                                <img src="img/twitter-x.svg" alt="">
+                                <img src="../static/img/linkedin.svg" alt="">
+                                <img src="../static/img/twitter-x.svg" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div v-else class="flex grow items-center border border-black bg-[#2E5876] rounded-md">
-                    <img class="max-w-max px-4 rounded-md" src="img/team1.svg" alt="">
+                    <img class="max-w-max px-4 rounded-md" src="../static/img/team1.svg" alt="">
                 </div>
                 <div  v-if="!isHover || (isHover && isHoverId != idx)" class="px-5 flex flex-col bg-white h-full justify-between">
                     <div>

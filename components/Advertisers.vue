@@ -1,7 +1,7 @@
 <template>
     <div class="bg-[#FFFBEF] text-black common-container">
         <div class="flex gap-4">
-            <img src="img/Audience.svg" alt="">
+            <img src="../static/img/Audience.svg" alt="">
             <span class="common-heading">
                 {{ title }}
             </span>
@@ -10,7 +10,7 @@
             {{ description }}
         </p>
         <div class="sm:flex items-start mb-6 text-[14px] md:text-[16px]">
-            Ads <img class="w-[90%] ml-4" src="img/advRange.svg" alt="">
+            Ads <img class="w-[90%] ml-4" src="../static/img/advRange.svg" alt="">
         </div>
         <scatter-plot :chartData="chartData"></scatter-plot>
     </div>

@@ -7,14 +7,14 @@
             <transition name="slide">
                 <div class="px-[5%]" v-if="selectedTab == 1">
                     <div class="flex flex-col justify-center items-center">
-                        <img class="w-full block md:hidden mb-8 md:h-[160px]" src="img/What.svg" alt="">
-                        <img class="w-full md:block object-cover hidden mb-8 " src="img/whatLong.svg" alt="">
+                        <img class="w-full block md:hidden mb-8 md:h-[160px]" src="../static/img/What.svg" alt="">
+                        <img class="w-full md:block object-cover hidden mb-8 " src="../static/img/whatLong.svg" alt="">
                         <p class="aboutDetailDescription py-10">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
                         </p>
                     </div>
                     <div class="knowMore" @click="$router.push('/about#whatDetail')">
-                        Know More <img src="img/knowmore.svg" alt="">
+                        Know More <img src="../static/img/knowmore.svg" alt="">
                     </div>
                 </div>
             </transition>
@@ -24,14 +24,14 @@
                 </div>
                 <transition name="slide">
                     <div class="flex flex-col px-[5%] justify-center" v-if="selectedTab == 2">
-                        <img class="w-full block md:hidden mb-8 md:h-[160px]" src="img/Where.svg" alt="">
-                        <img class="w-full md:block object-cover hidden mb-8 " src="img/whereLong.svg" alt="">
+                        <img class="w-full block md:hidden mb-8 md:h-[160px]" src="../static/img/Where.svg" alt="">
+                        <img class="w-full md:block object-cover hidden mb-8 " src="../static/img/whereLong.svg" alt="">
                         <p class="aboutDetailDescription py-10">
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, eveniet?
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
                         </p>
                         <div class="knowMore" @click="$router.push('/about#howDetail')">
-                            Know More <img src="img/knowmore.svg" alt="">
+                            Know More <img src="../static/img/knowmore.svg" alt="">
                         </div>
                     </div>
                 </transition>
@@ -41,14 +41,14 @@
                     </div>
                     <transition name="slide">
                         <div class="flex flex-col px-[5%] justify-center" v-if="selectedTab == 3">
-                            <img class="w-full block md:hidden mb-8 md:h-[160px]" src="img/Why.svg" alt="">
-                            <img class="w-full md:block object-cover hidden mb-8 " src="img/whyLong.svg" alt="">
+                            <img class="w-full block md:hidden mb-8 md:h-[160px]" src="../static/img/Why.svg" alt="">
+                            <img class="w-full md:block object-cover hidden mb-8 " src="../static/img/whyLong.svg" alt="">
                             <p class="aboutDetailDescription py-10">
                                 lorem200
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur 
                             </p>
                             <div class="knowMore" @click="$router.push('/about#whyDetail')">
-                                Know More <img src="img/knowmore.svg" alt="">
+                                Know More <img src="../static/img/knowmore.svg" alt="">
                             </div>
                         </div>
                     </transition>
