@@ -10,7 +10,7 @@ export const mutations = {
         let res = {}
         for(let item in value)
             {
-              res[value[item].chart_id] = value[item].data
+              res[value[item].chart_id] = value[item]
             }
         state.dashboardDataObj = res;
         console.log('commited',state.dashboardDataObj);
@@ -19,13 +19,13 @@ export const mutations = {
         let res = {}
         for(let item in value)
             {
-              res[value[item].chart_id] = value[item].data
+              res[value[item].chart_id] = value[item]
             }
         state.adviserDataObj = res;
     },
     set_advertisers_data(state, value) {
       console.log('from mutation',value);
-      state.searchResponse = value[0].data;
+      state.searchResponse = value[0];
     }
 };
 

@@ -10,7 +10,7 @@
             {{ description }}
         </p>
         <div class="sm:flex items-start mb-6 text-[14px] md:text-[16px]">
-            Ads <img class="w-[90%] ml-4" src="../static/img/advRange.svg" alt="">
+            Ads <scale-range :colors="colorArray" :range="rangeArray" class="grow ml-4"></scale-range>
         </div>
         <scatter-plot :chartData="chartData"></scatter-plot>
     </div>
@@ -18,12 +18,21 @@
 <script>
 import containerBox from './common/containerBox.vue'
 export default{
-    props:['chartData'],
+    props:['chartData','metaData'],
     data(){
         return {
             title: 'Advertisers',
+            colorArray:['#FBE69F', '#C5D6B6', '#4CB2AC', '#326284', '#133751'],
+            rangeArray:[],
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lor.'
         }
+    },
+    mounted(){
+        let meta = this.metaData
+        console.log(meta);
+        const numberOfSegments = 4;
+        const step = meta.spending.max / numberOfSegments;
+        this.rangeArray =  Array.from({ length: 5 }, (_, i) => step * i);
     }
 }
 </script>
