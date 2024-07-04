@@ -1,22 +1,28 @@
 <template>
-  <div class="bg-[#FFFBEF] text-black common-container" style="overflow: unset;">
+  <div class="bg-[#FFFBEF] text-black common-container overflow-x-auto">
     <div class="flex gap-4 mb-8">
-      <img src="../static/img/imageGallery.svg" alt="">
+      <img src="img/imageGallery.svg" alt="">
       <span class="common-heading">
         {{ title }}
       </span>
     </div>
-    <div class="card">
-      <div class="main flex">
-        <div class="containerWall" @mouseleave="hideTooltip">
-          <div 
-            v-for="(item, index) in items" 
-            :key="index" 
-            class="hexagon" 
-            :style="{ backgroundImage: 'url(https://picsum.photos/200/300)' }"
-            @mouseenter="showTooltip($event, 'Action #' + item)" 
-            @mouseover="updateTooltipPosition($event)"
-            @mouseleave="hideTooltip">
+    <div class="m-auto overflow-x-auto overflow-y-hidden w-full md:w-fit">
+
+      <div class="max-w-[1319px] w-[1319px]">
+        
+        <div class="card">
+          <div class="main flex">
+            <div class="containerWall" @mouseleave="hideTooltip">
+              <div 
+                v-for="(item, index) in items" 
+                :key="index" 
+                class="hexagon" 
+                :style="{ backgroundImage: 'url(https://picsum.photos/200/300)' }"
+                @mouseenter="showTooltip($event, 'Action #' + item)" 
+                @mouseover="updateTooltipPosition($event)"
+                @mouseleave="hideTooltip">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -33,7 +39,7 @@ export default {
   data() {
     return {
       title: 'Image Wall',
-      items: Array.from({ length: 98 }, (_, i) => i),
+      items: Array.from({ length: 96 }, (_, i) => i),
       tooltip: {
         visible: false,
         text: '',

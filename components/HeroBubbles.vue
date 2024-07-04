@@ -47,7 +47,7 @@
     <div v-if="isToolTip" class="absolute bottom-0 w-full flex justify-center">
       <div class="z-[20] px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly">
         <div class="flex justify-between">
-          <div @click="$router.push('/advertiser')" class="border-b pb-2 border-white cursor-pointer">The Narative Builders</div>
+          <div @click="$router.push('/advertiser/xyz')" class="heroTool border-b pb-2 border-white cursor-pointer">The Narative Builders</div>
           <div @click="isToolTip = false"><img src="../static/img/x.svg" alt=""></div>
         </div>
         <div class="mt-4 mb-2">
@@ -136,13 +136,14 @@ export default {
       const semicircleWidth = semicircle.clientWidth;
       const semicircleHeight = semicircle.clientHeight;
       const radius = semicircleWidth / 2;
-
+      
+      console.log(semicircle.clientWidth);
       this.circles.forEach((circle, index) => {
         const circleElement = semicircle.querySelector('.circle-container').children[index];
         const circleDiameter = parseInt(circle.style.width);
         const angle = Math.random() * Math.PI;
         const x = (radius - circleDiameter / 2) * Math.cos(angle);
-        const y = ((radius) - circleDiameter / 2) * Math.sin(angle)/(3.5);
+        const y = ((radius) - circleDiameter / 2) * Math.sin(angle)/(semicircle.clientWidth > 920 ? 3.5 :1.5);
 
         circleElement.style.left = `${x + radius - circleDiameter / 2}px`;
         circleElement.style.top = `${y + (semicircleHeight/( conwidth > 920 ? 3 :2 )) - circleDiameter / 2}px`;
@@ -213,8 +214,17 @@ export default {
   margin: 0 auto;
 }
 @media screen and (max-width:920px) {
+  .heroToolHead{
+    font-size: 18px !important;
+  }
+  .heroTool{
+    font-size: 14px !important;
+  }
+  .heroToolValue{
+    font-size: 12px !important;
+  }
   .semicircle{
-    height: 50vw;
+    height: 70vw;
   }
 }
 

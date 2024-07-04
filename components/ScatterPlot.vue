@@ -1,37 +1,78 @@
 <template>
-  <div ref="chartContainer" class="h-[270px]"></div>
+<div ref="chartContainer" class="chart-container">
+    <div ref="chartWrapper" class="chart-wrapper"></div>
+  </div>
 </template>
 
 <script>
+import { color } from 'echarts';
+
 export default {
-  props:['chartData'],
-  data(){
-    return{
-      randomColors:['#FBE69F99','#C5D6B699','#4CB2AC99','#32628499','#13375199']
+  props: ['chartData'],
+  data() {
+    return {
+      randomColors: ['#FBE69F99', '#C5D6B699', '#4CB2AC99', '#32628499', '#13375199'],
+      maxAmount:0,
+      maxCount:0
     }
   },
-  mounted() {
+  methods: {
+    processData() {
+      let processedData = this.chartData.map((item, index) => {
+        let radius = Math.floor(item.amount / (this.maxAmount / 40)); 
+
+        let colorIndex = Math.floor(item.count / (this.maxCount / 5)); 
+        let fillColor = this.randomColors[colorIndex];
+
+        return {
+          x: item.amount,
+          y: item.count,
+          name:item.advertiser,
+          id:item.advertiser_ad_id,
+          marker: {
+            radius: radius,
+            fillColor: fillColor,
+            fillOpacity: 0.5
+          }
+        }
+      });
+      return processedData;
+    },
+  },
+  async mounted() {
     if (typeof Highcharts === 'undefined') {
       console.error('Highcharts is not defined');
       return;
     }
 
+    // Find maximum amount for color scaling
+    this.maxCount = Math.max(...this.chartData.map(item => item.count));
+    this.maxAmount = Math.max(...this.chartData.map(item => item.amount));
+
+    let reqData = await this.processData();
     Highcharts.chart(this.$refs.chartContainer, {
       chart: {
         type: 'scatter',
         zoomType: 'xy',
         panning: {
-        enabled: true, 
-        type: 'xy'
+          enabled: true,
+          type: 'xy'
+        },
+        panKey: 'shift',
+        backgroundColor: 'transparent',
+        scrollablePlotArea: {
+          minWidth: 700, // Set a minimum width to trigger horizontal scrolling
+          scrollPositionX: 1 // Start with scrollbar at the right (max)
+        }
       },
-      panKey: 'shift',
-        backgroundColor: 'transparent'
-      },
-      legend:{
+      credits: {
           enabled: false
+      },
+      legend: {
+        enabled: false
       },
       exporting: {
-          enabled: false
+        enabled: false
       },
       title: {
         enabled: false,
@@ -39,8 +80,6 @@ export default {
       },
       xAxis: {
         visible: true,
-        min:0,
-        max:11,
         title: {
           enabled: true,
           text: 'Money Spent (in millions)'
@@ -50,8 +89,6 @@ export default {
         tickAmount: 5,
       },
       yAxis: {
-        min:0,
-        max:11,
         visible: true,
         title: {
           enabled: true,
@@ -65,6 +102,14 @@ export default {
       },
       plotOptions: {
         scatter: {
+          point: {
+            events: {
+              click: function() {
+                console.log('si happening');
+                window.location.href = '/advertiser/xyz'; 
+              }
+            }
+          },
           marker: {
             states: {
               hover: {
@@ -81,39 +126,32 @@ export default {
             }
           },
           tooltip: {
-            headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: 'X: {point.x}, Y: {point.y}, Size: {point.marker.radius}, Color: {point.color}'
+            headerFormat: '',
+            pointFormat: '<b>{point.name}</b></br>  Money_spend: <b> {point.x}</b></br> Total Ads: <b>{point.y}</b></br>',
+            style:{
+              backgroundColor:'black',
+              color:'white'
+            }
           }
         }
       },
       series: [{
         name: 'Customized Points',
-        data: [
-        { "x": 5.2, "y": 8.7, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 2.9, "y": 9.1, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 7.5, "y": 3.8, "marker": { "radius": 15 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 6.3, "y": 5.4, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 4.1, "y": 7.2, "marker": { "radius": 10 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 9.8, "y": 2.3, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 3.6, "y": 6.9, "marker": { "radius": 5 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 1.7, "y": 10.5, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 10.1, "y": 1.4, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 8.2, "y": 4.9, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-
-  { "x": -2.2, "y": 2.7, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": -2.9, "y": 1.1, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": -1.5, "y": 3.8, "marker": { "radius": 15 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 1.3, "y": 5.4, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 0.1, "y": 10.2, "marker": { "radius": 10 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 9.8, "y": 2.3, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": -0.6, "y": 6.9, "marker": { "radius": 5 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 1.7, "y": 10.5, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 3.1, "y": 1.4, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-  { "x": 1.2, "y": 4.9, "marker": { "radius": 30 + Math.floor(Math.random() * 21), "fillColor": this.randomColors[Math.floor(Math.random() * 5)], "fillOpacity":0.5 } },
-        ]
+        data: reqData
       }]
     });
   }
 }
 </script>
+<style scoped>
+.chart-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  max-width: 100%; /* Ensure the chart can expand */
+  position: relative; /* Ensure correct scrolling behavior */
+  height: 270px;
+}
 
+.chart-wrapper {
+  width: 100%; /* Ensure the wrapper takes full width */
+}
+</style>

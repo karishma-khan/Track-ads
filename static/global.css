@@ -99,6 +99,30 @@ body{
     overflow: auto;
 }
 
+.heroHead{
+    font-family: Eurostile Extd Bold;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 33.76px;
+    letter-spacing: 0.02em;
+}
+
+.howItWorks{
+    font-family: Eurostile Extd Bold;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 33.76px;
+    letter-spacing: 0.02em;
+}
+
+.heroUnlock{
+    font-family: "Nunito Sans", sans-serif;
+font-size: 20px;
+font-weight: 300;
+line-height: 14px;
+letter-spacing: 0.03em;
+}
+
 .heroInfo{
     width: 204px;
     height: 120px;
@@ -184,6 +208,18 @@ body{
         font-size: 12px !important;
     }
     .fundSpend{
+        font-size: 14px !important;
+    }
+    .heroHead{
+        font-size: 24px !important;
+    }
+    .howItWorks{
+        font-size: 20px !important;
+    }
+    .heroUnlock{
+        font-size: 16px !important;
+    }
+    .aboutDetailDescription{
         font-size: 14px !important;
     }
 }
