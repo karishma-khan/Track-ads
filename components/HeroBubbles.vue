@@ -13,26 +13,26 @@
             </div>
             <div>
               <div class="text-[12px] text-left mt-[5px]">Ads :</div>
-              <div class="flex flex-wrap justify-between items-center">
-                <div class="flex items-center mr-2">
-                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
-                  <div class="text-[10px]">100 - 200</div>
+              <div class="flex flex-wrap w-full justify-between items-center">
+                <div class="flex items-center w-[45%] mr-2">
+                  <div class="rounded-[50%] bg-[#FBE69F] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">0-499</div>
                 </div>
-                <div class="flex items-center mr-2">
-                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
-                  <div class="text-[10px]">100 - 200</div>
+                <div class="flex items-center w-[45%] mr-2">
+                  <div class="rounded-[50%] bg-[#C5D6B6] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">500-999</div>
                 </div>
-                <div class="flex items-center mr-2">
-                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
-                  <div class="text-[10px]">100 - 200</div>
+                <div class="flex items-center w-[45%] mr-2">
+                  <div class="rounded-[50%] bg-[#4CB2AC] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">1000-1499</div>
                 </div>
-                <div class="flex items-center mr-2">
-                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
-                  <div class="text-[10px]">100 - 200</div>
+                <div class="flex items-center w-[45%] mr-2">
+                  <div class="rounded-[50%] bg-[#326284] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">1500-1999</div>
                 </div>
-                <div class="flex items-center mr-2">
-                  <div class="rounded-[50%] bg-[red] h-[10px] mr-2 w-[10px]"></div>
-                  <div class="text-[10px]">100 - 200</div>
+                <div class="flex items-center w-[45%] mr-2">
+                  <div class="rounded-[50%] bg-[#133751] h-[10px] mr-2 w-[10px]"></div>
+                  <div class="text-[10px]">+2000</div>
                 </div>
               </div>
             </div>
