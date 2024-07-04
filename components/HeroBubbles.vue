@@ -47,7 +47,7 @@
     <div v-if="isToolTip" class="absolute bottom-0 w-full flex justify-center">
       <div class="z-[20] px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly">
         <div class="flex justify-between">
-          <div @click="$router.push('/advertiser/xyz')" class="heroTool border-b pb-2 border-white cursor-pointer">The Narative Builders</div>
+          <div @click="$router.push('/advertiser/xyz')" class="heroTool border-b pb-2 border-white cursor-pointer">Bhartiya Janta Party</div>
           <div @click="isToolTip = false"><img src="../static/img/x.svg" alt=""></div>
         </div>
         <div class="mt-4 mb-2">
@@ -239,7 +239,7 @@ export default {
 .circle {
   position: absolute;
   border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
     animation: fall 2s ease-out forwards, move 3s infinite ease-in-out alternate;
 }
 

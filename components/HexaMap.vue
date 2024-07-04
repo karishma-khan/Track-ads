@@ -65,7 +65,7 @@ export default {
             this.hexLayer = L.geoJSON(this.hexGeoJson,{
                 onEachFeature: (feature, layer) => {
                     layer.setStyle(this.styleFeature(feature));
-                    let innerHtml = '<div><div class="text-[15px] flex gap-2 mb-2" style="color:#FFFFFF80"> <img src="../static/img/announce.svg" /> Total Ads </div>'
+                    let innerHtml = '<div><div class="text-[15px] flex gap-2 mb-2" style="color:#FFFFFF80"> <img src="/img/announce.svg" /> Total Ads </div>'
                     innerHtml += '<div class="w-full break-all" style="color:#FFFFFF90">On average, <b class="text-white"> 8,000 </b> ads were run in the <b class="text-white">Uttar Pradesh </b> during <b class="text-white"> 12 March 2022 to 16 March 2022.</b></div>'
                     innerHtml += '</div>'
                     const tooltipContent = innerHtml;

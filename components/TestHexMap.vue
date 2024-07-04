@@ -15,121 +15,31 @@
 
 <script>
 export default {
+  props:['chartData'],
   data(){
     return{
       title:'Active Ads',
+      dateRange:[],
+      seriesData:[],
+      flag:false,
+      colorArray:['#C5D6B6','#81C2A7','#4CB2AC','#326284','#162C3B'],
       description:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur reiciendis dicta nihil dolores fugit neque dolorum ullam voluptatum impedit architecto.'
     }
   },
-  mounted() {
-    const echarts = require('echarts');
-    const chart = echarts.init(this.$refs.chart);
-
-    const option = {
-      tooltip: {
-    trigger: 'item',
-    formatter: function (params) {
-      console.log(params);
-        var tooltipHtml = '<div style="background-color:black; padding: 10px; border-radius: 5px;">';
-        tooltipHtml += '<p style="color:#fff; font-size:12px;">Custom Tooltip</p>';
-        tooltipHtml += '<p style="color:#fff; font-size:14px;">X: ' + params.name + ', Y: ' + params.value + '</p>';
-        tooltipHtml += '</div>';
-        return tooltipHtml;
-    }
-},
-
-      grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-      },
-      xAxis: [
+  methods: {
+    processData() {
+      let processedData = this.chartData.map((item, index) => {
+        if(!this.flag)
         {
-          type: 'category',
-          boundaryGap: false,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          this.flag = true
+          this.dateRange = item.ads.map((ad,idx) => {
+          return ad.date
+        })
         }
-      ],
-      yAxis: [
-        {
-          type: 'value'
-        }
-      ],
-      series: [
-        {
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: {
-            width: 1,
-            color:'white'
-          },
-          showSymbol: false,
-          areaStyle: {
-            opacity: 1,
-            color: '#C5D6B6'
-          },
-          emphasis: {
-            focus: 'series'
-          },
-          data: [140, 232, 101, 264, 90, 340, 250]
-        },
-        {
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: {
-            width: 1,
-            color:'white'
-          },
-          showSymbol: false,
-          areaStyle: {
-            opacity: 1,
-            color: '#81C2A7'
-          },
-          emphasis: {
-            focus: 'series'
-          },
-          data: [120, 282, 111, 234, 220, 340, 310]
-        },
-        {
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: {
-            width: 1,
-            color:'white'
-          },
-          showSymbol: false,
-          areaStyle: {
-            opacity: 1,
-            color: '#4CB2AC'
-          },
-          emphasis: {
-            focus: 'series'
-          },
-          data: [320, 132, 201, 334, 190, 130, 220]
-        },
-        {
-          type: 'line',
-          stack: 'Total',
-          smooth: true,
-          lineStyle: {
-            width: 1,
-            color:'white'
-          },
-          showSymbol: false,
-          areaStyle: {
-            opacity: 1,
-            color: '#326284'
-          },
-          emphasis: {
-            focus: 'series'
-          },
-          data: [220, 402, 231, 134, 190, 230, 120]
-        },
-        {
+        let count = item.ads.map((ad,idx) => {
+          return ad.count
+        })
+        return {
           type: 'line',
           stack: 'Total',
           smooth: true,
@@ -144,18 +54,56 @@ export default {
           },
           areaStyle: {
             opacity: 1,
-            color: '#162C3B'
+            color: this.colorArray[index]
           },
           emphasis: {
             focus: 'series'
           },
-          data: [220, 302, 181, 234, 210, 290, 150]
+          data: count
         }
-        // Repeat the same structure for other series
-      ]
+      });
+      this.seriesData =processedData;
+    },
+  },
+  async mounted() {
+    await this.processData()
+    const echarts = require('echarts');
+    const chart = echarts.init(this.$refs.chart);
+
+    const option = {
+      tooltip: {
+          trigger: 'item',
+          formatter: function (params) {
+            console.log(params);
+              var tooltipHtml = '<div style="background-color:black; padding: 10px; border-radius: 5px;">';
+              tooltipHtml += '<p style="color:#fff; font-size:12px;">Custom Tooltip</p>';
+              tooltipHtml += '<p style="color:#fff; font-size:14px;">X: ' + params.name + ', Y: ' + params.value + '</p>';
+              tooltipHtml += '</div>';
+              return tooltipHtml;
+          }
+      },
+
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'category',
+          boundaryGap: false,
+          data: this.dateRange
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      series: this.seriesData
     };
     
-    // Set option and resize chart with window
     chart.setOption(option);
     window.addEventListener('resize', () => {
       chart.resize();

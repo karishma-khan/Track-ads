@@ -2,7 +2,7 @@
     <div>
         <div class="bg-[#F4E8C1] border rounded-3xl border-black overflow-hidden">
             <div ref="what" @click="selectedTab == 1 ? selectedTab = null : selectedTab = 1 " class="h-[68px] flex justify-between px-[5%]">
-                <div class="p-2 font-[800] flex items-center text-[20px] md:text-[26px] rounded-lg">What ?</div>
+                <div class="p-2 font-[800] flex items-center text-[20px] md:text-[24px] rounded-lg">What ?</div>
             </div>
                 <div class="px-[5%] tab-content" :class="selectedTab == 1?'active':''">
                     <div class="flex flex-col justify-center items-center">
@@ -18,7 +18,7 @@
                 </div>
             <div class="bg-[#C5D6B6] border-t rounded-t-3xl border-black">
                 <div ref="how" @click="selectedTab == 2 ? selectedTab = null : selectedTab = 2 " class="h-[68px] flex items-center justify-between px-[5%]">
-                    <div class="p-2 font-[800] text-[20px] md:text-[26px] rounded-lg">How ?</div>
+                    <div class="p-2 font-[800] text-[20px] md:text-[24px] rounded-lg">How ?</div>
                 </div>
 
                     <div class="flex flex-col px-[5%] justify-center tab-content" :class="selectedTab == 2?'active':''">
@@ -35,7 +35,7 @@
                     </div>
                 <div class="bg-[#81C2A7] border-t rounded-t-3xl border-black">
                     <div ref="why" @click="selectedTab == 3 ? selectedTab = null : selectedTab = 3 " class="h-[68px] flex items-center justify-between px-[5%]">
-                        <div class="p-2 font-[800] text-[20px] md:text-[26px] rounded-lg">Why ?</div>
+                        <div class="p-2 font-[800] text-[20px] md:text-[24px] rounded-lg">Why ?</div>
                     </div>
     
                         <div class="flex flex-col px-[5%] justify-center tab-content" :class="selectedTab == 3?'active':''">
