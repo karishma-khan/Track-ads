@@ -29,7 +29,6 @@ export default{
     },
     mounted(){
         let meta = this.metaData
-        console.log(meta);
         const numberOfSegments = 4;
         const step = meta.spending.max / numberOfSegments;
         this.rangeArray =  Array.from({ length: 5 }, (_, i) => step * i);

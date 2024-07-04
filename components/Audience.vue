@@ -29,9 +29,7 @@
         </div>
         <div v-if="isActive == 1">
             <div class="sm:flex items-center mb-6">
-                Ads
-                <img class="md:block hidden ml-4 w-[90%]" src="../static/img/AdsRange.svg" alt="">
-                <img class="block md:hidden w-[90%]" src="../static/img/smallAdsRange.svg" alt="">
+                Ads <scale-range :colors="colorArray" :range="rangeArray" class="grow ml-4"></scale-range>
             </div>
             <hexa-map :chartData="hexData"></hexa-map>
         </div>
@@ -60,24 +58,35 @@ export default{
                 if(this.chartData[data].mode == 'age_and_gender')
                     this.ageData = this.chartData[data]
                 else
+                {
                     this.hexData = this.chartData[data]
+                    this.hexMAx = this.chartData[data].meta
+                }
             }
         }
     },
-    mounted()
+    async mounted()
     {
-        this.getSepData()
+        await this.getSepData()
+        let meta = this.hexMAx
+        console.log(meta);
+        const numberOfSegments = 4;
+        const step = meta.max / numberOfSegments;
+        this.rangeArray =  Array.from({ length: 5 }, (_, i) => step * i);
     },
     updated()
     {
         this.getSepData()
     },
-    props:['chartData'],
+    props:['chartData','metaData'],
     data(){
         return{
             title:'Audience',
             hexData:{},
             ageData:{},
+            hexMAx:0,
+            colorArray:['#FBE69F', '#C5D6B6', '#4CB2AC', '#326284', '#133751'],
+            rangeArray:[],
             description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, molestiae?',
             isActive:2,
         }
