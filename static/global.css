@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 .logoHead{
-    font-family: Eurostile Extd Bold;
+    font-family: Eurostile Extd Medium;
     font-size: 14px;
     font-weight: 500;
     line-height: 14px;
@@ -35,6 +35,10 @@ body{
 @font-face {
     font-family: "Eurostile Extd Bold";
     src: url("font/Eurostile-Extd-Black.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Eurostile Extd Medium";
+    src: url("font/Eurostile-Extd-Medium.ttf") format("truetype");
 }
 
 .adFormatSpent{
