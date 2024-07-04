@@ -89,8 +89,8 @@ export default {
           titles.push(title)
         });
         bodyLines.forEach((body, i) => {
-          const firstStyle = `font-family: SF Pro;font-size: 12px;font-weight: 200;color:rgb(255,255,255,0.7)`
-          const secondStyle = `font-family: SF Pro Bold;font-size: 12px;font-weight: 800;`
+          const firstStyle = `font-family: "Nunito Sans", sans-serif;font-size: 12px;font-weight: 200;color:rgb(255,255,255,0.7)`
+          const secondStyle = `font-family: "Nunito Sans", sans-serif Bold;font-size: 12px;font-weight: 800;`
           const first  = `<div class="border-r border-[#FFFFFF4A] px-4 pr-6"><div style="${firstStyle}">Date</div><div style="${secondStyle}">${titles[i]}</div></div>`
           const second  = `<div class="px-4 pl-6"><div style="${firstStyle}">Ad Spend</div><div style="${secondStyle}">${body}</div></div>`
           innerHtml += `${first} ${second}`;
@@ -134,7 +134,7 @@ export default {
 }
 
 .head{
-  font-family: SF Pro;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   font-weight: 200;
   line-height: 20px;
@@ -142,7 +142,7 @@ export default {
 }
 
 .tooltipValue{
-  font-family: SF Pro Bold;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   font-weight: 800;
   line-height: 20px;

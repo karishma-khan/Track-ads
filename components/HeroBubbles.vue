@@ -163,21 +163,21 @@ export default {
 
 <style scoped>
 .heroTool{
-  font-family: SF Pro;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.02em;
 }
 .heroToolHead{
-  font-family: SF Pro Black;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 24px;
   font-weight: 900;
   line-height: 30px;
   letter-spacing: 0.03em;
 }
 .heroToolValue{
-  font-family: SF Pro;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -189,7 +189,7 @@ export default {
   top:10vw !important;
   left:50% !important;
   transform:translateX(-50%);
-  font-family: SF Pro;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 15.87px;
   font-weight: 500;
   line-height: 18.51px;
