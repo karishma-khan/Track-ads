@@ -1,6 +1,5 @@
 <template>
     <div>
-        <common-search-filter></common-search-filter>
         <div class="text-white" v-if="Object.keys(advisersData).length == 0">
           <Loader />
         </div>

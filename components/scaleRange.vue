@@ -5,7 +5,7 @@
           </div>
         </div>
         <div class="flex w-full justify-between">
-            <div v-for="(text, index) in range" :key="index" class="color-number">
+            <div v-for="(text, index) in range" :key="index" class="w-1/5 color-number relative left-[-10px]">
              {{index == (range.length - 1) ? '+' : '' }} {{ text.toFixed(0) }}
             </div>
         </div>

@@ -9,6 +9,11 @@
     <p class="mt-3 mb-6 common-description">
         {{ description }}
     </p>
+    <div class="flex justify-between">
+          <div v-for="(color, index) in colorArray" :key="index" class="flex gap-3 items-center legendActive">
+            <div class="h-[16px] w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ rangeArray[index].min }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;'+rangeArray[index].max }}
+          </div>
+    </div>
     <div ref="chart" style="width: 100%; height: 400px;"></div>
   </div>
 </template>
@@ -23,6 +28,7 @@ export default {
       seriesData:[],
       flag:false,
       colorArray:['#C5D6B6','#81C2A7','#4CB2AC','#326284','#162C3B'],
+      rangeArray:[{ 'min' : 0, 'max' : 99 }, { 'min' : 100, 'max' : 499 }, { 'min' : 500, 'max' : 999 }, { 'min' : 1000, 'max' : 4999 }, { 'min' : 5000, 'max' : null }],
       description:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur reiciendis dicta nihil dolores fugit neque dolorum ullam voluptatum impedit architecto.'
     }
   },
@@ -92,12 +98,18 @@ export default {
       xAxis: [
         {
           type: 'category',
+          name: 'Ads spending range',
+          nameLocation: 'middle',
+          nameTextStyle: {
+            padding: [4, 0, 0, 0], 
+          },
           boundaryGap: false,
           data: this.dateRange
         }
       ],
       yAxis: [
         {
+          name: 'Number of Ads',
           type: 'value'
         }
       ],
@@ -113,5 +125,13 @@ export default {
 </script>
 
 <style scoped>
+.legendActive{
+  font-family: "Nunito sans", sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+}
 /* Add any necessary styles here */
 </style>

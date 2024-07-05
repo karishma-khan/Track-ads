@@ -6,6 +6,7 @@
 
 <script>
 import IndiaHexBoundary from "../data/india_state_hex.geojson"
+import { mapGetters } from 'vuex'
 export default {
     data(){
         return{
@@ -20,6 +21,9 @@ export default {
     },
     props:['chartData'],
     computed:{
+        ...mapGetters({
+            dateRange: "get_date",
+        }),
         computeData(){
             this.geoData = {}
             let data = this.chartData.data
@@ -37,6 +41,16 @@ export default {
         }
     },
     methods:{
+        formatDate(date)
+        {
+            const day = date.getDate();
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+            const monthIndex = date.getMonth();
+            const month = monthNames[monthIndex];
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        },
         getColor(users)
         {
             if(users <= (this.maxUsers / 5))
@@ -65,9 +79,9 @@ export default {
             this.hexLayer = L.geoJSON(this.hexGeoJson,{
                 onEachFeature: (feature, layer) => {
                     layer.setStyle(this.styleFeature(feature));
-                    let innerHtml = '<div><div class="text-[15px] flex gap-2 mb-2" style="color:#FFFFFF80"> <img src="/img/announce.svg" /> Total Ads </div>'
-                    innerHtml += '<div class="w-full break-all" style="color:#FFFFFF90">On average, <b class="text-white"> 8,000 </b> ads were run in the <b class="text-white">Uttar Pradesh </b> during <b class="text-white"> 12 March 2022 to 16 March 2022.</b></div>'
-                    innerHtml += '</div>'
+                    let innerHtml = `<div><div class="text-[15px] flex gap-2 mb-2" style="color:#FFFFFF80"> <img src="/img/announce.svg" /> Total Ads </div>`
+                    innerHtml += `<div class="w-full break-all" style="color:#FFFFFF90">On average, <b class="text-white"> ${this.geoData[feature?.properties['State/UT']] ? this.geoData[feature?.properties['State/UT']] : 0} </b> ads were run in the <b class="text-white">${feature?.properties['State/UT']} </b> during <b class="text-white"> ${this.formatDate(this.dateRange[0])} to ${this.formatDate(this.dateRange[1])}.</b></div>`
+                    innerHtml += `</div>`
                     const tooltipContent = innerHtml;
                     layer.bindTooltip(tooltipContent);
                 }
@@ -85,13 +99,13 @@ export default {
 
 <style>
 .leaflet-tooltip {
-    background: black; /* Removes default background */
-    border: 0px solid; /* Removes default border */
-    color: white; /* Ensures text is visible */
-    padding: 10px 15px; /* Adjusts padding if necessary */
+    background: black;
+    border: 0px solid;
+    color: white;
+    padding: 10px 15px;
     border-radius: 16px;
-    width: 300px;white-space: normal; /* Allows text to wrap */
-    word-wrap: break-word; /* Break long words to fit within the width */
+    width: 300px;white-space: normal;
+    word-wrap: break-word;
     word-break: break-word;
 }
 </style>

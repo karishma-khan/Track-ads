@@ -6,7 +6,7 @@
           Top Political Advertisers on Meta
           <p class="flex justify-center text-[14px] items-center">As on 30 Mar,2024 <img @click="infoDetail=true" class="mx-2" src="../static/img/heroInfo.svg" /> </p>
         </div>
-          <div class="heroInfo bg-[white]" v-if="infoDetail">
+          <div class="heroInfo bg-[white] overflow-y-scroll" v-if="infoDetail">
             <div class="flex justify-between items-top">
               <div class="text-[12px] text-left leading-[14px]">Each circle represents an advertiser.</div>
               <img @click="infoDetail = false" class="h-[12px] w-[12px] mt-1" src="../static/img/infoClose.svg" alt="">
@@ -36,6 +36,9 @@
                 </div>
               </div>
             </div>
+            <div class="my-4">
+              <div class="text-[12px] text-left leading-[14px]">Circle size varies according to the total amount spent on ads by that advertiser.</div>
+            </div>
           </div>
       </div>
       <div class="circle-container overflow-hidden">
@@ -45,7 +48,7 @@
              class="circle"></div>
       </div>
     <div v-if="isToolTip" class="absolute bottom-0 w-full flex justify-center">
-      <div class="z-[20] px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly">
+      <div class="z-[20] px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly" style="max-width: 300px !important;">
         <div class="flex justify-between">
           <div @click="$router.push('/advertiser/xyz')" class="heroTool border-b pb-2 border-white cursor-pointer">Bhartiya Janta Party</div>
           <div @click="isToolTip = false"><img src="../static/img/x.svg" alt=""></div>
@@ -69,6 +72,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -120,6 +124,11 @@ export default {
       ]
     };
   },
+  computed: {
+        ...mapGetters({
+            indexData: "get_index_data",
+        })
+    },
   mounted() {
     this.positionCircles();
     window.addEventListener('resize', this.positionCircles);
@@ -270,5 +279,25 @@ export default {
 .date {
   font-size: 14px;
   color: #999;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d2d0d0; 
+  border-radius:10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #848282; 
 }
 </style>

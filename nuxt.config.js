@@ -60,7 +60,7 @@ export default {
       : "https://example.com",
     credentials: true,
   },
-
+  
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
