@@ -42,7 +42,7 @@ export default {
     },
     methods:{
         formatNumber(value) {
-            console.log(value);
+            // console.log(value);
             if(value)
             return new Intl.NumberFormat('en-US').format(value);
             return 0

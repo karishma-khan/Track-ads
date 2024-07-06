@@ -71,7 +71,7 @@ export default{
     {
         await this.getSepData()
         let meta = this.hexMAx
-        console.log(meta);
+        // console.log(meta);
         const numberOfSegments = 4;
         const step = meta.max / numberOfSegments;
         this.rangeArray =  Array.from({ length: 5 }, (_, i) => step * i);

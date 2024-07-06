@@ -16,7 +16,6 @@ export const mutations = {
               res[value[item].chart_id] = value[item]
             }
         state.dashboardDataObj = res;
-        console.log('commited',state.dashboardDataObj);
     },
     set_adviser_data(state, value) {
         let res = {}
@@ -27,7 +26,6 @@ export const mutations = {
         state.adviserDataObj = res;
     },
     set_advertisers_data(state, value) {
-      console.log('from mutation',value);
       state.searchResponse = value[0]?.data;
     },
     set_index_data(state, value) {
@@ -52,7 +50,6 @@ export const actions = {
     try {
       let resp = await fetch(`http://34.131.71.160:8085/api/overview?country=IN&start=2024-06-29&end=2024-07-03`)
       resp = await resp.json()
-      console.log(resp);
       commit("set_index_data", resp);
       return resp
     } catch (error) {

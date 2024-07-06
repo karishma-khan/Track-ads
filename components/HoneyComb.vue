@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     showTooltip(event, text) {
-      console.log('inside',event.pageX,event.pageY);
+      // console.log('inside',event.pageX,event.pageY);
       this.tooltip.text = text;
       this.tooltip.visible = true;
       this.updateTooltipPosition(event);

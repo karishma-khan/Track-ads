@@ -130,7 +130,7 @@ export default {
       const semicircleHeight = semicircle.clientHeight;
       const radius = semicircleWidth / 2;
       
-      console.log(semicircle.clientWidth);
+      // console.log(semicircle.clientWidth);
       this.circles.forEach((circle, index) => {
         const circleElement = semicircle.querySelector('.circle-container').children[index];
         const circleDiameter = parseInt(circle.style.width);

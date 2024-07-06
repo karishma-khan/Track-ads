@@ -30,7 +30,7 @@
     name: 'IndexPage',
     async mounted()
     {
-      console.log(this.$route);
+      // console.log(this.$route);
       await this.$store.dispatch("set_advertisers_action", [this.dateRange, this.nation, this.$route.params.id,this.$route?.query?.pageId ? this.$route.query.pageId : false]);
     },
     components: {
