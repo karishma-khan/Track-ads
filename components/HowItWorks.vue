@@ -100,7 +100,7 @@ export default{
 .tab-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.8s ease-out;
 }
 
 /* Style for active tab content */

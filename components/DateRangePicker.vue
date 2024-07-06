@@ -25,22 +25,25 @@ export default {
   computed: {
     ...mapGetters({
         dateRange: "get_date",
+        nation:"get_nation"
     })
   },
   methods:{
-    updateDate(){
+    async updateDate(){
       this.$store.dispatch('set_date_range', this.dates)
+      if(this.$route.path == 'overview')
+          await this.$store.dispatch("set_dashboard_action", [this.dateRange, this.nation]);
+      else{
+          if(this.$route.name == 'advertiser-:id')
+          {
+              await this.$store.dispatch("set_advertisers_action", [this.dateRange, this.nation, this.$route.params.id]);
+          }
+      }
     }
   },
   mounted()
   {
-    let today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth();
-    const day = today.getDate();
-    const oneMonthAgo = new Date(year, month - 1, day);
-    this.dates = [oneMonthAgo, today]
-    this.$store.dispatch('set_date_range', this.dates)
+    this.dates = this.dateRange
   }
 }
 </script>

@@ -4,9 +4,11 @@
       <div class="heroSubtitle z-10">
         <div :class="infoDetail ? 'md:block hidden' : ''">
           Top Political Advertisers on Meta
-          <p class="flex justify-center text-[14px] items-center">As on 30 Mar,2024 <img @click="infoDetail=true" class="mx-2" src="../static/img/heroInfo.svg" /> </p>
+          <p class="flex justify-center text-[14px] items-center">As on {{ today.getDate() + ' ' + monthNames[today.getMonth()] +', '+ today.getFullYear() }}
+            <!-- <img @click="infoDetail=true" class="mx-2" src="../static/img/heroInfo.svg" />  -->
+          </p>
         </div>
-          <div class="heroInfo bg-[white] overflow-y-scroll" v-if="infoDetail">
+          <!-- <div class="heroInfo bg-[white] overflow-y-scroll" v-if="infoDetail">
             <div class="flex justify-between items-top">
               <div class="text-[12px] text-left leading-[14px]">Each circle represents an advertiser.</div>
               <img @click="infoDetail = false" class="h-[12px] w-[12px] mt-1" src="../static/img/infoClose.svg" alt="">
@@ -39,32 +41,32 @@
             <div class="my-4">
               <div class="text-[12px] text-left leading-[14px]">Circle size varies according to the total amount spent on ads by that advertiser.</div>
             </div>
-          </div>
+          </div> -->
       </div>
       <div class="circle-container overflow-hidden">
         <div v-for="(circle, index) in circles" :key="index"
              :style="circle.style"
-             @click="toggleHover(index,true)"
+             @click="toggleHover(circle,true)"
              class="circle"></div>
       </div>
     <div v-if="isToolTip" class="absolute bottom-0 w-full flex justify-center">
       <div class="z-[20] px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly" style="max-width: 300px !important;">
         <div class="flex justify-between">
-          <div @click="$router.push('/advertiser/xyz')" class="heroTool border-b pb-2 border-white cursor-pointer">Bhartiya Janta Party</div>
+          <div @click="$router.push(`/advertiser/${toolTipVal.id}`)" class="heroTool border-b pb-2 border-white cursor-pointer">{{ toolTipVal.name }}</div>
           <div @click="isToolTip = false"><img src="../static/img/x.svg" alt=""></div>
         </div>
         <div class="mt-4 mb-2">
-          <div class="heroToolHead">685</div>
+          <div class="heroToolHead">{{ toolTipVal.count }}</div>
           <div class="heroToolValue">Total Ads</div>
         </div>
         <div class="my-2">
-          <div class="heroToolHead">$ 190.7k - $273.7k</div>
+          <div class="heroToolHead">&#8377; {{ toolTipVal.amount }}</div>
           <div class="heroToolValue">Total Ads Spent</div>
         </div>
-        <div class="my-2">
+        <!-- <div class="my-2">
           <div class="heroToolHead">7.883M+</div>
           <div class="heroToolValue">Total Impressions</div>
-        </div>
+        </div> -->
       </div>
     </div>
       </div>
@@ -79,49 +81,13 @@ export default {
       isToolTip:false,
       infoDetail:false,
       toolTipVal:0,
+      today:new Date(),
+      maxCount:0,
+      maxAmount:0,
+      monthNames : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      randomRadius:[20, 50, 80, 150, 250],
       randomColors:['#FBE69F','#C5D6B6','#4CB2AC','#326284','#133751'],
-      circles: [
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '30px', height: '30px'} },
-        { style: { width: '50px', height: '50px'} },
-        { style: { width: '70px', height: '70px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '30px', height: '30px'} },
-        { style: { width: '50px', height: '50px'} },
-        { style: { width: '70px', height: '70px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '30px', height: '30px'} },
-        { style: { width: '50px', height: '50px'} },
-        { style: { width: '70px', height: '70px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '30px', height: '30px'} },
-        { style: { width: '50px', height: '50px'} },
-        { style: { width: '70px', height: '70px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '30px', height: '30px'} },
-        { style: { width: '50px', height: '50px'} },
-        { style: { width: '70px', height: '70px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-        { style: { width: '30px', height: '30px'} },
-        { style: { width: '50px', height: '50px'} },
-        { style: { width: '70px', height: '70px'} },
-        { style: { width: '40px', height: '40px'} },
-        { style: { width: '60px', height: '60px'} },
-      ]
+      circles: []
     };
   },
   computed: {
@@ -129,15 +95,33 @@ export default {
             indexData: "get_index_data",
         })
     },
-  mounted() {
+  async mounted() {
+    this.maxCount = Math.max(...this.indexData.map(item => item.count));
+    this.maxAmount = Math.max(...this.indexData.map(item => item.amount));
+    await this.addCircles()
     this.positionCircles();
     window.addEventListener('resize', this.positionCircles);
   },
   methods: {
-    toggleHover(index,bool)
+    addCircles(){
+      this.circles = this.indexData.map((item,idx) => {
+        let radius = (Math.floor(Math.random() * (91 - 39 + 1)) + 39)
+        return {
+          style : {
+            width: `${radius}px`,
+            height: `${radius}px`,
+          },
+          id: item.advertiser_ad_id,
+          name: item.advertiser,
+          amount: item.amount,
+          count: item.count
+        }
+      })
+    },
+    toggleHover(circle,bool)
     {
       this.isToolTip = bool
-      this.toolTipVal = index
+      this.toolTipVal = circle
     },
     positionCircles() {
       const conwidth = window?.innerWidth

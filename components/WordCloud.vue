@@ -62,7 +62,6 @@
                 let forth = Math.floor(this.maxFreq)
                 for (let i = 0; i < this.words.length; i++) {
                     let tempVal = this.words[i].value
-                    console.log(tempVal , forth , first , second, third ,tempVal < first,tempVal < second,tempVal < third,tempVal <= first ? '#4CB2AC' : tempVal <= second ? '#326284' : tempVal <= third ? '#162C3B' : '#041520');
                     let tempColor = tempVal <= first ? '#4CB2AC' : tempVal <= second ? '#326284' : tempVal <= third ? '#162C3B' : '#041520'
                     temp.push(tempColor);
                 }

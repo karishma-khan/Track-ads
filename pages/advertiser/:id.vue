@@ -5,19 +5,19 @@
         </div>
         <div v-else>
           <div class="bg-[#FFFBEF] min-h-[88px] flex items-center text-center justify-center advTitle common-container uppercase">
-              {{ advisersData?.advertiser.data[0] ? advisersData.advertiser.data[0].advertiser : '' }}
+              {{ advisersData?.advertiser?.data[0] ? advisersData.advertiser?.data[0].advertiser : '' }}
           </div>
-          <pages-funded :chartData="advisersData?.pages_funded.data"></pages-funded>
+          <pages-funded :chartData="advisersData?.pages_funded?.data"></pages-funded>
           <div class="md:flex">
-              <advertiser-overview class="md:w-1/4" :chartData="advisersData?.overview_chart.data"></advertiser-overview>
-              <test-hex-map class="md:w-3/4" :chartData="advisersData?.active_ads.data"></test-hex-map>
+              <advertiser-overview class="md:w-1/4" :chartData="advisersData?.overview_chart?.data"></advertiser-overview>
+              <test-hex-map class="md:w-3/4" :chartData="advisersData?.active_ads?.data"></test-hex-map>
           </div>
-          <spending-over-time :chartData="advisersData?.spending_over_time.data"></spending-over-time>
+          <spending-over-time :chartData="advisersData?.spending_over_time?.data"></spending-over-time>
           <div class="md:flex">
-            <audience class="md:w-3/4" :chartData="advisersData?.audience.data"></audience>
-            <ad-format class="md:w-1/4" :chartData="advisersData?.ad_format.data"></ad-format>
+            <audience class="md:w-3/4" :chartData="advisersData?.audience?.data"></audience>
+            <ad-format class="md:w-1/4" :chartData="advisersData?.ad_format?.data"></ad-format>
           </div>
-          <word-cloud :chartData="advisersData?.word_cloud.data" ></word-cloud>
+          <word-cloud :chartData="advisersData?.word_cloud?.data" ></word-cloud>
         </div>
     </div>
   </template>
@@ -30,7 +30,8 @@
     name: 'IndexPage',
     async mounted()
     {
-      await this.$store.dispatch("set_advertisers_action");
+      console.log(this.$route);
+      await this.$store.dispatch("set_advertisers_action", [this.dateRange, this.nation, this.$route.params.id]);
     },
     components: {
       WordCloud,
@@ -38,6 +39,8 @@
     computed: {
           ...mapGetters({
               advisersData: "get_adviser_data",
+            dateRange: "get_date",
+            nation:"get_nation"
           })
       },
   }

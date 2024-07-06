@@ -19,6 +19,16 @@ export default{
             }
             return 'mt-[60px]'
         }
+    },
+    fetch(){
+
+    let today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const day = today.getDate();
+    const oneMonthAgo = new Date(year, month - 1, day);
+    this.dates = [oneMonthAgo, today]
+    this.$store.dispatch('set_date_range', this.dates)
     }
 }
 </script>

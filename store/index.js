@@ -4,7 +4,8 @@ export const state = () => ({
     noiseOutput:{},
     searchResponse:[],
     indexData:{},
-    dateRange:[]
+    dateRange:[],
+    nation:'IN'
   });
 
 export const mutations = {
@@ -27,19 +28,25 @@ export const mutations = {
     },
     set_advertisers_data(state, value) {
       console.log('from mutation',value);
-      state.searchResponse = value[0].data;
+      state.searchResponse = value[0]?.data;
     },
     set_index_data(state, value) {
-      state.indexData = value[0].data;
+      state.indexData = value[0]?.data;
     },
     set_date(state, value) {
       state.dateRange = value;
+    },
+    set_nation(state, value) {
+      state.nation = value;
     }
 };
 
 export const actions = {
   async set_date_range({commit}, dateRange){
     commit("set_date", dateRange );
+  },
+  async filter_by_nation({commit}, nation){
+    commit("set_nation", nation );
   },
   async get_advertisers({ commit }, searchText) {
     try {
@@ -66,7 +73,9 @@ export const actions = {
   },
   async set_dashboard_action({ commit }, value) {
       try {
-        let resp = await fetch('http://34.131.71.160:8085/api/data?country=IN&start=2024-04-07&end=2024-04-09')
+        let prevDate = new Date(value[0][0])
+        let newDate = new Date(value[0][1])
+        let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}`)
         resp = await resp.json()
         commit("set_dashboard_data", resp);
         return resp
@@ -77,7 +86,10 @@ export const actions = {
   },
   async set_advertisers_action({ commit }, value) {
     try {
-      let resp = await fetch('http://34.131.71.160:8085/api/data?country=IN&start=2024-04-07&end=2024-04-09&advertiser_ad_id=960055112177032')
+      let prevDate = new Date(value[0][0])
+      let newDate = new Date(value[0][1])
+      console.log('params',value[3]);
+      let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}&advertiser_ad_id=${value[2]}`)
       resp = await resp.json()
       commit("set_adviser_data", resp);
       return resp
@@ -94,4 +106,5 @@ export const getters = {
     get_advertisers_search_data: (state) => state.searchResponse,
     get_index_data: (state) => state.indexData,
     get_date: (state) => state.dateRange,
+    get_nation: (state) => state.nation,
 };

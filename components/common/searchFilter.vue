@@ -5,9 +5,9 @@
                 <span class="mdi mdi-filter text-2xl"></span>
                 <div class="relative ml-4">
                     <span class="mdi mdi-map-marker-outline absolute left-[4px] top-[3px] text-xl"></span>
-                    <select class="chip custom-select" name="" id="">
-                        <option value="india">India</option>
-                        <option value="india">Mexico</option>
+                    <select class="chip custom-select" v-model="nation" @input="setNation">
+                        <option value="IN">India</option>
+                        <option value="MX">Mexico</option>
                     </select>
                 </div>
                 <date-range-picker class="ml-4"></date-range-picker>
@@ -47,6 +47,7 @@ export default{
     data(){
         return {
             searchText: '',
+            nation:'IN',
             isClickedOutside: false,
         }
     },
@@ -56,9 +57,21 @@ export default{
     computed: {
         ...mapGetters({
             advisersData: "get_advertisers_search_data",
+            dateRange: "get_date",
         })
     },
     methods:{
+        async setNation(val){
+            await this.$store.dispatch('filter_by_nation',val.target.value)
+            // if(this.$route.path == 'overview')
+            //     await this.$store.dispatch("set_dashboard_action", [this.dateRange, val.target.value]);
+            // else{
+            //     if(this.$route.name == 'advertiser-:id')
+            //     {
+            //         await this.$store.dispatch("set_advertisers_action", [this.dateRange, val.target.value, this.$route.params.id]);
+            //     }
+            // }
+        },
         search(){
             this.isClickedOutside = false
             this.$store.dispatch('search_advertisers',this.searchText)

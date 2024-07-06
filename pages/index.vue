@@ -1,8 +1,8 @@
 <template>
     <div class="bggridHome">
         <div class="bg-white flex flex-col rounded-b-[70px] text-center justify-center" style="text-align: -webkit-center;">
-          <!-- <test></test> -->
-          <hero-bubbles v-if="Object.keys(indexData).length != 0"></hero-bubbles>
+          <loading-semi v-if="Object.keys(indexData).length == 0"></loading-semi>
+          <hero-bubbles v-else></hero-bubbles>
           <div class="my-10">
             <p class="heroHead">Transparency</p>
             <p class="heroHead">For Democracy</p>
@@ -18,7 +18,6 @@
         <div class="md:px-[15%]">
 
         <how-it-works></how-it-works>
-        <!-- <scroll-div></scroll-div> -->
         </div>
     </div>
 </template>

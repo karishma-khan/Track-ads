@@ -67,7 +67,7 @@ export default {
             dateRange: "get_date",
         }),
     computeData(){
-        let data = this.chartData.data
+        let data = this.chartData?.data
         this.labels = []
         this.femaleData = []
         this.maleData = []

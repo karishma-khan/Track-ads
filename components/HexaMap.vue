@@ -26,7 +26,7 @@ export default {
         }),
         computeData(){
             this.geoData = {}
-            let data = this.chartData.data
+            let data = this.chartData?.data
             for( let item in data ){
                 if( data[item] )
                 {
