@@ -31,10 +31,12 @@
             <div class="sm:flex items-center mb-6">
                 Ads <scale-range :colors="colorArray" :range="rangeArray" class="grow ml-4"></scale-range>
             </div>
-            <hexa-map :chartData="hexData"></hexa-map>
+            <hexa-map v-if="hexData" :chartData="hexData"></hexa-map>
+            <no-data v-else></no-data>
         </div>
         <div v-if="isActive == 2">
-            <compare-bar-chart :chartData="ageData"></compare-bar-chart>
+            <compare-bar-chart v-if="ageData?.data?.length > 0" :chartData="ageData"></compare-bar-chart>
+            <no-data v-else></no-data>
         </div>
     </div>
 </template>

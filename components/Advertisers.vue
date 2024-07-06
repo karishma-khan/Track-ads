@@ -12,7 +12,8 @@
         <div class="sm:flex items-start mb-6 text-[14px] md:text-[16px]">
             Ads <scale-range :colors="colorArray" :range="rangeArray" class="grow ml-4"></scale-range>
         </div>
-        <scatter-plot :chartData="chartData"></scatter-plot>
+        <scatter-plot v-if="chartData" :chartData="chartData"></scatter-plot>
+        <no-data v-else></no-data>
     </div>
 </template>
 <script>

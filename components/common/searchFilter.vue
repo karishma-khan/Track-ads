@@ -18,7 +18,7 @@
                     <span class="mdi mdi-magnify absolute left-2 top-1 text-2xl"></span>
                 </div>
                 <div v-if="advisersData.length > 0 && !isClickedOutside" name="" id="" class="cursor-pointer fixed w-[335px] bg-[white] rounded-xl max-h-[200px] p-2 border border-[#00000033] overflow-y-auto z-[2]">
-                    <div @click="searchText='';$router.push(`/advertiser/${item.advertiser_ad_id}`)" v-for="(item,idx) in advisersData" :key="idx" class="border-b border-[#00000033] text-[12px] py-2" style="font-family: 'Eurostile Extd';">
+                    <div @click="searchText='';$router.push(`/advertiser/${item.advertiser_ad_id}`)" v-for="(item,idx) in advisersData" :key="idx" class="border-b border-[#00000033] text-[12px] py-2" style="font-family: 'Nunito Sans', sans-serif;">
                         {{ item.advertiser }}
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                         <span class="mdi mdi-magnify absolute left-2 top-1 text-2xl"></span>
                     </div>
                     <div v-if="advisersData.length > 0 && !isClickedOutside" name="" id="" class="cursor-pointer absolute w-[80%] bg-[white] rounded-xl max-h-[200px] p-2 border border-[#00000033] overflow-y-auto z-[2]">
-                        <div @click="searchText='';$router.push(`/advertiser/${item.advertiser_ad_id}`)" v-for="(item,idx) in advisersData" :key="idx" class="border-b border-[#00000033] text-[12px] py-2" style="font-family: 'Eurostile Extd';">
+                        <div @click="searchText='';$router.push(`/advertiser/${item.advertiser_ad_id}`)" v-for="(item,idx) in advisersData" :key="idx" class="border-b border-[#00000033] text-[12px] py-2" style="font-family: 'Nunito Sans', sans-serif;">
                             {{ item.advertiser }}
                         </div>
                     </div>

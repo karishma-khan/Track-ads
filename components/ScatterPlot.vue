@@ -11,17 +11,27 @@ export default {
   props: ['chartData'],
   data() {
     return {
-      randomColors: ['#FBE69F99', '#C5D6B699', '#4CB2AC99', '#32628499', '#13375199'],
+      randomColors: ['#FBE69F', '#C5D6B6', '#4CB2AC', '#326284', '#133751'],
       maxAmount:0,
-      maxCount:0
+      maxCount:0,
+      rangeArray:[]
     }
   },
   methods: {
     processData() {
       let processedData = this.chartData.map((item, index) => {
         let radius = Math.floor(item.amount / (this.maxAmount / 40)); 
-
-        let colorIndex = Math.floor(item.count / (this.maxCount / 5)); 
+        const numberOfSegments = 5;
+        const step = this.maxCount / numberOfSegments;
+        this.rangeArray =  Array.from({ length: 5 }, (_, i) => step * i);
+        let colorIndex = 0
+        for(let i =0; i< 5;i++)
+        {
+          if(item.count >= this.rangeArray[i])
+          colorIndex=i
+        }
+        if(colorIndex >= 5)
+          colorIndex = 4;
         let fillColor = this.randomColors[colorIndex];
 
         return {

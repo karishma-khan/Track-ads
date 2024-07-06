@@ -10,7 +10,8 @@
             {{ description }}
         </p>
         <div>
-            <test-chart :chartData="getChartData"></test-chart>
+            <test-chart v-if="chartData.length > 0" :chartData="getChartData"></test-chart>
+            <no-data v-else></no-data>
         </div>
     </div>
 </template>

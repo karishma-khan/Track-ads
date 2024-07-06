@@ -18,7 +18,7 @@
                 <div class="circle-third w-[15%]"></div>
             </div>
         </div>
-        <div>
+        <div v-if="chartData">
             <div class="flex justify-between common-tile py-5" v-for="(item,index) in chartData" :key="index">
                 <div class="flex items-center gap-2">
                     <div class="h-[14px] text-[14px] md:text-[16px] font-[500] w-[14px] rounded-[50%] capitalize" :class="item.param == 'impressions' ? 'bg-[#1D2713]' : item.param == 'money_spent' ? 'bg-[#748762]' : 'bg-[#A3BB8F]'"></div>
@@ -27,6 +27,7 @@
                 <div class="text-[16px] md:text-[20px] font-[900]"> {{ item.param == 'money_spent' ? '&#8377;' : '' }}  {{ formatNumber(item.value) }}</div>
             </div>
         </div>
+        <no-data v-else></no-data>
     </div>
 </template>
 <script>

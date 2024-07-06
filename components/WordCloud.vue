@@ -10,6 +10,7 @@
             <div v-if="words.length > 0" class="w-[100%] md-w-[85%]">
                 <vue-word-cloud :data="words" :rotate="rotate" :color="colorArray" :options="options" />
             </div>
+            <no-data v-else></no-data>
         </div>
     </div>
 </template>

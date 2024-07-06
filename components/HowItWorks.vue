@@ -59,7 +59,8 @@ export default{
     data(){
         return {
             selectedTab:0,
-            currentSection: 0
+            currentSection: 0,
+            flag:0
         }
     },
     mounted() {
@@ -70,7 +71,7 @@ export default{
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 if(this.selectedTab < 3)
                 {
-                    this.selectedTab ++;
+                        this.selectedTab ++;
                     
                 }
             }

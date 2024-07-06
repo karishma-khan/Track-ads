@@ -3,7 +3,7 @@
   <DatePicker 
     v-model="dates" 
     range 
-    format="DD-MM-YYYY"
+    format="DD/MM/YY"
     :start-date="new Date()" 
     @input="updateDate"
   />
@@ -36,7 +36,7 @@ export default {
       else{
           if(this.$route.name == 'advertiser-:id')
           {
-              await this.$store.dispatch("set_advertisers_action", [this.dateRange, this.nation, this.$route.params.id]);
+              await this.$store.dispatch("set_advertisers_action", [this.dateRange, this.nation, this.$route.params.id, this.$route?.query?.pageId ? this.$route.query.pageId : false]);
           }
       }
     }
@@ -57,31 +57,31 @@ export default {
 ::v-deep .mx-datepicker.mx-datepicker-range{
   border-radius: 20px !important;
   overflow: hidden !important;
-  max-width: 245px !important;
-  width: 245px !important;
+  max-width: 199px !important;
+  width: 199px !important;
 }
 ::v-deep input.mx-input{
   padding-left: 32px !important;
   border-radius: 20px !important;
   overflow: hidden;
   color: black !important;
-  max-width: 245px !important;
-  width: 245px !important;
+  max-width: 199px !important;
+  width: 199px !important;
 }
 ::v-deep .mx-input-wrapper{
-  max-width: 245px !important;
-  width: 245px !important;
+  max-width: 199px !important;
+  width: 199px !important;
 }
 ::v-deep .mx-datepicker{
-  max-width: 245px !important;
-  width: 245px !important;
+  max-width: 199px !important;
+  width: 199px !important;
 }
 .mx-datepicker-range{
-  max-width: 245px !important;
-  width: 245px !important;
+  max-width: 199px !important;
+  width: 199px !important;
 }
 ::v-deep .mx-datepicker.mx-datepicker-range{
-  max-width: 245px !important;
-  width: 245px !important;
+  max-width: 199px !important;
+  width: 199px !important;
 }
 </style>

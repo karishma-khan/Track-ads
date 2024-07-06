@@ -14,7 +14,8 @@
             <div class="h-[16px] w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ formatNumber(rangeArray[index].min) }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;' + formatNumber(rangeArray[index].max) }}
           </div>
     </div>
-    <div ref="chart" style="width: 100%; height: 400px;"></div>
+    <div v-if="chartData" ref="chart" style="width: 100%; height: 400px;"></div>
+    <no-data v-else></no-data>
   </div>
 </template>
 
