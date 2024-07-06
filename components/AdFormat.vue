@@ -16,7 +16,7 @@
             <div class="flex justify-between common-tile py-5" :class="item.format!='video' ? 'text-[#86937F]' : ''" v-for="(item,index) in chartData" :key="index">
                 <div class="tile-label flex gap-2" :style="item.format=='video' ? 'color:#000000 !important' : ''">
                     <div class="h-[12px] w-[12px] rounded-[50%]" :class="item.format=='video' ? 'bg-[black]' : 'bg-[#86937F]'"></div>
-                    {{ item.format }} Format <span>(${{ (item.impressions / 1000000) }}B)</span>
+                    {{ item.format }} Format <span>(${{ formatNumber(item.impressions / 1000000) }}B)</span>
                 </div>
                 <div class="text-[20px] md:text-[24px] tile-value">{{ item.percent }} %</div>
             </div>
@@ -44,6 +44,11 @@ export default{
                     value:'75%'
                 }
             ]
+        }
+    },
+    methods:{
+        formatNumber(value) {
+            return new Intl.NumberFormat('en-US').format(value);
         }
     }
 }

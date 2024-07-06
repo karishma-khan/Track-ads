@@ -6,7 +6,7 @@
         </div>
         <div class="flex w-full justify-between">
             <div v-for="(text, index) in range" :key="index" class="w-1/5 color-number relative left-[-10px]">
-             {{index == (range.length - 1) ? '+' : '' }} {{ text.toFixed(0) }}
+             {{index == (range.length - 1) ? '+' : '' }} {{ formatNumber(text.toFixed(0)) }}
             </div>
         </div>
     </div>
@@ -18,6 +18,11 @@
     props:['colors','range'],
     data() {
       return {
+      }
+    },
+    methods:{
+      formatNumber(value) {
+        return new Intl.NumberFormat('en-US').format(value);
       }
     }
   }

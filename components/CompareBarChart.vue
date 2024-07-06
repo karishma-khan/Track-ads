@@ -10,10 +10,20 @@
 
 <script>
 import { color } from 'echarts';
-
+import { mapGetters } from 'vuex'
 export default {
   props:['chartData'],
   methods:{
+    formatDate(date)
+        {
+            const day = date.getDate();
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+            const monthIndex = date.getMonth();
+            const month = monthNames[monthIndex];
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        },
     loadChart()
     {
       const categories = this.labels
@@ -37,7 +47,7 @@ export default {
         tooltip: { useHTML:true, backgroundColor: 'black', borderRadius: 16, padding:15,
           style: { color:'white', width:'300px', borderRadius: '16px', },
           headerFormat: '<div class="tooltip-header text-[15px] mb-2" style="color:#FFFFFF80"> <span class="mdi mdi-account-multiple"></span> Demographics </div>',
-          pointFormat: '<div  style="color:#FFFFFF90" class="block">On average, <b class="text-white">{point.y:.1f}% {series.name}</b> audience between the age of <b class="text-white"> {point.category} </b> were targeted for the ads during <b class="text-white"> 12 March 2022 to 16 March 2022. </b></div>'
+          pointFormat: `<div  style="color:#FFFFFF90" class="block">On average, <b class="text-white">{point.y:.1f}% {series.name}</b> audience between the age of <b class="text-white"> {point.category} </b> were targeted for the ads during <b class="text-white"> ${this.formatDate(this.dateRange[0])} to ${this.formatDate(this.dateRange[1])}. </b></div>`
         },
         series: [{ name: 'Male', data: maleData.map((value, index) => ({ y: value, color: this.barColors[index] || '#7cb5ec' }))}, {
           name: 'Female', data: femaleData.map((value, index) => ({ y: value, color: this.barColors[index] || '#434348'}))
@@ -53,6 +63,9 @@ export default {
     this.loadChart()
   },
   computed:{
+    ...mapGetters({
+            dateRange: "get_date",
+        }),
     computeData(){
         let data = this.chartData.data
         this.labels = []

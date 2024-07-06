@@ -19,12 +19,12 @@
                     <div class="flex items-center text-[#808080]">
                         <div>
                             <div class="fundSubHead">Ads</div>
-                            <div class="fundSpend">{{ item.amount }}</div>
+                            <div class="fundSpend">{{ formatNumber(item.amount) }}</div>
                         </div>
                         <div class="grow flex justify-center">
                             <div>
                                 <div class="fundSubHead">Money Spent</div>
-                                <div class="fundSpend"> {{ item.spending?.min }}m - {{ item.spending?.max }}m </div>
+                                <div class="fundSpend"> {{ formatNumber(item.spending?.min) }}m - {{ formatNumber(item.spending?.max) }}m </div>
                             </div>
                         </div>
                     </div>
@@ -36,6 +36,11 @@
 <script>
 export default{
     props:['chartData'],
+    methods:{
+        formatNumber(value) {
+            return new Intl.NumberFormat('en-US').format(value);
+        },
+    },
     data(){
         return{
             title:'Pages Funded',

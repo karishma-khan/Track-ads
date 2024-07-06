@@ -11,7 +11,7 @@
     </p>
     <div class="flex justify-between">
           <div v-for="(color, index) in colorArray" :key="index" class="flex gap-3 items-center legendActive">
-            <div class="h-[16px] w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ rangeArray[index].min }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;'+rangeArray[index].max }}
+            <div class="h-[16px] w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ formatNumber(rangeArray[index].min) }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;' + formatNumber(rangeArray[index].max) }}
           </div>
     </div>
     <div ref="chart" style="width: 100%; height: 400px;"></div>
@@ -33,6 +33,9 @@ export default {
     }
   },
   methods: {
+    formatNumber(value) {
+      return new Intl.NumberFormat('en-US').format(value);
+    },
     processData() {
       let processedData = this.chartData.map((item, index) => {
         if(!this.flag)
@@ -78,16 +81,26 @@ export default {
 
     const option = {
       tooltip: {
-          trigger: 'item',
-          formatter: function (params) {
-            console.log(params);
-              var tooltipHtml = '<div style="background-color:black; padding: 10px; border-radius: 5px;">';
-              tooltipHtml += '<p style="color:#fff; font-size:12px;">Custom Tooltip</p>';
-              tooltipHtml += '<p style="color:#fff; font-size:14px;">X: ' + params.name + ', Y: ' + params.value + '</p>';
-              tooltipHtml += '</div>';
-              return tooltipHtml;
-          }
-      },
+        trigger: 'item',
+        formatter: function (params) {
+            var tooltipHtml = '<div style="background-color:black; padding: 10px; border-radius: 5px;">';
+            tooltipHtml += '<p style="color:#fff; font-size:12px; font-weight: bold;">Custom Tooltip</p>';
+            tooltipHtml += '<p style="color:#fff; font-size:14px;">Date: ' + params.name + '</p>';
+            tooltipHtml += '<p style="color:#fff; font-size:14px;">Value: ' + params.value + '</p>';
+            tooltipHtml += '<p style="color:#fff; font-size:12px;">Series: ' + params.seriesName + '</p>';
+            tooltipHtml += '</div>';
+            return tooltipHtml;
+        },
+        backgroundColor: 'rgba(0,0,0,0.7)',
+        textStyle: {
+          color: '#fff',
+          fontSize: 14,
+        },
+        borderColor: '#000',
+        borderWidth: 1,
+        padding: 10,
+        extraCssText: 'border-radius: 10px;'
+    },
 
       grid: {
         left: '3%',
@@ -117,9 +130,9 @@ export default {
     };
     
     chart.setOption(option);
-    window.addEventListener('resize', () => {
-      chart.resize();
-    });
+  window.addEventListener('resize', () => {
+    chart.resize();
+  });
   }
 };
 </script>

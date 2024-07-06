@@ -1,10 +1,11 @@
 // components/DateRangePicker.vue
 <template>
   <DatePicker 
-    v-model="dateRange" 
+    v-model="dates" 
     range 
     format="DD-MM-YYYY"
     :start-date="new Date()" 
+    @input="updateDate"
   />
 </template>
 
@@ -25,6 +26,11 @@ export default {
     ...mapGetters({
         dateRange: "get_date",
     })
+  },
+  methods:{
+    updateDate(){
+      this.$store.dispatch('set_date_range', this.dates)
+    }
   },
   mounted()
   {

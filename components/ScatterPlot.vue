@@ -44,8 +44,6 @@ export default {
       console.error('Highcharts is not defined');
       return;
     }
-
-    // Find maximum amount for color scaling
     this.maxCount = Math.max(...this.chartData.map(item => item.count));
     this.maxAmount = Math.max(...this.chartData.map(item => item.amount));
 
@@ -61,8 +59,8 @@ export default {
         panKey: 'shift',
         backgroundColor: 'transparent',
         scrollablePlotArea: {
-          minWidth: 700, // Set a minimum width to trigger horizontal scrolling
-          scrollPositionX: 1 // Start with scrollbar at the right (max)
+          minWidth: 700,
+          scrollPositionX: 1
         }
       },
       credits: {
@@ -87,6 +85,9 @@ export default {
         lineWidth: 1,
         gridLineWidth: 1,
         tickAmount: 5,
+        startOnTick: true,
+        endOnTick: true,
+        min: 0
       },
       yAxis: {
         visible: true,
@@ -98,15 +99,15 @@ export default {
           enabled: false
         },
         lineWidth: 0,
-        gridLineWidth: 0
+        gridLineWidth: 0,
+        min: 0
       },
       plotOptions: {
         scatter: {
           point: {
             events: {
-              click: function() {
-                console.log('si happening');
-                window.location.href = '/advertiser/xyz'; 
+              click: function(data) {
+                window.location.href = `/advertiser/${data.point.id}`; 
               }
             }
           },
@@ -125,13 +126,22 @@ export default {
               }
             }
           },
+          // tooltip: { 
+          //   useHTML:true, 
+          //   backgroundColor: 'black', 
+          //   borderRadius: 16, 
+          //   padding:15,
+          //   style: { color:'white', width:'300px', borderRadius: '16px' },
+          //   headerFormat: '<div class="tooltip-header text-[15px] mb-2" style="color:#FFFFFF80"> <span class="mdi mdi-account-multiple"></span> Demographics </div>',
+          //   pointFormat: '<div  style="color:#FFFFFF90" class="block">On average, <b class="text-white">he% yee</b> audience between the age of <b class="text-white"> okayys </b> were targeted for the ads during <b class="text-white"> 12 March 2022 to 16 March 2022. </b></div>'
+          // },
           tooltip: {
             headerFormat: '',
             pointFormat: '<b>{point.name}</b></br>  Money_spend: <b> {point.x}</b></br> Total Ads: <b>{point.y}</b></br>',
-            style:{
-              backgroundColor:'black',
-              color:'white'
-            }
+
+            // color: '#FFFFFF', // White text color
+            backgroundColor: '#000000', // Black background
+            // opacity: 1 
           }
         }
       },
@@ -144,6 +154,9 @@ export default {
 }
 </script>
 <style scoped>
+.tooltip-header{
+  font-size: 30px;
+}
 .chart-container {
   overflow-x: auto; /* Enable horizontal scrolling */
   max-width: 100%; /* Ensure the chart can expand */

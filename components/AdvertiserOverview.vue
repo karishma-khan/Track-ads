@@ -24,7 +24,7 @@
                     <div class="h-[14px] text-[14px] md:text-[16px] font-[500] w-[14px] rounded-[50%] capitalize" :class="item.param == 'impressions' ? 'bg-[#1D2713]' : item.param == 'money_spent' ? 'bg-[#748762]' : 'bg-[#A3BB8F]'"></div>
                     {{ item.param }}
                 </div>
-                <div class="text-[16px] md:text-[20px] font-[900]"> {{ item.param == 'money_spent' ? '&#8377;' : '' }}  {{ item.value }}</div>
+                <div class="text-[16px] md:text-[20px] font-[900]"> {{ item.param == 'money_spent' ? '&#8377;' : '' }}  {{ formatNumber(item.value) }}</div>
             </div>
         </div>
     </div>
@@ -36,6 +36,11 @@ export default{
         containerBox
     },
     props:['chartData'],
+    methods:{
+        formatNumber(value) {
+            return new Intl.NumberFormat('en-US').format(value);
+        },
+    },
     data(){
         return{
             title:'Overview',

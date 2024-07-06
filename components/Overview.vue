@@ -14,7 +14,7 @@
         <div>
             <div class="flex justify-between common-tile py-5" v-for="(item,index) in chartData" :key="index">
                 <div class="tile-label capitalize">{{ item.param }}</div>
-                <div class="tile-value"> {{ item.param == 'Money Spent' ? '&#8377;' : '' }}  {{ item.value }}</div>
+                <div class="tile-value"> {{ item.param == 'Money Spent' ? '&#8377;' : '' }}  {{ formatNumber(item.value) }}</div>
             </div>
         </div>
     </div>
@@ -30,6 +30,11 @@ export default{
         getChartData()
         {
             return this.chartData;
+        }
+    },
+    methods:{
+        formatNumber(value) {
+            return new Intl.NumberFormat('en-US').format(value);
         }
     },
     data(){

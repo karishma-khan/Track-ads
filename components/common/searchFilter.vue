@@ -12,26 +12,26 @@
                 </div>
                 <date-range-picker class="ml-4"></date-range-picker>
             </div>
-            <div class="hidden md:block">
+            <div class="hidden md:block" ref="searchSec">
                 <div class="relative">
                     <input type="text" class="chip searchAdv" v-model="searchText" @input="search()" style="padding-left: 34px;" placeholder="Search for an advertiser here...">
                     <span class="mdi mdi-magnify absolute left-2 top-1 text-2xl"></span>
                 </div>
-                <div v-if="advisersData.length > 0" name="" id="" class="cursor-pointer absolute w-[335px] bg-[white] rounded-xl flex flex-col p-2 border border-[#00000033] max-h-[200px] overflow-y-auto z-[2]">
-                        <div @click="searchText='';$router.push(`/advertiser/${item.advertiser_ad_id}`)" v-for="(item,idx) in advisersData" :key="idx" class="border-b border-[#00000033] text-[12px] py-2" style="font-family: 'Eurostile Extd';">
-                            {{ item.advertiser }}
-                        </div>
+                <div v-if="advisersData.length > 0 && !isClickedOutside" name="" id="" class="cursor-pointer fixed w-[335px] bg-[white] rounded-xl max-h-[200px] p-2 border border-[#00000033] overflow-y-auto z-[2]">
+                    <div @click="searchText='';$router.push(`/advertiser/${item.advertiser_ad_id}`)" v-for="(item,idx) in advisersData" :key="idx" class="border-b border-[#00000033] text-[12px] py-2" style="font-family: 'Eurostile Extd';">
+                        {{ item.advertiser }}
                     </div>
+                </div>
             </div>
         </div>
         <div class="common-container bg-white block md:hidden" style="padding: 10px;">
             <div class="flex justify-center">
-                <div class=" w-[90%]">
+                <div class=" w-[90%]" ref="searchSecMobile">
                     <div class="relative">
-                        <input type="text" name="" id="" v-model="searchText" @input="search()" class="chip w-full text-[14px]" style="padding-left: 34px;" placeholder="Search for an advertiser here...">
+                        <input type="text" class="chip w-full text-[14px]" v-model="searchText" @input="search()" style="padding-left: 34px;" placeholder="Search for an advertiser here...">
                         <span class="mdi mdi-magnify absolute left-2 top-1 text-2xl"></span>
                     </div>
-                    <div v-if="advisersData.length > 0" name="" id="" class="cursor-pointer absolute w-[80%] bg-[white] rounded-xl max-h-[200px] p-2 border border-[#00000033] overflow-y-auto z-[2]">
+                    <div v-if="advisersData.length > 0 && !isClickedOutside" name="" id="" class="cursor-pointer absolute w-[80%] bg-[white] rounded-xl max-h-[200px] p-2 border border-[#00000033] overflow-y-auto z-[2]">
                         <div @click="searchText='';$router.push(`/advertiser/${item.advertiser_ad_id}`)" v-for="(item,idx) in advisersData" :key="idx" class="border-b border-[#00000033] text-[12px] py-2" style="font-family: 'Eurostile Extd';">
                             {{ item.advertiser }}
                         </div>
@@ -47,7 +47,11 @@ export default{
     data(){
         return {
             searchText: '',
+            isClickedOutside: false,
         }
+    },
+    mounted(){
+        document.addEventListener("click", this.handleOutsideClick);
     },
     computed: {
         ...mapGetters({
@@ -56,8 +60,14 @@ export default{
     },
     methods:{
         search(){
+            this.isClickedOutside = false
             this.$store.dispatch('search_advertisers',this.searchText)
-        }
+        },
+        handleOutsideClick(event) {
+            if (!this.$refs.searchSec.contains(event.target) || !this.$refs.searchSecMobile.contains(event.target)) {
+                this.isClickedOutside = true;
+            }
+        },
     }
 }
 </script>
