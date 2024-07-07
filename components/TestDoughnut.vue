@@ -3,7 +3,7 @@
       <canvas id="myDoughnutChart"></canvas>
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div class="adFormatSpent">Money Spent</div>
-        <div class="adFormatAmt pt-2"> &#8377; {{ formatNumber((amtSpend/1000000).toFixed(2)) }} m</div>
+        <div class="adFormatAmt pt-2"> &#8377; {{ formatNumber((amtSpend).toFixed(1)) }} </div>
       </div>
     </div>
   </template>

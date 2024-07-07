@@ -1,0 +1,1095 @@
+[
+    {
+        "chart_id": "overview_chart",
+        "data": [
+            {
+                "param": "advertisers",
+                "value": 1
+            },
+            {
+                "param": "impressions",
+                "value": 8082935
+            },
+            {
+                "param": "ads",
+                "value": 67
+            },
+            {
+                "param": "money_spent",
+                "value": 317833
+            }
+        ],
+        "meta": {}
+    },
+    {
+        "chart_id": "spending_over_time",
+        "data": [
+            {"date": "2024-03-06", "spending": 887},
+            {"date": "2024-03-07", "spending": 443},
+            {"date": "2024-03-08", "spending": 763},
+            {"date": "2024-03-09", "spending": 731},
+            {"date": "2024-03-10", "spending": 465},
+            {"date": "2024-03-11", "spending": 988},
+            {"date": "2024-03-12", "spending": 295},
+            {"date": "2024-03-13", "spending": 417},
+            {"date": "2024-03-14", "spending": 668},
+            {"date": "2024-03-15", "spending": 722},
+            {"date": "2024-03-16", "spending": 879},
+            {"date": "2024-03-17", "spending": 534},
+            {"date": "2024-03-18", "spending": 395},
+            {"date": "2024-03-19", "spending": 227},
+            {"date": "2024-03-20", "spending": 554},
+            {"date": "2024-03-21", "spending": 149},
+            {"date": "2024-03-22", "spending": 979},
+            {"date": "2024-03-23", "spending": 156},
+            {"date": "2024-03-24", "spending": 631},
+            {"date": "2024-03-25", "spending": 268},
+            {"date": "2024-03-26", "spending": 382},
+            {"date": "2024-03-27", "spending": 203},
+            {"date": "2024-03-28", "spending": 746},
+            {"date": "2024-03-29", "spending": 210},
+            {"date": "2024-03-30", "spending": 470},
+            {"date": "2024-03-31", "spending": 614},
+            {"date": "2024-04-01", "spending": 311},
+            {"date": "2024-04-02", "spending": 222},
+            {"date": "2024-04-03", "spending": 195},
+            {"date": "2024-04-04", "spending": 860},
+            {"date": "2024-04-05", "spending": 440},
+            {"date": "2024-04-06", "spending": 368},
+            {"date": "2024-04-07", "spending": 108},
+            {"date": "2024-04-08", "spending": 317},
+            {"date": "2024-04-09", "spending": 459},
+            {"date": "2024-04-10", "spending": 391},
+            {"date": "2024-04-11", "spending": 228},
+            {"date": "2024-04-12", "spending": 584},
+            {"date": "2024-04-13", "spending": 405},
+            {"date": "2024-04-14", "spending": 896},
+            {"date": "2024-04-15", "spending": 190},
+            {"date": "2024-04-16", "spending": 739},
+            {"date": "2024-04-17", "spending": 119},
+            {"date": "2024-04-18", "spending": 840},
+            {"date": "2024-04-19", "spending": 122},
+            {"date": "2024-04-20", "spending": 178},
+            {"date": "2024-04-21", "spending": 425},
+            {"date": "2024-04-22", "spending": 673},
+            {"date": "2024-04-23", "spending": 523},
+            {"date": "2024-04-24", "spending": 312},
+            {"date": "2024-04-25", "spending": 650},
+            {"date": "2024-04-26", "spending": 315},
+            {"date": "2024-04-27", "spending": 276},
+            {"date": "2024-04-28", "spending": 783},
+            {"date": "2024-04-29", "spending": 132},
+            {"date": "2024-04-30", "spending": 788},
+            {"date": "2024-05-01", "spending": 388},
+            {"date": "2024-05-02", "spending": 674},
+            {"date": "2024-05-03", "spending": 408},
+            {"date": "2024-05-04", "spending": 940},
+            {"date": "2024-05-05", "spending": 549},
+            {"date": "2024-05-06", "spending": 309},
+            {"date": "2024-05-07", "spending": 166},
+            {"date": "2024-05-08", "spending": 993},
+            {"date": "2024-05-09", "spending": 878},
+            {"date": "2024-05-10", "spending": 716},
+            {"date": "2024-05-11", "spending": 661},
+            {"date": "2024-05-12", "spending": 981},
+            {"date": "2024-05-13", "spending": 310},
+            {"date": "2024-05-14", "spending": 798},
+            {"date": "2024-05-15", "spending": 707},
+            {"date": "2024-05-16", "spending": 405},
+            {"date": "2024-05-17", "spending": 859},
+            {"date": "2024-05-18", "spending": 312},
+            {"date": "2024-05-19", "spending": 354},
+            {"date": "2024-05-20", "spending": 696},
+            {"date": "2024-05-21", "spending": 478},
+            {"date": "2024-05-22", "spending": 122},
+            {"date": "2024-05-23", "spending": 830},
+            {"date": "2024-05-24", "spending": 564},
+            {"date": "2024-05-25", "spending": 600},
+            {"date": "2024-05-26", "spending": 739},
+            {"date": "2024-05-27", "spending": 673},
+            {"date": "2024-05-28", "spending": 539},
+            {"date": "2024-05-29", "spending": 412},
+            {"date": "2024-05-30", "spending": 298},
+            {"date": "2024-05-31", "spending": 623},
+            {"date": "2024-06-01", "spending": 474},
+            {"date": "2024-06-02", "spending": 144},
+            {"date": "2024-06-03", "spending": 916},
+            {"date": "2024-06-04", "spending": 774},
+            {"date": "2024-06-05", "spending": 590},
+            {"date": "2024-06-06", "spending": 190},
+            {"date": "2024-06-07", "spending": 159},
+            {"date": "2024-06-08", "spending": 315},
+            {"date": "2024-06-09", "spending": 754},
+            {"date": "2024-06-10", "spending": 896},
+            {"date": "2024-06-11", "spending": 160},
+            {"date": "2024-06-12", "spending": 309},
+            {"date": "2024-06-13", "spending": 869},
+            {"date": "2024-06-14", "spending": 228},
+            {"date": "2024-06-15", "spending": 413},
+            {"date": "2024-06-16", "spending": 217},
+            {"date": "2024-06-17", "spending": 707},
+            {"date": "2024-06-18", "spending": 286},
+            {"date": "2024-06-19", "spending": 305},
+            {"date": "2024-06-20", "spending": 172},
+            {"date": "2024-06-21", "spending": 635},
+            {"date": "2024-06-22", "spending": 135},
+            {"date": "2024-06-23", "spending": 899},
+            {"date": "2024-06-24", "spending": 589},
+            {"date": "2024-06-25", "spending": 764},
+            {"date": "2024-06-26", "spending": 270},
+            {"date": "2024-06-27", "spending": 439},
+            {"date": "2024-06-28", "spending": 552},
+            {"date": "2024-06-29", "spending": 494},
+            {"date": "2024-06-30", "spending": 272},
+            {"date": "2024-07-01", "spending": 304},
+            {"date": "2024-07-02", "spending": 895},
+            {"date": "2024-07-03", "spending": 396},
+            {"date": "2024-07-04", "spending": 243},
+            {"date": "2024-07-05", "spending": 700},
+            {"date": "2024-07-06", "spending": 410},
+            {"date": "2024-07-07", "spending": 165}
+        ],
+        "meta": {
+            "min": 0,
+            "max": 317833
+        }
+    },
+    {
+        "chart_id": "audience",
+        "data": [
+            {
+                "mode": "geography",
+                "meta": {
+                    "min": 118,
+                    "max": 282174
+                },
+                "data": [
+                    {
+                        "state": "Uttarakhand",
+                        "users": 21543
+                    },
+                    {
+                        "state": "Jharkhand",
+                        "users": 20924
+                    },
+                    {
+                        "state": "Chhattisgarh",
+                        "users": 26904
+                    },
+                    {
+                        "state": "Uttar Pradesh",
+                        "users": 189073
+                    },
+                    {
+                        "state": "Madhya Pradesh",
+                        "users": 85094
+                    },
+                    {
+                        "state": "Bihar",
+                        "users": 88976
+                    },
+                    {
+                        "state": "Goa",
+                        "users": 2347
+                    },
+                    {
+                        "state": "Mizoram",
+                        "users": 744
+                    },
+                    {
+                        "state": "Arunachal Pradesh",
+                        "users": 2831
+                    },
+                    {
+                        "state": "Sikkim",
+                        "users": 6796
+                    },
+                    {
+                        "state": "West Bengal",
+                        "users": 64169
+                    },
+                    {
+                        "state": "Tripura",
+                        "users": 755
+                    },
+                    {
+                        "state": "Tamil Nadu",
+                        "users": 56564
+                    },
+                    {
+                        "state": "Rajasthan",
+                        "users": 134651
+                    },
+                    {
+                        "state": "Puducherry",
+                        "users": 1711
+                    },
+                    {
+                        "state": "Andhra Pradesh",
+                        "users": 77222
+                    },
+                    {
+                        "state": "Himachal Pradesh",
+                        "users": 36008
+                    },
+                    {
+                        "state": "Assam",
+                        "users": 18732
+                    },
+                    {
+                        "state": "Chandigarh",
+                        "users": 5665
+                    },
+                    {
+                        "state": "Dadra and Nagar Haveli",
+                        "users": 118
+                    },
+                    {
+                        "state": "Gujarat",
+                        "users": 71273
+                    },
+                    {
+                        "state": "Haryana",
+                        "users": 218785
+                    },
+                    {
+                        "state": "Odisha",
+                        "users": 39573
+                    },
+                    {
+                        "state": "Kerala",
+                        "users": 29034
+                    },
+                    {
+                        "state": "Maharashtra",
+                        "users": 282174
+                    },
+                    {
+                        "state": "Manipur",
+                        "users": 1555
+                    },
+                    {
+                        "state": "Meghalaya",
+                        "users": 784
+                    },
+                    {
+                        "state": "Karnataka",
+                        "users": 42561
+                    },
+                    {
+                        "state": "Nagaland",
+                        "users": 502
+                    },
+                    {
+                        "state": "Telangana",
+                        "users": 44560
+                    },
+                    {
+                        "state": "Andaman and Nicobar Islands",
+                        "users": 1600
+                    },
+                    {
+                        "state": "Lakshadweep",
+                        "users": 200
+                    },
+                    {
+                        "state": "Punjab",
+                        "users": 408
+                    }
+                ]
+            },
+            {
+                "mode": "age_and_gender",
+                "meta": {},
+                "data": [
+                    {
+                        "gender": "unknown",
+                        "distribution": [
+                            {
+                                "age_range": "45-54",
+                                "percent": 0.08
+                            },
+                            {
+                                "age_range": "65+",
+                                "percent": 0.03
+                            },
+                            {
+                                "age_range": "35-44",
+                                "percent": 0.19
+                            },
+                            {
+                                "age_range": "18-24",
+                                "percent": 0.42
+                            },
+                            {
+                                "age_range": "25-34",
+                                "percent": 0.25
+                            },
+                            {
+                                "age_range": "55-64",
+                                "percent": 0.04
+                            }
+                        ]
+                    },
+                    {
+                        "gender": "male",
+                        "distribution": [
+                            {
+                                "age_range": "45-54",
+                                "percent": 0.12
+                            },
+                            {
+                                "age_range": "18-24",
+                                "percent": 0.23
+                            },
+                            {
+                                "age_range": "25-34",
+                                "percent": 0.34
+                            },
+                            {
+                                "age_range": "35-44",
+                                "percent": 0.23
+                            },
+                            {
+                                "age_range": "55-64",
+                                "percent": 0.06
+                            },
+                            {
+                                "age_range": "65+",
+                                "percent": 0.02
+                            }
+                        ]
+                    },
+                    {
+                        "gender": "female",
+                        "distribution": [
+                            {
+                                "age_range": "18-24",
+                                "percent": 0.28
+                            },
+                            {
+                                "age_range": "45-54",
+                                "percent": 0.12
+                            },
+                            {
+                                "age_range": "25-34",
+                                "percent": 0.3
+                            },
+                            {
+                                "age_range": "65+",
+                                "percent": 0.03
+                            },
+                            {
+                                "age_range": "35-44",
+                                "percent": 0.2
+                            },
+                            {
+                                "age_range": "55-64",
+                                "percent": 0.07
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "meta": {}
+    },
+    {
+        "chart_id": "ad_format",
+        "data": [
+            {
+                "format": "video",
+                "impressions": 7543,
+                "clicks": 267,
+                "amount": 1293.45,
+                "percent": 54.67
+            },
+            {
+                "format": "image",
+                "impressions": 4821,
+                "clicks": 120,
+                "amount": 763.32,
+                "percent": 29.41
+            }
+        ],
+        "meta": {}
+    },
+    {
+        "chart_id": "advertiser",
+        "data": [
+            {
+                "advertiser_ad_id": "981075493589561",
+                "image": "https://www.facebook.com/ads/archive/render_ad/?id=981075493589561&access_token=EAAUtXIVlgj4BOZC0gQIih7GjGlNnu5SJkyTnzJwjkCKZBxu0ZAANn6xh3CReZBBnTGhsc9bZA2N16h65cD2ycs3h69msAJY2HZBLvGjxfFh83TfZBUInRZCJbsJlB6VEYwPMnGYZBqkWYow0kwa9EwqoUn4Oytu7wxu86H7T9TBJS88tIf4ZAPO6fli83MCuxDuV61o6WQwRaOy6nLG8P0",
+                "advertiser": "Bharatiya Janata Party (BJP)",
+                "count": 67,
+                "amount": 317833
+            }
+        ],
+        "meta": {
+            "count": {
+                "min": 67,
+                "max": 67
+            },
+            "amount": {
+                "min": 317833,
+                "max": 317833
+            }
+        }
+    },
+    {
+        "chart_id": "active_ads",
+        "data": [
+            {
+                "range": {
+                    "min": 0,
+                    "max": 100
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-01",
+                        "count": 918
+                    },
+                    {
+                        "date": "2024-07-02",
+                        "count": 606
+                    },
+                    {
+                        "date": "2024-07-03",
+                        "count": 986
+                    },
+                    {
+                        "date": "2024-07-04",
+                        "count": 136
+                    },
+                    {
+                        "date": "2024-07-05",
+                        "count": 330
+                    },
+                    {
+                        "date": "2024-07-06",
+                        "count": 252
+                    },
+                    {
+                        "date": "2024-07-07",
+                        "count": 3
+                    }
+                ],
+                "min": 0,
+                "max": 0
+            },
+            {
+                "range": {
+                    "min": 100,
+                    "max": 500
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-01",
+                        "count": 767
+                    },
+                    {
+                        "date": "2024-07-02",
+                        "count": 50
+                    },
+                    {
+                        "date": "2024-07-03",
+                        "count": 762
+                    },
+                    {
+                        "date": "2024-07-04",
+                        "count": 508
+                    },
+                    {
+                        "date": "2024-07-05",
+                        "count": 756
+                    },
+                    {
+                        "date": "2024-07-06",
+                        "count": 428
+                    },
+                    {
+                        "date": "2024-07-07",
+                        "count": 425
+                    }
+                ],
+                "min": 0,
+                "max": 0
+            },
+            {
+                "range": {
+                    "min": 500,
+                    "max": 1000
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-01",
+                        "count": 407
+                    },
+                    {
+                        "date": "2024-07-02",
+                        "count": 810
+                    },
+                    {
+                        "date": "2024-07-03",
+                        "count": 323
+                    },
+                    {
+                        "date": "2024-07-04",
+                        "count": 980
+                    },
+                    {
+                        "date": "2024-07-05",
+                        "count": 77
+                    },
+                    {
+                        "date": "2024-07-06",
+                        "count": 563
+                    },
+                    {
+                        "date": "2024-07-07",
+                        "count": 149
+                    }
+                ],
+                "min": 0,
+                "max": 0
+            },
+            {
+                "range": {
+                    "min": 1000,
+                    "max": 5000
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-01",
+                        "count": 954
+                    },
+                    {
+                        "date": "2024-07-02",
+                        "count": 188
+                    },
+                    {
+                        "date": "2024-07-03",
+                        "count": 644
+                    },
+                    {
+                        "date": "2024-07-04",
+                        "count": 252
+                    },
+                    {
+                        "date": "2024-07-05",
+                        "count": 7
+                    },
+                    {
+                        "date": "2024-07-06",
+                        "count": 922
+                    },
+                    {
+                        "date": "2024-07-07",
+                        "count": 997
+                    }
+                ],
+                "min": 0,
+                "max": 0
+            },
+            {
+                "range": {
+                    "min": 5000,
+                    "max": null
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-01",
+                        "count": 45
+                    },
+                    {
+                        "date": "2024-07-02",
+                        "count": 952
+                    },
+                    {
+                        "date": "2024-07-03",
+                        "count": 252
+                    },
+                    {
+                        "date": "2024-07-04",
+                        "count": 468
+                    },
+                    {
+                        "date": "2024-07-05",
+                        "count": 95
+                    },
+                    {
+                        "date": "2024-07-06",
+                        "count": 307
+                    },
+                    {
+                        "date": "2024-07-07",
+                        "count": 483
+                    }
+                ],
+                "min": 0,
+                "max": 0
+            }
+        ],
+        "meta": {
+            "min": 0,
+            "max": 0
+        }
+    },
+    {
+        "chart_id": "word_cloud",
+        "data": [
+            {
+                "word": "#PhirEkBaarModiSarkar",
+                "frequency": 33
+            },
+            {
+                "word": "#AbkiBaar400Paar",
+                "frequency": 19
+            },
+            {
+                "word": "மீண்டும்",
+                "frequency": 16
+            },
+            {
+                "word": "மோடி",
+                "frequency": 16
+            },
+            {
+                "word": "ஆட்சி",
+                "frequency": 16
+            },
+            {
+                "word": "அமைப்பதற்கு",
+                "frequency": 16
+            },
+            {
+                "word": "உறுதிமொழி",
+                "frequency": 16
+            },
+            {
+                "word": "எடுங்கள்",
+                "frequency": 16
+            },
+            {
+                "word": "the",
+                "frequency": 13
+            },
+            {
+                "word": "బిజెపి",
+                "frequency": 12
+            },
+            {
+                "word": "శ్రీ",
+                "frequency": 11
+            },
+            {
+                "word": "is",
+                "frequency": 9
+            },
+            {
+                "word": "बार",
+                "frequency": 9
+            },
+            {
+                "word": "#Uttarakhand",
+                "frequency": 9
+            },
+            {
+                "word": "#JantaKiAwaaz",
+                "frequency": 9
+            },
+            {
+                "word": "#PhirEkBaarModiSarkaar",
+                "frequency": 9
+            },
+            {
+                "word": "and",
+                "frequency": 8
+            },
+            {
+                "word": "now",
+                "frequency": 8
+            },
+            {
+                "word": "to",
+                "frequency": 8
+            },
+            {
+                "word": "#BuildingBharat",
+                "frequency": 8
+            },
+            {
+                "word": "కాంగ్రెస్",
+                "frequency": 8
+            },
+            {
+                "word": "टिहरी",
+                "frequency": 8
+            },
+            {
+                "word": "की",
+                "frequency": 8
+            },
+            {
+                "word": "यही",
+                "frequency": 8
+            },
+            {
+                "word": "पुकार,",
+                "frequency": 8
+            },
+            {
+                "word": "अबकी",
+                "frequency": 8
+            },
+            {
+                "word": "400",
+                "frequency": 8
+            },
+            {
+                "word": "पार",
+                "frequency": 8
+            },
+            {
+                "word": "#BJP4Telangana",
+                "frequency": 8
+            },
+            {
+                "word": "by",
+                "frequency": 7
+            },
+            {
+                "word": "Bishnu",
+                "frequency": 7
+            },
+            {
+                "word": "Finding",
+                "frequency": 6
+            },
+            {
+                "word": "serenity",
+                "frequency": 6
+            },
+            {
+                "word": "spirituality",
+                "frequency": 6
+            },
+            {
+                "word": "being",
+                "frequency": 6
+            },
+            {
+                "word": "easily",
+                "frequency": 6
+            },
+            {
+                "word": "facilitated",
+                "frequency": 6
+            },
+            {
+                "word": "brilliant",
+                "frequency": 6
+            },
+            {
+                "word": "highways",
+                "frequency": 6
+            },
+            {
+                "word": "leading",
+                "frequency": 6
+            },
+            {
+                "word": "Devbhumi!",
+                "frequency": 6
+            },
+            {
+                "word": "పట్ల",
+                "frequency": 6
+            },
+            {
+                "word": "అభ్యర్థి",
+                "frequency": 6
+            },
+            {
+                "word": "Narendra",
+                "frequency": 6
+            },
+            {
+                "word": "Modi",
+                "frequency": 6
+            },
+            {
+                "word": "ముక్కలు",
+                "frequency": 6
+            },
+            {
+                "word": "లోక్",
+                "frequency": 5
+            },
+            {
+                "word": "సభ",
+                "frequency": 5
+            },
+            {
+                "word": "of",
+                "frequency": 5
+            },
+            {
+                "word": "BJP",
+                "frequency": 5
+            },
+            {
+                "word": "ముస్లిం",
+                "frequency": 5
+            },
+            {
+                "word": "గారు,",
+                "frequency": 5
+            },
+            {
+                "word": "Pada",
+                "frequency": 5
+            },
+            {
+                "word": "Ray",
+                "frequency": 5
+            },
+            {
+                "word": "-",
+                "frequency": 4
+            },
+            {
+                "word": "మోదీ",
+                "frequency": 4
+            },
+            {
+                "word": "Andaman",
+                "frequency": 4
+            },
+            {
+                "word": "के",
+                "frequency": 4
+            },
+            {
+                "word": "मोदी",
+                "frequency": 4
+            },
+            {
+                "word": "#ModiKiGuarantee",
+                "frequency": 4
+            },
+            {
+                "word": "పార్టీ",
+                "frequency": 3
+            },
+            {
+                "word": "తెలంగాణ",
+                "frequency": 3
+            },
+            {
+                "word": "on",
+                "frequency": 3
+            },
+            {
+                "word": "है।",
+                "frequency": 3
+            },
+            {
+                "word": "–",
+                "frequency": 3
+            },
+            {
+                "word": "ప్రధానమంత్రి",
+                "frequency": 3
+            },
+            {
+                "word": "అఖండ",
+                "frequency": 3
+            },
+            {
+                "word": "భారతాన్ని",
+                "frequency": 3
+            },
+            {
+                "word": "చేసి",
+                "frequency": 3
+            },
+            {
+                "word": "అమ్మేసినంక",
+                "frequency": 3
+            },
+            {
+                "word": "కూడా,",
+                "frequency": 3
+            },
+            {
+                "word": "ఆత్మ",
+                "frequency": 3
+            },
+            {
+                "word": "శాంతించేలా",
+                "frequency": 3
+            },
+            {
+                "word": "లేదు..",
+                "frequency": 3
+            },
+            {
+                "word": "కాశ్మీర్",
+                "frequency": 3
+            },
+            {
+                "word": "ను",
+                "frequency": 3
+            },
+            {
+                "word": "ఇచ్చేదాకా",
+                "frequency": 3
+            },
+            {
+                "word": "వాళ్ళ",
+                "frequency": 3
+            },
+            {
+                "word": "కడుపు",
+                "frequency": 3
+            },
+            {
+                "word": "సల్లపడేటట్లు",
+                "frequency": 3
+            },
+            {
+                "word": "లేదు!!",
+                "frequency": 3
+            },
+            {
+                "word": "#CongressMuktBharat",
+                "frequency": 3
+            },
+            {
+                "word": "ఎన్నికల",
+                "frequency": 3
+            },
+            {
+                "word": "గారు",
+                "frequency": 3
+            },
+            {
+                "word": "ప్రజల",
+                "frequency": 3
+            },
+            {
+                "word": "దేశ",
+                "frequency": 3
+            },
+            {
+                "word": "में",
+                "frequency": 3
+            },
+            {
+                "word": "#BJPGovernment",
+                "frequency": 3
+            },
+            {
+                "word": "#BJP4IND",
+                "frequency": 3
+            },
+            {
+                "word": "#ViksitBharatKaSankalp",
+                "frequency": 3
+            },
+            {
+                "word": "#TabhiTohSabModiKoChunteHain",
+                "frequency": 3
+            },
+            {
+                "word": "#ModiKaParivar",
+                "frequency": 3
+            },
+            {
+                "word": "#NarendraModi",
+                "frequency": 3
+            },
+            {
+                "word": "#ModiHaiTohMumkinHai",
+                "frequency": 3
+            },
+            {
+                "word": "#ViksitBharat",
+                "frequency": 3
+            },
+            {
+                "word": "#SabkaSaathSabkaVikas",
+                "frequency": 3
+            },
+            {
+                "word": "#MahilaMorchaBJP",
+                "frequency": 3
+            },
+            {
+                "word": "#LokSabha",
+                "frequency": 3
+            },
+            {
+                "word": "#ChunavKaParv",
+                "frequency": 3
+            },
+            {
+                "word": "#DeshKaGarv",
+                "frequency": 3
+            }
+        ],
+        "meta": {}
+    },
+    {
+        "chart_id": "pages_funded",
+        "data": [
+            {
+                "pageId": "202198426843343",
+                "pageName": "BJP Andaman & Nicobar Islands",
+                "amount": 1990,
+                "spending": {
+                    "min": 199,
+                    "max": 199
+                }
+            },
+            {
+                "pageId": "703726259672921",
+                "pageName": "BJP Telangana",
+                "amount": 9976,
+                "spending": {
+                    "min": 299,
+                    "max": 499
+                }
+            },
+            {
+                "pageId": "279308672089138",
+                "pageName": "BJP Uttarakhand",
+                "amount": 14383,
+                "spending": {
+                    "min": 99,
+                    "max": 1999
+                }
+            },
+            {
+                "pageId": "121439954563203",
+                "pageName": "Bharatiya Janata Party (BJP)",
+                "amount": 291484,
+                "spending": {
+                    "min": 1999,
+                    "max": 99999
+                }
+            }
+        ],
+        "meta": {
+            "spending": {
+                "min": 99,
+                "max": 99999
+            },
+            "amount": {
+                "min": 1990,
+                "max": 291484
+            }
+        }
+    }
+]

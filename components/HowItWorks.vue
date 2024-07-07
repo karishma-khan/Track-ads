@@ -101,7 +101,7 @@ export default{
 .tab-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.8s ease-out;
+    transition: max-height 0.5s ease-out;
 }
 
 /* Style for active tab content */
@@ -110,13 +110,13 @@ export default{
 }
 .heightReq {
     height: fit-content;
-    transition: height 2s; /* Adjust timing and easing as needed */
+    transition: height 1s; /* Adjust timing and easing as needed */
     transition-delay: 0.5s;
 }
 
 .zeroHeight {
     height: 0px;
     overflow: hidden;
-    transition: height 2s; /* Adjust timing and easing as needed */
+    transition: height 1s; /* Adjust timing and easing as needed */
 }
 </style>

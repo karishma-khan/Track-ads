@@ -2,7 +2,7 @@
     <div @click="handleClickOutside">
         <div ref="menuContainer">
             <header class="h-[60px] z-100 bg-[#FFFFFF] border-b border-black px-[5%] items-center flex justify-between">
-                <div @click="$router.push('/')" class="flex h-full items-center cursor-pointer">
+                <div @click="goHome()" class="flex h-full items-center cursor-pointer">
                     <img src="../../static/img/logo.svg" alt="">
                     <span class="logoHead capitalize flex flex-col pl-2">
                         <div>political ads</div> 
@@ -44,12 +44,15 @@ export default{
         }
     },
     methods:{
+        goHome(){
+            window.location.href='/'
+        },
         toggleMenu() {
             this.isMenuOpen = !this.isMenuOpen;
         },
         navigate(path){
             this.isMenuOpen = false;
-            this.$router.push(path)
+            window.location = path
         },
         handleClickOutside(event) {
             if (this.isMenuOpen && !this.$refs?.menu?.contains(event.target) && !this.$refs?.menuContainer?.contains(event.target)) {
