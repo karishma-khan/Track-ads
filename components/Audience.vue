@@ -102,7 +102,6 @@ export default{
     text-align: center;
     border-radius: 6px;
     border: 1px 0px 0px 0px;
-    opacity: 0px;
     border: 1px solid #000000;
 }
 .active-btn{
@@ -111,7 +110,6 @@ export default{
     text-align: center;
     border-radius: 6px;
     border: 1px 0px 0px 0px;
-    opacity: 0px;
     color: white;
     background: #000000;
     border: 1px solid #000000;

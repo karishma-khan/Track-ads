@@ -28,8 +28,8 @@ export default{
             let values= []
             for( let item in this.chartData)
             {
-                
-                labels.push(this.chartData[item]?.date)
+                let newDate = new Date(this.chartData[item].date)
+                labels.push(newDate.getDate() + ' ' + this.monthNames[newDate.getMonth()])
                 values.push(this.chartData[item]?.spending)
             }
             return { labels, values }
@@ -40,7 +40,9 @@ export default{
             title:'Spending Over Time',
             description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, molestiae? lorem ipsum dolor sit amet lorem. Lorem ipsum dolor sit sit amet consectetur adipisicing elit. Nemo, molestiae? lorem ipsum dolor sit amet lorem. Lorem ipsum dolor sit sit amet consectetur adipisicing elit. Nemo, molestiae?',
             chartBarData:{},
-            ylabel:'(in million rupees)'
+            ylabel:'(in million rupees)',
+            monthNames : ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sepr", "Oct", "Nov", "Dec"]
         }
     }
 }

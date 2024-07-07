@@ -13,7 +13,7 @@
         <audience class="md:w-3/4" :chartData="dashboardData?.audience?.data"></audience>
         <ad-format class="md:w-1/4" :chartData="dashboardData?.ad_format?.data"></ad-format>
       </div>
-      <honey-comb></honey-comb>
+      <honey-comb :chartData="dashboardData?.advertiser?.data"></honey-comb>
     </div>
   </div>
 </template>

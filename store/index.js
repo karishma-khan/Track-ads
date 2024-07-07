@@ -40,6 +40,21 @@ export const mutations = {
 };
 
 export const actions = {
+  async submitFeedback({commit},data){
+    try {
+      let resp = await fetch(`http://34.131.71.160:8085/api/feedback`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      return await resp.json()
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  },
   async set_date_range({commit}, dateRange){
     commit("set_date", dateRange );
   },
