@@ -517,3 +517,13 @@ letter-spacing: 0.03em;
     text-align: left;
 
 }
+
+.noDataText{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #00000066;
+}

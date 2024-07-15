@@ -1,5 +1,13 @@
 <template>
-    <div class=" w-full min-h-[300px] h-fit border-2 rounded-xl font-[700] flex justify-center items-center border-dashed border-[black]" style="font-family: 'Eurostile Extd Bold'">
-        No Data
+    <div class=" w-full min-h-[350px] h-fit flex justify-center items-center">
+        <div class="flex flex-col items-center space-between">
+            <img src="../static/img/NoData.svg" alt="" class="w-[56px] h-[89px]">
+            <div class="noDataText">
+                Oops! Not
+            </div>
+            <div class="noDataText">
+                enough data
+            </div>
+        </div>
     </div>
 </template>
