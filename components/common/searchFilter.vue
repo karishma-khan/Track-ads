@@ -63,18 +63,18 @@ export default{
     methods:{
         async setNation(val){
             await this.$store.dispatch('filter_by_nation',val.target.value)
-            // if(this.$route.path == 'overview')
-            //     await this.$store.dispatch("set_dashboard_action", [this.dateRange, val.target.value]);
-            // else{
-            //     if(this.$route.name == 'advertiser-:id')
-            //     {
-            //         await this.$store.dispatch("set_advertisers_action", [this.dateRange, val.target.value, this.$route.params.id]);
-            //     }
-            // }
+            if(this.$route.path == 'overview')
+                await this.$store.dispatch("set_dashboard_action", [this.dateRange, val.target.value]);
+            else{
+                if(this.$route.name == 'advertiser-:id')
+                {
+                    await this.$store.dispatch("set_advertisers_action", [this.dateRange, val.target.value, this.$route.params.id]);
+                }
+            }
         },
         search(){
             this.isClickedOutside = false
-            this.$store.dispatch('search_advertisers',this.searchText)
+            this.$store.dispatch('search_advertisers',{search:this.searchText,country:this.nation})
         },
         handleOutsideClick(event) {
             if (!this.$refs.searchSec.contains(event.target) || !this.$refs.searchSecMobile.contains(event.target)) {

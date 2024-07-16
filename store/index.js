@@ -76,9 +76,9 @@ export const actions = {
       return false;
     }
   },
-  async search_advertisers({ commit }, searchText) {
+  async search_advertisers({ commit }, {search, country}) {
     try {
-      let resp = await fetch(`http://34.131.71.160:8085/api/search?query=${searchText}`)
+      let resp = await fetch(`http://34.131.71.160:8085/api/search?query=${search}&country=${country}`)
       resp = await resp.json()
       commit("set_advertisers_data", resp);
       return resp
