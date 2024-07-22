@@ -11,16 +11,19 @@
                 {{ description }}
             </p>
         </div>
-        <test-doughnut :chartData="chartData"></test-doughnut>
-        <div>
-            <div class="flex justify-between common-tile py-5" :class="item.format!='video' ? 'text-[#86937F]' : ''" v-for="(item,index) in chartData" :key="index">
-                <div class="tile-label flex gap-2" :style="item.format=='video' ? 'color:#000000 !important' : ''">
-                    <div class="h-[12px] w-[12px] rounded-[50%]" :class="item.format=='video' ? 'bg-[black]' : 'bg-[#86937F]'"></div>
-                    {{ item.format }} Format <span>(&#8377; {{ formatNumber(item.impressions) }})</span>
+        <div v-if="totalAmount()">
+            <test-doughnut :chartData="chartData"></test-doughnut>
+            <div>
+                <div class="flex justify-between common-tile py-5" :class="item.format!='video' ? 'text-[#86937F]' : ''" v-for="(item,index) in chartData" :key="index">
+                    <div class="tile-label flex gap-2" :style="item.format=='video' ? 'color:#000000 !important' : ''">
+                        <div class="h-[12px] w-[12px] rounded-[50%]" :class="item.format=='video' ? 'bg-[black]' : 'bg-[#86937F]'"></div>
+                        {{ item.format }} Format <span>(&#8377; {{ formatNumber(item.impressions) }})</span>
+                    </div>
+                    <div class="text-[20px] md:text-[24px] tile-value">{{ item.percent }} %</div>
                 </div>
-                <div class="text-[20px] md:text-[24px] tile-value">{{ item.percent }} %</div>
             </div>
         </div>
+        <no-data v-else></no-data>
     </div>
 </template>
 <script>
@@ -49,6 +52,16 @@ export default{
     methods:{
         formatNumber(value) {
             return new Intl.NumberFormat('en-US').format(value);
+        },
+        totalAmount()
+        {
+            let res = 0
+            for(let item of this.chartData)
+            {
+                console.log(item);
+                res += item.amount
+            }
+            return res
         }
     }
 }

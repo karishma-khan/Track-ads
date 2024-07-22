@@ -86,7 +86,7 @@ export default {
                 onEachFeature: (feature, layer) => {
                     layer.setStyle(this.styleFeature(feature));
                     let innerHtml = `<div><div class="text-[15px] flex gap-2 mb-2" style="color:#FFFFFF80"> <img src="/img/announce.svg" /> Total Ads </div>`
-                    innerHtml += `<div class="w-full break-all" style="color:#FFFFFF90">On average, <b class="text-white"> ${this.geoData[feature?.properties['State/UT']] ? this.formatNumber(this.geoData[feature?.properties['State/UT']]) : 0} </b> ads were run in the <b class="text-white">${feature?.properties['State/UT']} </b> during <b class="text-white"> ${this.formatDate(this.dateRange[0])} to ${this.formatDate(this.dateRange[1])}.</b></div>`
+                    innerHtml += `<div class="w-full break-all" style="color:#FFFFFF90;word-break: keep-all;">On average, <b class="text-white"> ${this.geoData[feature?.properties['State/UT']] ? this.formatNumber(this.geoData[feature?.properties['State/UT']]) : 0} </b> ads were run in the <b class="text-white">${feature?.properties['State/UT']} </b> during <b class="text-white"> ${this.formatDate(this.dateRange[0])} to ${this.formatDate(this.dateRange[1])}.</b></div>`
                     innerHtml += `</div>`
                     const tooltipContent = innerHtml;
                     layer.bindTooltip(tooltipContent);

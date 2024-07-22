@@ -66,6 +66,8 @@ export default {
             opacity: 1,
             color: this.colorArray[index]
           },
+          seriesName:this.rangeArray[index].min + '-' + this.rangeArray[index].max,
+          color: index,
           emphasis: {
             focus: 'series'
           },
@@ -81,27 +83,44 @@ export default {
     const chart = echarts.init(this.$refs.chart);
 
     const option = {
-      tooltip: {
-        trigger: 'item',
-        formatter: function (params) {
-            var tooltipHtml = '<div style="background-color:black; padding: 10px; border-radius: 5px;">';
-            tooltipHtml += '<p style="color:#fff; font-size:12px; font-weight: bold;">Custom Tooltip</p>';
-            tooltipHtml += '<p style="color:#fff; font-size:14px;">Date: ' + params.name + '</p>';
-            tooltipHtml += '<p style="color:#fff; font-size:14px;">Value: ' + params.value + '</p>';
-            tooltipHtml += '<p style="color:#fff; font-size:12px;">Series: ' + params.seriesName + '</p>';
-            tooltipHtml += '</div>';
+    //   tooltip: {
+    //     trigger: 'item',
+    //     formatter: function (params) {
+    //         var tooltipHtml = '<div style="background-color:black; padding: 10px; border-radius: 5px;">';
+    //         tooltipHtml += '<p style="color:#fff; font-size:12px; font-weight: bold;">Custom Tooltip</p>';
+    //         tooltipHtml += '<p style="color:#fff; font-size:14px;">Date: ' + params.name + '</p>';
+    //         tooltipHtml += '<p style="color:#fff; font-size:14px;">Value: ' + params.value + '</p>';
+    //         tooltipHtml += '<p style="color:#fff; font-size:12px;">Series: ' + params.seriesName + '</p>';
+    //         tooltipHtml += '</div>';
+    //         return tooltipHtml;
+    //     },
+    //     backgroundColor: 'rgba(0,0,0,0.7)',
+    //     textStyle: {
+    //       color: '#fff',
+    //       fontSize: 14,
+    //     },
+    //     borderColor: '#000',
+    //     borderWidth: 1,
+    //     padding: 10,
+    //     extraCssText: 'border-radius: 10px;'
+    // },
+    tooltip: {
+          trigger: 'axis',
+          formatter: (params) => {
+            console.log(params);
+            let tooltipHtml = `<div><div style=\"background-color:black; padding: 10px; border-radius: 5px;\"><p style=\"color:#fff; font-size:14px; font-weight: bold;\">${params[0].name}</p>`;
+            params.forEach((item) => {
+              // console.log(item);
+              tooltipHtml += `
+                <p style=\"color:#fff; font-size:12px;\"><span style=\"display:inline-block;margin-right:4px;width:10px;height:10px;background-color:${this.colorArray[item.color] ? this.colorArray[item.color] : '#C5D6B6'};\"></span>Ads( ${this.rangeArray[item.color]?.min ? this.rangeArray[item.color]?.min : 0} -  ${this.rangeArray[item.color]?.max ? this.rangeArray[item.color]?.max : 99}) : ${item.data}</p>
+                <hr>
+              `;
+            });
+            tooltipHtml += '</div></div>';
             return tooltipHtml;
+          },
+          extraCssText: 'background-color:black; border:1px solid black; border-radius: 4px;padding:0px',
         },
-        backgroundColor: 'rgba(0,0,0,0.7)',
-        textStyle: {
-          color: '#fff',
-          fontSize: 14,
-        },
-        borderColor: '#000',
-        borderWidth: 1,
-        padding: 10,
-        extraCssText: 'border-radius: 10px;'
-    },
 
       grid: {
         left: '3%',
@@ -146,6 +165,11 @@ export default {
   font-weight: 300;
   line-height: 16px;
   letter-spacing: 0.02em;
+}
+.echarts-tooltip {
+    background-color: black !important;
+    border: 1px solid black;
+    border-radius: 4px;
 }
 /* Add any necessary styles here */
 </style>

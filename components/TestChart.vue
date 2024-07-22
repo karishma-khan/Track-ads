@@ -79,7 +79,19 @@ export default {
     },
     customTooltip(context) {
       let tooltipEl = document.getElementById('chartjs-tooltip');
+      if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'chartjs-tooltip';
+        tooltipEl.className = 'tooltip';
+        tooltipEl.innerHTML = '<table></table>';
+        document.body.appendChild(tooltipEl);
+      }
 
+      // Hide the tooltip if there is no tooltip body content
+      if (context.tooltip.opacity === 0) {
+        tooltipEl.style.opacity = 0;
+        return;
+      }
       if (context.tooltip.body) {
         const titleLines = context.tooltip.title || [];
         const bodyLines = context.tooltip.body.map(b => b.lines);
