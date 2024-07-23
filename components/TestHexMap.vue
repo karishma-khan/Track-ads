@@ -37,13 +37,24 @@ export default {
     formatNumber(value) {
       return new Intl.NumberFormat('en-US').format(value);
     },
+    formatDate(objDate)
+        {
+            let date = new Date(objDate)
+            const day = date.getDate();
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+            const monthIndex = date.getMonth();
+            const month = monthNames[monthIndex];
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        },
     processData() {
       let processedData = this.chartData.map((item, index) => {
         if(!this.flag)
         {
           this.flag = true
           this.dateRange = item.ads.map((ad,idx) => {
-          return ad.date
+          return this.formatDate(ad.date)
         })
         }
         let count = item.ads.map((ad,idx) => {
@@ -66,6 +77,8 @@ export default {
             opacity: 1,
             color: this.colorArray[index]
           },
+          seriesName:this.rangeArray[index].min + '-' + this.rangeArray[index].max,
+          color: index,
           emphasis: {
             focus: 'series'
           },
@@ -82,31 +95,26 @@ export default {
 
     const option = {
       tooltip: {
-        trigger: 'item',
-        formatter: function (params) {
-            var tooltipHtml = '<div style="background-color:black; padding: 10px; border-radius: 5px;">';
-            tooltipHtml += '<p style="color:#fff; font-size:12px; font-weight: bold;">Custom Tooltip</p>';
-            tooltipHtml += '<p style="color:#fff; font-size:14px;">Date: ' + params.name + '</p>';
-            tooltipHtml += '<p style="color:#fff; font-size:14px;">Value: ' + params.value + '</p>';
-            tooltipHtml += '<p style="color:#fff; font-size:12px;">Series: ' + params.seriesName + '</p>';
-            tooltipHtml += '</div>';
-            return tooltipHtml;
+        trigger: 'axis',
+        formatter: (params) => {
+          console.log(params);
+          let tooltipHtml = `<div><div style=\"background-color:black; padding: 10px; border-radius: 5px;\"><p style=\"color:#fff; font-size:14px; font-weight: bold;\">${params[0].name}</p>`;
+          params.forEach((item) => {
+            // console.log(item);
+            tooltipHtml += `
+              <p style=\"color:#fff; font-size:12px;\"><span style=\"display:inline-block;margin-right:4px;width:10px;height:10px;background-color:${this.colorArray[item.color] ? this.colorArray[item.color] : '#C5D6B6'};\"></span>Ads( &#8377;${this.rangeArray[item.color]?.min ? this.rangeArray[item.color]?.min : 0} -  &#8377;${this.rangeArray[item.color]?.max ? this.rangeArray[item.color]?.max : 99}) : ${item.data}</p>
+              <hr>
+            `;
+          });
+          tooltipHtml += '</div></div>';
+          return tooltipHtml;
         },
-        backgroundColor: 'rgba(0,0,0,0.7)',
-        textStyle: {
-          color: '#fff',
-          fontSize: 14,
-        },
-        borderColor: '#000',
-        borderWidth: 1,
-        padding: 10,
-        extraCssText: 'border-radius: 10px;'
-    },
-
+        extraCssText: 'background-color:black; border:1px solid black; border-radius: 4px;padding:0px',
+      },
       grid: {
         left: '3%',
         right: '4%',
-        bottom: '3%',
+        bottom: '10%',
         containLabel: true
       },
       xAxis: [
@@ -115,7 +123,7 @@ export default {
           name: 'Ads spending range',
           nameLocation: 'middle',
           nameTextStyle: {
-            padding: [4, 0, 0, 0], 
+            padding: [18, 0, 0, 0], 
           },
           boundaryGap: false,
           data: this.dateRange
@@ -146,6 +154,11 @@ export default {
   font-weight: 300;
   line-height: 16px;
   letter-spacing: 0.02em;
+}
+.echarts-tooltip {
+    background-color: black !important;
+    border: 1px solid black;
+    border-radius: 4px;
 }
 /* Add any necessary styles here */
 </style>

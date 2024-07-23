@@ -1,87 +1,132 @@
 <template>
-    <div>
-      <div id="canvas" ref="canvas">
-        <div v-for="(ball, index) in balls" :key="index" :ref="`ball${index}`" class="ball"></div>
-      </div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        balls: [
-          { x: 150, y: 150, dx: 2, dy: 2 },
-          { x: 100, y: 100, dx: -2, dy: 2 },
-          { x: 200, y: 200, dx: 2, dy: -2 }
-        ],
-        canvasRadius: 0,
-        ballRadius: 0,
-        gravity: 0.1
-      };
-    },
-    mounted() {
-      this.$nextTick(() => {
-        this.canvasRadius = this.$refs.canvas.offsetWidth / 2;
-        this.ballRadius = this.$refs.ball0.offsetWidth / 2;
-        this.moveBalls();
+  <div id="my_dataviz"></div>
+</template>
+
+<script>
+export default {
+  mounted() {
+    this.drawChart();
+  },
+  methods: {
+    drawChart() {
+      // Set the dimensions and margins of the graph
+      const width = 460;
+      const height = 230; // Half of the height to create a semicircle
+
+      // Append the svg object to the body of the page
+      const svg = d3.select("#my_dataviz")
+        .append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+      // Read data
+      d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv").then(data => {
+        // Filter the data
+        data = data.filter(d => d.value > 10000000);
+
+        // Color palette for continents
+        const color = d3.scaleOrdinal()
+          .domain(["Asia", "Europe", "Africa", "Oceania", "Americas"])
+          .range(d3.schemeSet1);
+
+        // Size scale for countries
+        const size = d3.scaleLinear()
+          .domain([0, 1400000000])
+          .range([7, 55]);
+
+        // Create a tooltip
+        const Tooltip = d3.select("#my_dataviz")
+          .append("div")
+          .style("opacity", 0)
+          .attr("class", "tooltip")
+          .style("background-color", "white")
+          .style("border", "solid")
+          .style("border-width", "2px")
+          .style("border-radius", "5px")
+          .style("padding", "5px");
+
+        // Tooltip functions
+        const mouseover = function(event, d) {
+          Tooltip.style("opacity", 1);
+        };
+        const mousemove = function(event, d) {
+          Tooltip
+            .html('<u>' + d.key + '</u>' + "<br>" + d.value + " inhabitants")
+            .style("left", (event.pageX + 20) + "px")
+            .style("top", (event.pageY - 30) + "px");
+        };
+        const mouseleave = function(event, d) {
+          Tooltip.style("opacity", 0);
+        };
+
+        // Initialize the circle: all located at the center of the svg area
+        const node = svg.append("g")
+          .selectAll("circle")
+          .data(data)
+          .join("circle")
+            .attr("class", "node")
+            .attr("r", d => size(d.value))
+            .attr("cx", width / 2)
+            .attr("cy", d => height / 2 + (height / 2 - size(d.value))) // Adjust for semicircle
+            .style("fill", d => color(d.region))
+            .style("fill-opacity", 0.8)
+            .attr("stroke", "black")
+            .style("stroke-width", 1)
+            .on("mouseover", mouseover)
+            .on("mousemove", mousemove)
+            .on("mouseleave", mouseleave)
+            .call(d3.drag()
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended));
+
+        // Features of the forces applied to the nodes
+        const simulation = d3.forceSimulation()
+          .force("center", d3.forceCenter().x(width / 2).y(height))
+          .force("charge", d3.forceManyBody().strength(.1))
+          .force("collide", d3.forceCollide().strength(.2).radius(d => size(d.value) + 3).iterations(1));
+
+        // Apply these forces to the nodes and update their positions
+        simulation
+          .nodes(data)
+          .on("tick", d => {
+            node
+              .attr("cx", d => d.x)
+              .attr("cy", d => Math.min(height, d.y)); // Constrain y to the height
+          });
+
+        // Drag functions
+        function dragstarted(event, d) {
+          if (!event.active) simulation.alphaTarget(.03).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        }
+        function dragged(event, d) {
+          d.fx = event.x;
+          d.fy = event.y;
+        }
+        function dragended(event, d) {
+          if (!event.active) simulation.alphaTarget(.03);
+          d.fx = null;
+          d.fy = null;
+        }
       });
-    },
-    methods: {
-      moveBalls() {
-        requestAnimationFrame(this.moveBalls);
-        this.balls.forEach((ball, index) => {
-          ball.dy += this.gravity;  // Apply gravity to the vertical velocity
-          ball.x += ball.dx;
-          ball.y += ball.dy;
-  
-          // Calculate distance from the center of the canvas
-          const distFromCenter = Math.sqrt((ball.x - this.canvasRadius) ** 2 + (ball.y - this.canvasRadius) ** 2);
-  
-          // Check if the ball is hitting the circular boundary
-          if (distFromCenter + this.ballRadius >= this.canvasRadius) {
-            // Calculate the angle of the collision
-            const angle = Math.atan2(ball.y - this.canvasRadius, ball.x - this.canvasRadius);
-            const normalX = Math.cos(angle);
-            const normalY = Math.sin(angle);
-  
-            // Calculate the dot product of the velocity vector and the normal vector
-            const dotProduct = ball.dx * normalX + ball.dy * normalY;
-  
-            // Reflect the velocity vector
-            ball.dx = ball.dx - 2 * dotProduct * normalX;
-            ball.dy = ball.dy - 2 * dotProduct * normalY;
-  
-            // Slightly move the ball out of the boundary to prevent it from getting stuck
-            const overlap = distFromCenter + this.ballRadius - this.canvasRadius;
-            ball.x -= overlap * normalX;
-            ball.y -= overlap * normalY;
-          }
-  
-          // Move the ball to the new position
-          this.$refs[`ball${index}`][0].style.left = `${ball.x - this.ballRadius}px`;
-          this.$refs[`ball${index}`][0].style.top = `${ball.y - this.ballRadius}px`;
-        });
-      }
     }
-  };
-  </script>
-  
-  <style scoped>
-  #canvas {
-    position: relative;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    border: 2px solid #000;
-    overflow: hidden;
   }
-  .ball {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: red;
-  }
-  </style>
-  
+}
+</script>
+
+<style scoped>
+.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  height: auto;
+  padding: 10px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+</style>

@@ -1,180 +1,188 @@
 <template>
-<div ref="chartContainer" class="chart-container">
-    <div ref="chartWrapper" class="chart-wrapper"></div>
+  <div ref="chartContainer" class="chart-container">
+    <canvas ref="chartCanvas"></canvas>
   </div>
 </template>
 
 <script>
-import { color } from 'echarts';
+// import Chart from 'chart.js/auto';
 
 export default {
   props: ['chartData'],
   data() {
     return {
       randomColors: ['#FBE69F', '#C5D6B6', '#4CB2AC', '#326284', '#133751'],
-      maxAmount:0,
-      maxCount:0,
-      rangeArray:[]
+      maxAmount: 0,
+      maxCount: 0,
+      rangeArray: []
     }
   },
   methods: {
+    customTooltip(context) {
+      let tooltipEl = document.getElementById('chartjs-tooltip');
+      if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'chartjs-tooltip';
+        tooltipEl.className = 'tooltip';
+        tooltipEl.innerHTML = '<table></table>';
+        document.body.appendChild(tooltipEl);
+      }
+
+      // Hide the tooltip if there is no tooltip body content
+      if (context.tooltip.opacity === 0) {
+        tooltipEl.style.opacity = 0;
+        return;
+      }
+      if (context.tooltip.body) {
+        const titleLines = context.tooltip.title || [];
+        const bodyLines = context.tooltip.body.map(b => b.lines);
+        let titles = []
+        titleLines.forEach(title => {
+          titles.push(title)
+        });
+        let innerHtml = ''
+        bodyLines.forEach((body, i) => {
+          innerHtml+=`<div class="w-[300px] p-[8px]"><div class="tooltip-header border-b border-[#FFFFFF52] flex items-center gap-4 text-[15px] pb-2 mb-2"> <img src="/img/ScatterTool.svg"> ${context.tooltip.dataPoints[0].raw.advertiser} </div>`;
+          const first  = `<div class="tooltext flex justify-between items-center"><div class="text-[#FFFFFF80] flex items-start gap-2"><img src="/img/announce.svg" /><div> Total Ads<div class="text-white">${context.tooltip.dataPoints[0].raw.y}</div></div></div>`;
+          const second  = `<div><div class="text-[#FFFFFF80] flex items-start gap-2"><img src="/img/Money.svg" /><div> Total Money Spend <div class="text-white">${context.tooltip.dataPoints[0].raw.x}</div></div></div></div>`;
+          innerHtml += `${first}${second}`;
+        });
+        innerHtml += '</div></div>';
+
+        let tableRoot = tooltipEl.querySelector('table');
+        if (!tableRoot) {
+          tableRoot = document.createElement('table');
+          tooltipEl.appendChild(tableRoot);
+          tooltipEl.classList.add('rounded-3xl')
+        }
+        tableRoot.innerHTML = innerHtml;
+      }
+      const positionY = context.chart.canvas.offsetTop;
+      const positionX = context.chart.canvas.offsetLeft + 40;
+      tooltipEl.style.opacity = 1;
+      tooltipEl.style.left = positionX + (context.tooltip.caretX + 400) + 'px';
+      tooltipEl.style.top = positionY + (context.tooltip.caretY + 280) + 'px';
+    },
     processData() {
-      let processedData = this.chartData.map((item, index) => {
+      let processedData = this.chartData.map((item) => {
         let radius = Math.floor(item.amount / (this.maxAmount / 40)); 
         const numberOfSegments = 5;
         const step = this.maxCount / numberOfSegments;
-        this.rangeArray =  Array.from({ length: 5 }, (_, i) => step * i);
-        let colorIndex = 0
-        for(let i =0; i< 5;i++)
-        {
-          if(item.count >= this.rangeArray[i])
-          colorIndex=i
+        this.rangeArray = Array.from({ length: 5 }, (_, i) => step * i);
+        let colorIndex = 0;
+        for (let i = 0; i < 5; i++) {
+          if (item.count >= this.rangeArray[i])
+            colorIndex = i;
         }
-        if(colorIndex >= 5)
+        if (colorIndex >= 5)
           colorIndex = 4;
         let fillColor = this.randomColors[colorIndex];
 
         return {
           x: item.amount,
           y: item.count,
-          name:item.advertiser,
-          id:item.advertiser_ad_id,
-          marker: {
-            radius: radius,
-            fillColor: fillColor,
-            fillOpacity: 0.5
-          }
+          r: radius,
+          title:item.advertiser,
+          backgroundColor: fillColor,
+          borderColor: fillColor,
+          hoverBackgroundColor: fillColor,
+          hoverBorderColor: fillColor,
+          advertiser: item.advertiser,
+          id: item.advertiser_ad_id
         }
       });
       return processedData;
     },
-  },
-  async mounted() {
-    if (typeof Highcharts === 'undefined') {
-      console.error('Highcharts is not defined');
-      return;
+    createChart(data) {
+      new Chart(this.$refs.chartCanvas, {
+        type: 'bubble',
+        data: {
+          datasets: [{
+            label: 'Customized Points',
+            data: data,
+            backgroundColor: data.map(point => point.backgroundColor),
+            borderColor: data.map(point => point.borderColor),
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Money Spent (in millions)'
+              },
+              min: 0
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'No of Ads'
+              },
+              ticks:{
+                display:false
+              },
+              grid: {
+                display: false
+              },
+              min: -1000
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              enabled: false,
+              external: this.customTooltip
+            }
+          },
+          onClick: (event, elements) => {
+            if (elements.length > 0) {
+              const element = elements[0];
+              const point = element.element.$context.raw;
+              window.location.href = `/advertiser/${point.id}`;
+            }
+          }
+        }
+      });
     }
+  },
+  mounted() {
     this.maxCount = Math.max(...this.chartData.map(item => item.count));
     this.maxAmount = Math.max(...this.chartData.map(item => item.amount));
 
-    let reqData = await this.processData();
-    Highcharts.chart(this.$refs.chartContainer, {
-      chart: {
-        type: 'scatter',
-        zoomType: 'xy',
-        panning: {
-          enabled: true,
-          type: 'xy'
-        },
-        panKey: 'shift',
-        backgroundColor: 'transparent',
-        scrollablePlotArea: {
-          minWidth: 700,
-          scrollPositionX: 1
-        }
-      },
-      credits: {
-          enabled: false
-      },
-      legend: {
-        enabled: false
-      },
-      exporting: {
-        enabled: false
-      },
-      title: {
-        enabled: false,
-        text: ''
-      },
-      xAxis: {
-        visible: true,
-        title: {
-          enabled: true,
-          text: 'Money Spent (in millions)'
-        },
-        lineWidth: 1,
-        gridLineWidth: 1,
-        tickAmount: 5,
-        startOnTick: true,
-        endOnTick: true,
-        min: 0
-      },
-      yAxis: {
-        visible: true,
-        title: {
-          enabled: true,
-          text: 'No of Ads'
-        },
-        labels: {
-          enabled: false
-        },
-        lineWidth: 0,
-        gridLineWidth: 0,
-        min: 0
-      },
-      plotOptions: {
-        scatter: {
-          point: {
-            events: {
-              click: function(data) {
-                window.location.href = `/advertiser/${data.point.id}`; 
-              }
-            }
-          },
-          marker: {
-            states: {
-              hover: {
-                enabled: true,
-                lineColor: 'rgb(100,100,100)'
-              }
-            }
-          },
-          states: {
-            hover: {
-              marker: {
-                enabled: false
-              }
-            }
-          },
-          // tooltip: { 
-          //   useHTML:true, 
-          //   backgroundColor: 'black', 
-          //   borderRadius: 16, 
-          //   padding:15,
-          //   style: { color:'white', width:'300px', borderRadius: '16px' },
-          //   headerFormat: '<div class="tooltip-header text-[15px] mb-2" style="color:#FFFFFF80"> <span class="mdi mdi-account-multiple"></span> Demographics </div>',
-          //   pointFormat: '<div  style="color:#FFFFFF90" class="block">On average, <b class="text-white">he% yee</b> audience between the age of <b class="text-white"> okayys </b> were targeted for the ads during <b class="text-white"> 12 March 2022 to 16 March 2022. </b></div>'
-          // },
-          tooltip: {
-            headerFormat: '',
-            pointFormat: '<b>{point.name}</b></br>  Money_spend: <b> {point.x}</b></br> Total Ads: <b>{point.y}</b></br>',
-
-            // color: '#FFFFFF', // White text color
-            backgroundColor: '#000000', // Black background
-            // opacity: 1 
-          }
-        }
-      },
-      series: [{
-        name: 'Customized Points',
-        data: reqData
-      }]
-    });
+    let reqData = this.processData();
+    this.createChart(reqData);
   }
 }
 </script>
+
 <style scoped>
-.tooltip-header{
-  font-size: 30px;
-}
 .chart-container {
-  overflow-x: auto; /* Enable horizontal scrolling */
-  max-width: 100%; /* Ensure the chart can expand */
-  position: relative; /* Ensure correct scrolling behavior */
+  overflow-x: auto;
+  max-width: 100%;
+  position: relative;
   height: 270px;
 }
-
+.tooltip-header{
+font-size: 14px;
+font-weight: 600;
+line-height: 16px;
+letter-spacing: 0.02em;
+text-align: left;
+color:white
+}
+.tooltext{
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
 .chart-wrapper {
-  width: 100%; /* Ensure the wrapper takes full width */
+  width: 100%;
 }
 </style>

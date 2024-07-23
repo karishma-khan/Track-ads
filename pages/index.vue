@@ -2,7 +2,8 @@
     <div class="bggridHome">
         <div class="bg-white flex flex-col rounded-b-[70px] text-center justify-center" style="text-align: -webkit-center;">
           <loading-semi v-if="Object.keys(indexData).length == 0"></loading-semi>
-          <hero-bubbles v-else></hero-bubbles>
+          <!-- <hero-bubbles v-else></hero-bubbles> -->
+          <hero-bounce v-else></hero-bounce>
           <div class="my-10">
             <p class="heroHead">Transparency</p>
             <p class="heroHead">For Democracy</p>

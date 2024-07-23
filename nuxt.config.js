@@ -35,7 +35,7 @@ export default {
         body: true, 
         async: true, 
       },
-      { src: 'https://cdn.jsdelivr.net/npm/chart.js' }
+      { src: 'https://cdn.jsdelivr.net/npm/chart.js' },
     ]
   },
 

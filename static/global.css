@@ -175,6 +175,21 @@ letter-spacing: 0.03em;
         letter-spacing: 0.03em !important;
 
     }
+    .loginDetail{
+        font-size: 14px !important;
+        font-weight: 300 !important;
+        line-height: 20px !important;
+        letter-spacing: 0.03em !important;
+    }
+    .loginDetail{
+        font-family:"Nunito Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26.08px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: #FFFFFF;
+    }
     .abtHead{
         font-size: 30px !important;
         font-weight: 900 !important;
@@ -406,6 +421,11 @@ letter-spacing: 0.03em;
     background-size: 10px 10px;    
     background-image: repeating-linear-gradient(0deg, #333333, #333333 1px, transparent 1px, transparent 40px),repeating-linear-gradient(-90deg, #333333, #333333 1px, transparent 1px, transparent 40px);
 }
+.bggridLogin{
+    background-size: 10px 10px;    
+    background-size: 10px 10px;    
+    background-image: repeating-linear-gradient(0deg, #262626, #262626 1px, transparent 1px, transparent 40px),repeating-linear-gradient(-90deg, #262626, #262626 1px, transparent 1px, transparent 40px);
+}
 .teamHead{
     font-family: Eurostile Extd Bold;
     font-size: 30px;
@@ -480,12 +500,19 @@ letter-spacing: 0.03em;
 }
 
 .contactTitle{
-    font-family: Eurostile Extd;
+    font-family: Eurostile Extd Bold;
     font-size: 45px;
     font-weight: 900;
     line-height: 60px;
     letter-spacing: 0.02em;
     text-align: left;
+}
+
+.socialAuth{
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
 }
 
 .contactMail{

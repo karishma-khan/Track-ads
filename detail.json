@@ -1,0 +1,853 @@
+[
+    {
+        "chart_id": "overview_chart",
+        "data": [
+            {
+                "param": "advertisers",
+                "value": 1
+            },
+            {
+                "param": "impressions",
+                "value": 38849782
+            },
+            {
+                "param": "ads",
+                "value": 233
+            },
+            {
+                "param": "money_spent",
+                "value": 4862967
+            }
+        ],
+        "meta": {}
+    },
+    {
+        "chart_id": "spending_over_time",
+        "data": [
+            {
+                "date": "2024-05-28",
+                "spending": 3013478
+            },
+            {
+                "date": "2024-06-09",
+                "spending": 9999
+            },
+            {
+                "date": "2024-06-28",
+                "spending": 68985
+            },
+            {
+                "date": "2024-07-02",
+                "spending": 1770505
+            }
+        ],
+        "meta": {
+            "min": 9999,
+            "max": 3013478
+        }
+    },
+    {
+        "chart_id": "audience",
+        "data": [
+            {
+                "mode": "geography",
+                "meta": {
+                    "min": 2,
+                    "max": 4858
+                },
+                "data": [
+                    {
+                        "state": "Chhattisgarh",
+                        "users": 342
+                    },
+                    {
+                        "state": "Sikkim",
+                        "users": 2
+                    },
+                    {
+                        "state": "Arunachal Pradesh",
+                        "users": 9
+                    },
+                    {
+                        "state": "Goa",
+                        "users": 26
+                    },
+                    {
+                        "state": "Bihar",
+                        "users": 517
+                    },
+                    {
+                        "state": "Madhya Pradesh",
+                        "users": 956
+                    },
+                    {
+                        "state": "Uttar Pradesh",
+                        "users": 2530
+                    },
+                    {
+                        "state": "Jharkhand",
+                        "users": 236
+                    },
+                    {
+                        "state": "Tamil Nadu",
+                        "users": 467
+                    },
+                    {
+                        "state": "Uttarakhand",
+                        "users": 325
+                    },
+                    {
+                        "state": "Telangana",
+                        "users": 458
+                    },
+                    {
+                        "state": "Kerala",
+                        "users": 247
+                    },
+                    {
+                        "state": "Manipur",
+                        "users": 10
+                    },
+                    {
+                        "state": "Tripura",
+                        "users": 3
+                    },
+                    {
+                        "state": "West Bengal",
+                        "users": 1375
+                    },
+                    {
+                        "state": "Rajasthan",
+                        "users": 1028
+                    },
+                    {
+                        "state": "Haryana",
+                        "users": 825
+                    },
+                    {
+                        "state": "Andhra Pradesh",
+                        "users": 253
+                    },
+                    {
+                        "state": "Assam",
+                        "users": 224
+                    },
+                    {
+                        "state": "Chandigarh",
+                        "users": 6
+                    },
+                    {
+                        "state": "Gujarat",
+                        "users": 1771
+                    },
+                    {
+                        "state": "Himachal Pradesh",
+                        "users": 182
+                    },
+                    {
+                        "state": "Maharashtra",
+                        "users": 4858
+                    },
+                    {
+                        "state": "Meghalaya",
+                        "users": 6
+                    },
+                    {
+                        "state": "Karnataka",
+                        "users": 1236
+                    },
+                    {
+                        "state": "Nagaland",
+                        "users": 9
+                    },
+                    {
+                        "state": "Odisha",
+                        "users": 337
+                    },
+                    {
+                        "state": "Mizoram",
+                        "users": 9
+                    }
+                ]
+            },
+            {
+                "mode": "age_and_gender",
+                "meta": {},
+                "data": [
+                    {
+                        "gender": "unknown",
+                        "distribution": [
+                            {
+                                "age_range": "65+",
+                                "percent": 0.05
+                            },
+                            {
+                                "age_range": "25-34",
+                                "percent": 0.22
+                            },
+                            {
+                                "age_range": "45-54",
+                                "percent": 0.16
+                            },
+                            {
+                                "age_range": "18-24",
+                                "percent": 0.18
+                            },
+                            {
+                                "age_range": "35-44",
+                                "percent": 0.32
+                            },
+                            {
+                                "age_range": "55-64",
+                                "percent": 0.06
+                            }
+                        ]
+                    },
+                    {
+                        "gender": "male",
+                        "distribution": [
+                            {
+                                "age_range": "35-44",
+                                "percent": 0.27
+                            },
+                            {
+                                "age_range": "55-64",
+                                "percent": 0.04
+                            },
+                            {
+                                "age_range": "45-54",
+                                "percent": 0.11
+                            },
+                            {
+                                "age_range": "18-24",
+                                "percent": 0.17
+                            },
+                            {
+                                "age_range": "25-34",
+                                "percent": 0.39
+                            },
+                            {
+                                "age_range": "65+",
+                                "percent": 0.02
+                            }
+                        ]
+                    },
+                    {
+                        "gender": "female",
+                        "distribution": [
+                            {
+                                "age_range": "65+",
+                                "percent": 0.03
+                            },
+                            {
+                                "age_range": "55-64",
+                                "percent": 0.06
+                            },
+                            {
+                                "age_range": "25-34",
+                                "percent": 0.34
+                            },
+                            {
+                                "age_range": "18-24",
+                                "percent": 0.15
+                            },
+                            {
+                                "age_range": "45-54",
+                                "percent": 0.14
+                            },
+                            {
+                                "age_range": "35-44",
+                                "percent": 0.29
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "meta": {}
+    },
+    {
+        "chart_id": "ad_format",
+        "data": [
+            {
+                "format": "video",
+                "impressions": 0,
+                "clicks": 0,
+                "amount": 0,
+                "percent": 0
+            },
+            {
+                "format": "image",
+                "impressions": 0,
+                "clicks": 0,
+                "amount": 0,
+                "percent": 0
+            }
+        ],
+        "meta": {}
+    },
+    {
+        "chart_id": "advertiser",
+        "data": [
+            {
+                "advertiser_ad_id": "892451239584512",
+                "ad_url": "https://www.facebook.com/ads/archive/render_ad/?id=892451239584512&access_token=EAAOWfTsg3IYBO0S5PDJGGkRLtAnZB26iU1x2BQxtRrONZBKbP4XVz5INuU9ZAYOxPxiK1Lu1H2c15hvjlT6OoqHeAY5lZBbkfv169zZBnzNKtp1I8QDHUupCpkolSM1gl25oWT2e2xwkfxTcUIHQp3ZCI53bMwVSL5XNFSmPVJnK9KtcmY2ZBZBAPiZCURUTEKpJx",
+                "advertiser": "discovery+",
+                "count": 233,
+                "amount": 4862967,
+                "image_url": null
+            }
+        ],
+        "meta": {
+            "count": {
+                "min": 233,
+                "max": 233
+            },
+            "amount": {
+                "min": 4862967,
+                "max": 4862967
+            }
+        }
+    },
+    {
+        "chart_id": "active_ads",
+        "data": [
+            {
+                "range": {
+                    "min": 0,
+                    "max": 100
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-02",
+                        "count": 20
+                    },
+                    {
+                        "date": "2024-06-28",
+                        "count": 2
+                    }
+                ],
+                "min": 2,
+                "max": 20
+            },
+            {
+                "range": {
+                    "min": 100,
+                    "max": 500
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-02",
+                        "count": 35
+                    },
+                    {
+                        "date": "2024-06-28",
+                        "count": 3
+                    }
+                ],
+                "min": 3,
+                "max": 35
+            },
+            {
+                "range": {
+                    "min": 500,
+                    "max": 1000
+                },
+                "ads": [
+                    {
+                        "date": "2024-06-28",
+                        "count": 1
+                    },
+                    {
+                        "date": "2024-07-02",
+                        "count": 13
+                    }
+                ],
+                "min": 1,
+                "max": 13
+            },
+            {
+                "range": {
+                    "min": 1000,
+                    "max": 5000
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-02",
+                        "count": 62
+                    },
+                    {
+                        "date": "2024-06-28",
+                        "count": 5
+                    },
+                    {
+                        "date": "2024-05-28",
+                        "count": 5
+                    }
+                ],
+                "min": 5,
+                "max": 62
+            },
+            {
+                "range": {
+                    "min": 5000,
+                    "max": null
+                },
+                "ads": [
+                    {
+                        "date": "2024-07-02",
+                        "count": 65
+                    },
+                    {
+                        "date": "2024-06-28",
+                        "count": 4
+                    },
+                    {
+                        "date": "2024-05-28",
+                        "count": 17
+                    },
+                    {
+                        "date": "2024-06-09",
+                        "count": 1
+                    }
+                ],
+                "min": 1,
+                "max": 65
+            }
+        ],
+        "meta": {
+            "min": 1,
+            "max": 65
+        }
+    },
+    {
+        "chart_id": "word_cloud",
+        "data": [
+            {
+                "word": "the",
+                "frequency": 264
+            },
+            {
+                "word": "on",
+                "frequency": 260
+            },
+            {
+                "word": "of",
+                "frequency": 258
+            },
+            {
+                "word": "के",
+                "frequency": 224
+            },
+            {
+                "word": "की",
+                "frequency": 216
+            },
+            {
+                "word": "डिस्कवरी+",
+                "frequency": 188
+            },
+            {
+                "word": "discovery+",
+                "frequency": 172
+            },
+            {
+                "word": "पर",
+                "frequency": 168
+            },
+            {
+                "word": "केवल",
+                "frequency": 158
+            },
+            {
+                "word": "में",
+                "frequency": 102
+            },
+            {
+                "word": "and",
+                "frequency": 94
+            },
+            {
+                "word": "only",
+                "frequency": 94
+            },
+            {
+                "word": "को",
+                "frequency": 78
+            },
+            {
+                "word": "और",
+                "frequency": 76
+            },
+            {
+                "word": "देखें",
+                "frequency": 74
+            },
+            {
+                "word": "से",
+                "frequency": 70
+            },
+            {
+                "word": "Watch",
+                "frequency": 70
+            },
+            {
+                "word": "वाली",
+                "frequency": 60
+            },
+            {
+                "word": "क्या",
+                "frequency": 60
+            },
+            {
+                "word": "The",
+                "frequency": 58
+            },
+            {
+                "word": "कहानी.",
+                "frequency": 54
+            },
+            {
+                "word": "‘लव",
+                "frequency": 54
+            },
+            {
+                "word": "हत्याकांड’",
+                "frequency": 54
+            },
+            {
+                "word": "tale",
+                "frequency": 52
+            },
+            {
+                "word": "their",
+                "frequency": 50
+            },
+            {
+                "word": "in",
+                "frequency": 46
+            },
+            {
+                "word": "world",
+                "frequency": 46
+            },
+            {
+                "word": "दुनिया",
+                "frequency": 46
+            },
+            {
+                "word": "A",
+                "frequency": 44
+            },
+            {
+                "word": "पर.",
+                "frequency": 44
+            },
+            {
+                "word": "सबसे",
+                "frequency": 44
+            },
+            {
+                "word": "देखिए",
+                "frequency": 42
+            },
+            {
+                "word": "behind",
+                "frequency": 42
+            },
+            {
+                "word": "बुद्ध",
+                "frequency": 40
+            },
+            {
+                "word": "अवशेषों",
+                "frequency": 40
+            },
+            {
+                "word": "पीछे",
+                "frequency": 40
+            },
+            {
+                "word": "कहानी",
+                "frequency": 40
+            },
+            {
+                "word": "उजागर",
+                "frequency": 40
+            },
+            {
+                "word": "करने",
+                "frequency": 40
+            },
+            {
+                "word": "यात्रा",
+                "frequency": 40
+            },
+            {
+                "word": "मनोज",
+                "frequency": 40
+            },
+            {
+                "word": "बाजपेयी",
+                "frequency": 40
+            },
+            {
+                "word": "जुड़ें",
+                "frequency": 40
+            },
+            {
+                "word": "बारे",
+                "frequency": 40
+            },
+            {
+                "word": "Aghori",
+                "frequency": 40
+            },
+            {
+                "word": "Sadhus",
+                "frequency": 40
+            },
+            {
+                "word": "भारत",
+                "frequency": 38
+            },
+            {
+                "word": "Unearth",
+                "frequency": 36
+            },
+            {
+                "word": "some",
+                "frequency": 36
+            },
+            {
+                "word": "most",
+                "frequency": 36
+            },
+            {
+                "word": "complicated",
+                "frequency": 36
+            },
+            {
+                "word": "crime",
+                "frequency": 36
+            },
+            {
+                "word": "rackets",
+                "frequency": 36
+            },
+            {
+                "word": "Money",
+                "frequency": 36
+            },
+            {
+                "word": "Mafia",
+                "frequency": 36
+            },
+            {
+                "word": "Season",
+                "frequency": 36
+            },
+            {
+                "word": "3",
+                "frequency": 36
+            },
+            {
+                "word": "Discover",
+                "frequency": 34
+            },
+            {
+                "word": "&",
+                "frequency": 32
+            },
+            {
+                "word": "मानवता",
+                "frequency": 32
+            },
+            {
+                "word": "बड़े",
+                "frequency": 32
+            },
+            {
+                "word": "शांतिपूर्ण",
+                "frequency": 32
+            },
+            {
+                "word": "आयोजन",
+                "frequency": 32
+            },
+            {
+                "word": "कुंभ",
+                "frequency": 32
+            },
+            {
+                "word": "जानें",
+                "frequency": 32
+            },
+            {
+                "word": "घोटालों",
+                "frequency": 30
+            },
+            {
+                "word": "जालसाजों",
+                "frequency": 30
+            },
+            {
+                "word": "चौंकाने",
+                "frequency": 30
+            },
+            {
+                "word": "कहानियों",
+                "frequency": 30
+            },
+            {
+                "word": "रूबरू",
+                "frequency": 30
+            },
+            {
+                "word": "होंने",
+                "frequency": 30
+            },
+            {
+                "word": "‘मनी",
+                "frequency": 30
+            },
+            {
+                "word": "माफिया",
+                "frequency": 30
+            },
+            {
+                "word": "सीजन",
+                "frequency": 30
+            },
+            {
+                "word": "3'",
+                "frequency": 30
+            },
+            {
+                "word": "जनिये",
+                "frequency": 30
+            },
+            {
+                "word": "है",
+                "frequency": 30
+            },
+            {
+                "word": "स्वतंत्र",
+                "frequency": 30
+            },
+            {
+                "word": "फांसी",
+                "frequency": 30
+            },
+            {
+                "word": "सजा",
+                "frequency": 30
+            },
+            {
+                "word": "पाने",
+                "frequency": 30
+            },
+            {
+                "word": "पहली",
+                "frequency": 30
+            },
+            {
+                "word": "महिला",
+                "frequency": 30
+            },
+            {
+                "word": "कील्स",
+                "frequency": 30
+            },
+            {
+                "word": "-",
+                "frequency": 30
+            },
+            {
+                "word": "अमरोहा",
+                "frequency": 30
+            },
+            {
+                "word": "Join",
+                "frequency": 30
+            },
+            {
+                "word": "Manoj",
+                "frequency": 30
+            },
+            {
+                "word": "Bajpayee",
+                "frequency": 30
+            },
+            {
+                "word": "a",
+                "frequency": 30
+            },
+            {
+                "word": "journey",
+                "frequency": 30
+            },
+            {
+                "word": "unraveling",
+                "frequency": 30
+            },
+            {
+                "word": "Buddha's",
+                "frequency": 30
+            },
+            {
+                "word": "relics",
+                "frequency": 30
+            },
+            {
+                "word": "profund",
+                "frequency": 30
+            },
+            {
+                "word": "influence",
+                "frequency": 30
+            },
+            {
+                "word": "लिए",
+                "frequency": 28
+            },
+            {
+                "word": "Kumbh,",
+                "frequency": 26
+            },
+            {
+                "word": "largest",
+                "frequency": 26
+            },
+            {
+                "word": "peaceful",
+                "frequency": 26
+            }
+        ],
+        "meta": {}
+    },
+    {
+        "chart_id": "pages_funded",
+        "data": [
+            {
+                "pageId": "109937650579639",
+                "pageName": "discovery+",
+                "amount": 4862967,
+                "spending": {
+                    "min": 99,
+                    "max": 699999
+                }
+            }
+        ],
+        "meta": {
+            "spending": {
+                "min": 99,
+                "max": 699999
+            },
+            "amount": {
+                "min": 4862967,
+                "max": 4862967
+            }
+        }
+    }
+]
