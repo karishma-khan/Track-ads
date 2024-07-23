@@ -66,9 +66,9 @@ export const actions = {
   },
   async get_advertisers({ commit }, searchText) {
     try {
-      // let resp = homepageData
-      let resp = await fetch(`http://34.131.71.160:8085/api/overview?country=IN&start=2024-07-01&end=2024-07-03`)
-      resp = await resp.json()
+      let resp = homepageData
+      // let resp = await fetch(`http://34.131.71.160:8085/api/overview?country=IN&start=2024-07-01&end=2024-07-03`)
+      // resp = await resp.json()
       commit("set_index_data", resp);
       return resp
     } catch (error) {
