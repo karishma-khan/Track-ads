@@ -112,7 +112,7 @@ export default {
             params.forEach((item) => {
               // console.log(item);
               tooltipHtml += `
-                <p style=\"color:#fff; font-size:12px;\"><span style=\"display:inline-block;margin-right:4px;width:10px;height:10px;background-color:${this.colorArray[item.color] ? this.colorArray[item.color] : '#C5D6B6'};\"></span>Ads( ${this.rangeArray[item.color]?.min ? this.rangeArray[item.color]?.min : 0} -  ${this.rangeArray[item.color]?.max ? this.rangeArray[item.color]?.max : 99}) : ${item.data}</p>
+                <p style=\"color:#fff; font-size:12px;\"><span style=\"display:inline-block;margin-right:4px;width:10px;height:10px;background-color:${this.colorArray[item.color] ? this.colorArray[item.color] : '#C5D6B6'};\"></span>Ads( &#8377;${this.rangeArray[item.color]?.min ? this.rangeArray[item.color]?.min : 0} -  &#8377;${this.rangeArray[item.color]?.max ? this.rangeArray[item.color]?.max : 99}) : ${item.data}</p>
                 <hr>
               `;
             });

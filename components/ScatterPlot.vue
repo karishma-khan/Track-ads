@@ -127,7 +127,7 @@ export default {
               grid: {
                 display: false
               },
-              min: -10
+              min: -1000
             }
           },
           plugins: {

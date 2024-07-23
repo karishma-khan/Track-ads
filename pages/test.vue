@@ -67,7 +67,7 @@ export default {
             .attr("class", "node")
             .attr("r", d => size(d.value))
             .attr("cx", width / 2)
-            .attr("cy", d => height / 2 + (height / 2 + size(d.value))) // Adjust for semicircle
+            .attr("cy", d => height / 2 + (height / 2 - size(d.value))) // Adjust for semicircle
             .style("fill", d => color(d.region))
             .style("fill-opacity", 0.8)
             .attr("stroke", "black")
