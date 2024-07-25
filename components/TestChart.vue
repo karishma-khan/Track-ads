@@ -1,10 +1,9 @@
 <template>
   <div class="chart-wrapper">
-    <canvas id="myChart" height="360px"></canvas>
+    <canvas id="myChart" height="360px" width="800px"></canvas>
     <div id="chartjs-tooltip" class="custom-tooltip" style="opacity: 0;"></div>
   </div>
 </template>
-
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -15,13 +14,13 @@ export default {
     };
   },
   mounted() {
-    if (this.chartData)
+    if (this.chartData) {
       this.renderChart();
+    }
   },
-  watch:{
-    chartData()
-    {
-      this.renderChart()
+  watch: {
+    chartData() {
+      this.renderChart();
     }
   },
   props: ['chartData'],
@@ -32,28 +31,28 @@ export default {
       }
       const ctx = document.getElementById('myChart').getContext('2d');
       this.chartInstance = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: this.chartData.labels,
           datasets: [{
             label: '',
             data: this.chartData.values,
-            backgroundColor: 'white',
-            borderRadius: 20,
-            borderSkipped: false,
-            borderWidth: 1
+            backgroundColor: 'rgba(255, 255, 255, 1)',
+            borderColor: 'white',
+            borderWidth: 1,
+            fill: true
           }]
         },
         options: {
           responsive: true,
-          maintainAspectRatio:false,
+          maintainAspectRatio: false,
           scales: {
             y: {
               beginAtZero: true,
               ticks: {
                 color: 'white'
               },
-              title:{
+              title: {
                 display: true,
                 text: '(in million rupees)',
                 color: 'white',
@@ -96,15 +95,15 @@ export default {
         const titleLines = context.tooltip.title || [];
         const bodyLines = context.tooltip.body.map(b => b.lines);
         let innerHtml = '<div class="flex justify-between rounded-3xl">';
-        let titles = []
+        let titles = [];
         titleLines.forEach(title => {
-          titles.push(title)
+          titles.push(title);
         });
         bodyLines.forEach((body, i) => {
-          const firstStyle = `font-family: "Nunito Sans", sans-serif;font-size: 12px;font-weight: 200;color:rgb(255,255,255,0.7)`
-          const secondStyle = `font-family: "Nunito Sans", sans-serif Bold;font-size: 12px;font-weight: 800;`
-          const first  = `<div class="border-r border-[#FFFFFF4A] px-4 pr-6"><div style="${firstStyle}">Date</div><div style="${secondStyle}">${titles[i]}</div></div>`
-          const second  = `<div class="px-4 pl-6"><div style="${firstStyle}">Ad Spend</div><div style="${secondStyle}">${body}</div></div>`
+          const firstStyle = `font-family: "Nunito Sans", sans-serif; font-size: 12px; font-weight: 200; color: rgb(255, 255, 255, 0.7)`;
+          const secondStyle = `font-family: "Nunito Sans", sans-serif; font-size: 12px; font-weight: 800;`;
+          const first = `<div class="border-r border-[#FFFFFF4A] px-4 pr-6"><div style="${firstStyle}">Date</div><div style="${secondStyle}">${titles[i]}</div></div>`;
+          const second = `<div class="px-4 pl-6"><div style="${firstStyle}">Ad Spend</div><div style="${secondStyle}">${body}</div></div>`;
           innerHtml += `${first} ${second}`;
         });
         innerHtml += '</div>';
@@ -113,7 +112,7 @@ export default {
         if (!tableRoot) {
           tableRoot = document.createElement('table');
           tooltipEl.appendChild(tableRoot);
-          tooltipEl.classList.add('rounded-3xl')
+          tooltipEl.classList.add('rounded-3xl');
         }
         tableRoot.innerHTML = innerHtml;
       }
@@ -124,9 +123,8 @@ export default {
       tooltipEl.style.top = positionY + (context.tooltip.caretY - 40) + 'px';
     }
   }
-}
+};
 </script>
-
 
 <style scoped>
 .custom-tooltip {
@@ -141,11 +139,12 @@ export default {
   padding: 10px;
 }
 
-.canvas{
+.canvas {
   height: 300px !important;
+  width: 800px !important;
 }
 
-.head{
+.head {
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   font-weight: 200;
@@ -153,7 +152,7 @@ export default {
   text-align: left;
 }
 
-.tooltipValue{
+.tooltipValue {
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   font-weight: 800;
@@ -167,4 +166,3 @@ export default {
   margin-right: 10px;
 }
 </style>
-

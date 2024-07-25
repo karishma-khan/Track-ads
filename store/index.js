@@ -66,9 +66,9 @@ export const actions = {
   },
   async get_advertisers({ commit }, searchText) {
     try {
-      let resp = homepageData
-      // let resp = await fetch(`http://34.131.71.160:8085/api/overview?country=IN&start=2024-07-01&end=2024-07-03`)
-      // resp = await resp.json()
+      // let resp = homepageData
+      let resp = await fetch(`http://34.131.71.160:8085/api/overview?country=IN&start=2024-07-01&end=2024-07-03`)
+      resp = await resp.json()
       commit("set_index_data", resp);
       return resp
     } catch (error) {
@@ -91,9 +91,9 @@ export const actions = {
       try {
         let prevDate = new Date(value[0][0])
         let newDate = new Date(value[0][1])
-        let resp = dashboardData
-        // let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}`)
-        // resp = await resp.json()
+        // let resp = dashboardData
+        let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}`)
+        resp = await resp.json()
         commit("set_dashboard_data", resp);
         return resp
       } catch (error) {
@@ -108,9 +108,9 @@ export const actions = {
       let pageDetail=''
       if(value[3])
         pageDetail = '&pageId='+value[3]
-      let resp = advertiserData
-      // let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}&advertiser_ad_id=${value[2]}${pageDetail}`)
-      // resp = await resp.json()
+      // let resp = advertiserData
+      let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}&advertiser_ad_id=${value[2]}${pageDetail}`)
+      resp = await resp.json()
       commit("set_adviser_data", resp);
       return resp
     } catch (error) {

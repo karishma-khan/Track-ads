@@ -1,6 +1,6 @@
 <template>
   <div ref="chartContainer" class="chart-container">
-    <canvas ref="chartCanvas"></canvas>
+    <canvas id="chartCanvas" ref="chartCanvas"></canvas>
   </div>
 </template>
 
@@ -42,9 +42,9 @@ export default {
         });
         let innerHtml = ''
         bodyLines.forEach((body, i) => {
-          innerHtml+=`<div class="w-[300px] p-[8px]"><div class="tooltip-header border-b border-[#FFFFFF52] flex items-center gap-4 text-[15px] pb-2 mb-2"> <img src="/img/ScatterTool.svg"> ${context.tooltip.dataPoints[0].raw.advertiser} </div>`;
+          innerHtml+=`<div class="w-[300px] p-[8px]"><div class="tooltip-header border-b border-[#FFFFFF52] flex items-center gap-4 text-[15px] pb-2 mb-2"> <div class="h-[12px] w-[12px] rounded-[50%] bg-[${context.tooltip.dataPoints[0].raw.backgroundColor}]"></div> ${context.tooltip.dataPoints[0].raw.advertiser} </div>`;
           const first  = `<div class="tooltext flex justify-between items-center"><div class="text-[#FFFFFF80] flex items-start gap-2"><img src="/img/announce.svg" /><div> Total Ads<div class="text-white">${context.tooltip.dataPoints[0].raw.y}</div></div></div>`;
-          const second  = `<div><div class="text-[#FFFFFF80] flex items-start gap-2"><img src="/img/Money.svg" /><div> Total Money Spend <div class="text-white">${context.tooltip.dataPoints[0].raw.x}</div></div></div></div>`;
+          const second  = `<div><div class="text-[#FFFFFF80] flex items-start gap-2"><img src="/img/Money.svg" /><div> Spend Amount <div class="text-white">${context.tooltip.dataPoints[0].raw.x}</div></div></div></div>`;
           innerHtml += `${first}${second}`;
         });
         innerHtml += '</div></div>';
@@ -84,7 +84,8 @@ export default {
           r: radius,
           title:item.advertiser,
           backgroundColor: fillColor,
-          borderColor: fillColor,
+          borderColor: '#a9b3a0',
+          borderWidth: 2,
           hoverBackgroundColor: fillColor,
           hoverBorderColor: fillColor,
           advertiser: item.advertiser,
@@ -107,7 +108,7 @@ export default {
         },
         options: {
           responsive: true,
-          maintainAspectRatio: false,
+          // maintainAspectRatio: false,
           scales: {
             x: {
               title: {
@@ -165,7 +166,6 @@ export default {
   overflow-x: auto;
   max-width: 100%;
   position: relative;
-  height: 270px;
 }
 .tooltip-header{
 font-size: 14px;
@@ -184,5 +184,8 @@ color:white
 }
 .chart-wrapper {
   width: 100%;
+}
+#chartCanvas {
+  min-width: 700px;
 }
 </style>

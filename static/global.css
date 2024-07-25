@@ -328,6 +328,7 @@ letter-spacing: 0.03em;
     background: #000000;
     border-style: solid;
     border-color: #FFFFFF;
+    overflow: hidden;
     box-shadow: 4px 4px 21.7px 0px #00000087;
 }
 

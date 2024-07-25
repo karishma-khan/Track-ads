@@ -128,7 +128,7 @@ export default {
 #canvas {
   position: relative;
   width: 100vw;
-  height: 35vw;
+  height: 40vh;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-bottom-left-radius: 10%;
@@ -141,7 +141,7 @@ export default {
 }
 @media screen and (max-width:920px) {
   #canvas{
-    height: 60vw;
+    height: 50vh;
   }
 }
 </style>
