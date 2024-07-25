@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex justify-end gap-4 text-[14px] text-[#7e7a6f]">
+    <div class="flex my-6 md:my-2 justify-start md:justify-end gap-4 text-[14px] text-[#7e7a6f]">
       <div class="flex gap-2 items-center">
         <div class="flex items-center gap-[1px]">
           <div class="w-[12px] bg-[#4b95c9] border border-[#4b95c9] h-[4px] rounded-l-[40%] "></div>
@@ -65,6 +65,7 @@ export default {
               fill: false,
               cubicInterpolationMode: 'monotone',
               pointRadius: 3,
+              borderWidth: 5,
               pointHoverRadius: 5
             },
             {
@@ -75,6 +76,7 @@ export default {
               fill: false,
               cubicInterpolationMode: 'monotone',
               pointRadius: 3,
+              borderWidth: 5,
               pointHoverRadius: 5
             },
             {
@@ -85,6 +87,7 @@ export default {
               fill: false,
               cubicInterpolationMode: 'monotone',
               pointRadius: 3,
+              borderWidth: 5,
               pointHoverRadius: 5
             }
           ]
@@ -118,7 +121,7 @@ export default {
                 display: false
               },
               min: 0,
-              max: Math.max(...data.maleData.concat(data.femaleData).concat(data.unKnownData).map(d => d.percent))
+              max: (Math.max(...data.maleData.concat(data.femaleData).concat(data.unKnownData).map(d => d.percent)) + 2)
             }
           }
         }

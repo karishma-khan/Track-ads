@@ -9,8 +9,8 @@
     <p class="mt-3 mb-6 common-description">
         {{ description }}
     </p>
-    <div class="flex justify-between">
-          <div v-for="(color, index) in colorArray" :key="index" class="flex gap-3 items-center legendActive">
+    <div class="flex flex-wrap gap-3 md:justify-between">
+          <div v-for="(color, index) in colorArray" :key="index" class="flex mb-4 gap-3 items-center legendActive">
             <div class="h-[16px] w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ formatNumber(rangeArray[index].min) }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;' + formatNumber(rangeArray[index].max) }}
           </div>
     </div>
