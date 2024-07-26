@@ -1,6 +1,8 @@
 <template>
-  <div ref="chartContainer" class="chart-container">
-    <canvas id="chartCanvas" ref="chartCanvas"></canvas>
+  <div class="overflow-auto">
+    <div ref="chartContainer" class="chart-container flex justify-center">
+      <canvas id="chartCanvas" ref="chartCanvas"></canvas>
+    </div>
   </div>
 </template>
 
@@ -107,8 +109,8 @@ export default {
           }]
         },
         options: {
-          responsive: true,
-          // maintainAspectRatio: false,
+          responsive: false,
+          maintainAspectRatio: false,
           scales: {
             x: {
               title: {
@@ -166,26 +168,36 @@ export default {
   overflow-x: auto;
   max-width: 100%;
   position: relative;
+  min-height: 300px;
+  width: 100%;
 }
-.tooltip-header{
-font-size: 14px;
-font-weight: 600;
-line-height: 16px;
-letter-spacing: 0.02em;
-text-align: left;
-color:white
+
+#chartCanvas {
+  width: 100% !important;
+  min-width: 750px;
 }
-.tooltext{
+
+@media (max-width: 780px) {
+  .chart-container {
+    min-width: 750px;
+    min-height: 400px;
+  }
+}
+
+.tooltip-header {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: white;
+}
+
+.tooltext {
   font-size: 12px;
   font-weight: 500;
   line-height: 14px;
   letter-spacing: 0.02em;
   text-align: left;
-}
-.chart-wrapper {
-  width: 100%;
-}
-#chartCanvas {
-  min-width: 700px;
 }
 </style>
