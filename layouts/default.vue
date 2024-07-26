@@ -26,7 +26,7 @@ export default{
     const year = today.getFullYear();
     const month = today.getMonth();
     const day = today.getDate();
-    const oneMonthAgo = new Date(year, month - 4, day);
+    const oneMonthAgo = new Date(year, month , day-7);
     this.dates = [oneMonthAgo, today]
     this.$store.dispatch('set_date_range', this.dates)
     }

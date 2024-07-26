@@ -28,11 +28,12 @@ import { mapGetters } from 'vuex'
 export default {
   async mounted()
   {
-    await this.$store.dispatch("get_advertisers");
+    await this.$store.dispatch("get_advertisers",this.dateRange);
   },
   computed: {
         ...mapGetters({
             indexData: "get_index_data",
+            dateRange: "get_date",
         })
     },
 }

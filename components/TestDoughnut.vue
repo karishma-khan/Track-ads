@@ -35,7 +35,7 @@
         let res = []
         for(let item in this.chartData){
           this.amtSpend += this.chartData[item].amount
-          res.push(this.chartData[item].percent)
+          res.push(this.chartData[item]?.percent)
         }
         return res;
       },

@@ -66,8 +66,10 @@ export const actions = {
   },
   async get_advertisers({ commit }, searchText) {
     try {
+      let prevDate = new Date(searchText[0])
+      let newDate = new Date(searchText[1])
       // let resp = homepageData
-      let resp = await fetch(`http://34.131.71.160:8085/api/overview?country=IN&start=2024-07-01&end=2024-07-03`)
+      let resp = await fetch(`http://34.131.71.160:8085/api/overview?country=IN&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}`)
       resp = await resp.json()
       commit("set_index_data", resp);
       return resp

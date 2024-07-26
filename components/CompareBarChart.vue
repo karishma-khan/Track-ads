@@ -59,7 +59,7 @@ export default {
           datasets: [
             {
               label: 'Male',
-              data: data.maleData.map(d => d.percent),
+              data: data.maleData.map(d => d?.percent),
               borderColor: '#4b95c9',
               pointBackgroundColor: '#4b95c9',
               fill: false,
@@ -70,7 +70,7 @@ export default {
             },
             {
               label: 'Female',
-              data: data.femaleData.map(d => d.percent),
+              data: data.femaleData.map(d => d?.percent),
               borderColor: '#d86c86',
               pointBackgroundColor: '#d86c86',
               fill: false,
@@ -81,7 +81,7 @@ export default {
             },
             {
               label: 'Unknown',
-              data: data.unKnownData.map(d => d.percent),
+              data: data.unKnownData.map(d => d?.percent),
               borderColor: '#878582',
               pointBackgroundColor: '#878582',
               fill: false,
@@ -121,7 +121,7 @@ export default {
                 display: false
               },
               min: 0,
-              max: (Math.max(...data.maleData.concat(data.femaleData).concat(data.unKnownData).map(d => d.percent)) + 2)
+              max: (Math.max(...data.maleData.concat(data.femaleData).concat(data.unKnownData).map(d => d?.percent)) + 2)
             }
           }
         }
@@ -197,15 +197,15 @@ export default {
       for (const item of data) {
         if (item.gender === 'female') {
           for (const value of labels) {
-            femaleData.push({age_range: value , percent : (item.distribution.filter((val) => {return val.age_range == value})[0]).percent * 100})
+            femaleData.push({age_range: value , percent : (item.distribution.filter((val) => {return val.age_range == value})[0])?.percent * 100})
           }
         } else if (item.gender === 'male') {
           for (const value of labels) {
-            maleData.push({age_range: value , percent : (item.distribution.filter((val) => {return val.age_range == value})[0]).percent * 100})
+            maleData.push({age_range: value , percent : (item.distribution.filter((val) => {return val.age_range == value})[0])?.percent * 100})
           }
         } else if (item.gender === 'unknown') {
           for (const value of labels) {
-            unKnownData.push({age_range: value , percent : (item.distribution.filter((val) => {return val.age_range == value})[0]).percent * 100})
+            unKnownData.push({age_range: value , percent : (item.distribution.filter((val) => {return val.age_range == value})[0])?.percent * 100})
           }
         }
       }
