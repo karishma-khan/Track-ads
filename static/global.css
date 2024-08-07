@@ -555,3 +555,48 @@ letter-spacing: 0.03em;
     text-align: center;
     color: #00000066;
 }
+
+.compare-heading{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+.overviewHeading{
+    color: #000000B2;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+.overviewCompare{
+    border: 1px solid #C5D6B6;
+    border-radius: 0px 40px 40px 0px;
+    background-color: #1D27131A;
+    height: 53px;
+    width: 100%;
+}
+
+.compareLegends{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.compareSlider{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}

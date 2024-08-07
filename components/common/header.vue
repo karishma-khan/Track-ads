@@ -25,6 +25,9 @@
                 <div  @click="navigate('/overview')" class="md:w-1/4 menuItem min-h-[135px] border-b md:border-b-0 md:border-r border-r-0">
                     <span>Dashboard</span><span><img src="../../static/img/arrowUpRight.svg" alt=""></span>
                 </div>
+                <div  @click="navigate('/compare')" class="md:w-1/4 menuItem min-h-[135px] border-b md:border-b-0 md:border-r border-r-0">
+                    <span>Compare</span><span><img src="../../static/img/arrowUpRight.svg" alt=""></span>
+                </div>
                 <div  @click="navigate('/about')" class="md:w-1/4 menuItem min-h-[135px] border-b md:border-b-0 md:border-r border-r-0">
                     <span>About</span><span><img src="../../static/img/arrowUpRight.svg" alt=""></span>
                 </div>

@@ -119,6 +119,18 @@ export const actions = {
       console.log(error);
       return false;
     }
+  },
+  async return_advertisers_action({ commit }, value) {
+    try {
+      let prevDate = new Date(value[0][0])
+      let newDate = new Date(value[0][1])
+      let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}&advertiser_ad_id=${value[2]}`)
+      resp = await resp.json()
+      return resp
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
 }
 
