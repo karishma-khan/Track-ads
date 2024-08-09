@@ -63,8 +63,10 @@ export default{
     methods:{
         async setNation(val){
             await this.$store.dispatch('filter_by_nation',val.target.value)
-            if(this.$route.path == 'overview')
+            if(this.$route.path == '/overview')
+            {
                 await this.$store.dispatch("set_dashboard_action", [this.dateRange, val.target.value]);
+            }
             else{
                 if(this.$route.name == 'advertiser-:id')
                 {
@@ -77,7 +79,7 @@ export default{
             this.$store.dispatch('search_advertisers',{search:this.searchText,country:this.nation})
         },
         handleOutsideClick(event) {
-            if (!this.$refs.searchSec.contains(event.target) || !this.$refs.searchSecMobile.contains(event.target)) {
+            if (!this.$refs?.searchSec?.contains(event.target) || !this.$refs?.searchSecMobile?.contains(event.target)) {
                 this.isClickedOutside = true;
             }
         },

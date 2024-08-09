@@ -38,9 +38,9 @@ export default {
             label: '',
             data: this.chartData.values,
             backgroundColor: 'rgba(255, 255, 255, 1)',
-            // cubicInterpolationMode: 'monotone',
+            cubicInterpolationMode: 'monotone',
             fill: true,
-            lineTension: 0.2,
+            // lineTension: 0.2,
             borderColor: 'white',
             borderWidth: 1,
           }]

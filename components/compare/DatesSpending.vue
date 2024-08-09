@@ -11,31 +11,42 @@
         </p>
         <div class="flex justify-center items-center gap-6 h-[48px] w-full bg-[#0000001A] border-y border-[#00000033]">
             <div @click="isActive = 1" :class="isActive == 2? 'bg-[white] text-[black]' : 'bg-[#FFFFFF1A] text-[#0000001A]'" class="h-[24px] w-[24px] rounded-[5px] flex justify-center items-center "> <span class="mdi-18px mdi mdi-chevron-left"></span> </div>
-            <div class="compareSlider text-[white]">12 Mar 2022 - 16 Mar 2022</div>
+            <div class="compareSlider text-[white]">  {{ isActive == 1 ? compareItems[0] : compareItems[1] }} </div>
             <div @click="isActive = 2" :class="isActive == 1? 'bg-[white] text-[black]' : 'bg-[#FFFFFF1A] text-[#0000001A]'" class="h-[24px] w-[24px] rounded-[5px] flex justify-center items-center "> <span class="mdi-18px mdi mdi-chevron-right"></span> </div>
         </div>
         <div>
-            <!-- <test-chart v-if="chartData.length > 0" :chartData="getChartData"></test-chart> -->
-            <!-- <no-data v-else></no-data> -->
+            <test-chart v-if="(isActive == 1 ? getFirstChartData?.values : getSecondChartData?.values).length > 0" :chartData="isActive == 1 ? getFirstChartData : getSecondChartData"></test-chart>
+            <no-data v-else></no-data>
         </div>
     </div>
 </template>
 <script>
 // import containerBox from './common/containerBox.vue'
 export default{
-    props:['chartData'],
+    props:['chartData','compareItems'],
     // components:{
     //     containerBox
     // },
     computed:{
-        getChartData(){
+        getFirstChartData(){
             let labels = []
             let values= []
-            for( let item in this.chartData)
+            for( let item in this.chartData[0])
             {
-                let newDate = new Date(this.chartData[item].date)
+                let newDate = new Date(this.chartData[0][item].date)
                 labels.push(newDate.getDate() + ' ' + this.monthNames[newDate.getMonth()])
-                values.push(this.chartData[item]?.spending)
+                values.push(this.chartData[0][item]?.spending)
+            }
+            return { labels, values }
+        },
+        getSecondChartData(){
+            let labels = []
+            let values= []
+            for( let item in this.chartData[1])
+            {
+                let newDate = new Date(this.chartData[1][item].date)
+                labels.push(newDate.getDate() + ' ' + this.monthNames[newDate.getMonth()])
+                values.push(this.chartData[1][item]?.spending)
             }
             return { labels, values }
         }

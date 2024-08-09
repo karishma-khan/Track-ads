@@ -97,7 +97,7 @@ export default {
       tooltip: {
         trigger: 'axis',
         formatter: (params) => {
-          console.log(params);
+          // console.log(params);
           let tooltipHtml = `<div><div style=\"background-color:black; padding: 10px; border-radius: 5px;\"><p style=\"color:#fff; font-size:14px; font-weight: bold;\">${params[0].name}</p>`;
           params.forEach((item) => {
             // console.log(item);

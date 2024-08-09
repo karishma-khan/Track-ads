@@ -20,6 +20,9 @@ export default {
     }
   },
   methods: {
+    formatNumber(value) {
+        return new Intl.NumberFormat('en-US').format(value);
+    },
     customTooltip(context) {
       let tooltipEl = document.getElementById('chartjs-tooltip');
       if (!tooltipEl) {
@@ -46,7 +49,7 @@ export default {
         bodyLines.forEach((body, i) => {
           innerHtml+=`<div class="w-[300px] p-[8px]"><div class="tooltip-header border-b border-[#FFFFFF52] flex items-center gap-4 text-[15px] pb-2 mb-2"> <div class="h-[12px] w-[12px] rounded-[50%] bg-[${context.tooltip.dataPoints[0].raw.backgroundColor}]"></div> ${context.tooltip.dataPoints[0].raw.advertiser} </div>`;
           const first  = `<div class="tooltext flex justify-between items-center"><div class="text-[#FFFFFF80] flex items-start gap-2"><img src="/img/announce.svg" /><div> Total Ads<div class="text-white">${context.tooltip.dataPoints[0].raw.y}</div></div></div>`;
-          const second  = `<div><div class="text-[#FFFFFF80] flex items-start gap-2"><img src="/img/Money.svg" /><div> Spend Amount <div class="text-white">${context.tooltip.dataPoints[0].raw.x}</div></div></div></div>`;
+          const second  = `<div><div class="text-[#FFFFFF80] flex items-start gap-2"><img src="/img/Money.svg" /><div> Spend Amount <div class="text-white">${this.formatNumber(context.tooltip.dataPoints[0].raw.x)}</div></div></div></div>`;
           innerHtml += `${first}${second}`;
         });
         innerHtml += '</div></div>';

@@ -22,7 +22,8 @@
             <div v-for="(item,index) in chartData" :key="index">
                 <div v-if="item.param !== 'advertisers'" class="flex justify-between common-tile py-5">
                     <div class="flex items-center gap-2">
-                        <div class="h-[14px] text-[14px] md:text-[16px] font-[500] w-[14px] rounded-[50%] capitalize" :class="item.param == 'impressions' ? 'bg-[#1D2713]' : item.param == 'money_spent' ? 'bg-[#748762]' : 'bg-[#A3BB8F]'"></div>
+                        <div v-if="item.param != 'cost_per_ad'" class="h-[14px] w-[14px] rounded-[50%] capitalize" :class="item.param == 'impressions' ? 'bg-[#1D2713]' : item.param == 'money_spent' ? 'bg-[#748762]' : 'bg-[#A3BB8F]'"></div>
+                        <div class="text-[14px] md:text-[16px] font-[500] capitalize text-[#808080]">{{ item.param == 'cost_per_ad' ? 'Per Ad Cost' : item.param }}</div>
                     </div>
                     <div class="text-[16px] md:text-[20px] font-[900]"> {{ item.param == 'money_spent' ? '&#8377;' : '' }}  {{ formatNumber(item.value) }}</div>
                 </div>

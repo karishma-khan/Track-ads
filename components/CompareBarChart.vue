@@ -129,7 +129,6 @@ export default {
     },
     customTooltip(context) {
       let tooltipEl = document.getElementById('chartjs-tooltip');
-      console.log(context.tooltip);
       if (!tooltipEl) {
         tooltipEl = document.createElement('div');
         tooltipEl.id = 'chartjs-tooltip';

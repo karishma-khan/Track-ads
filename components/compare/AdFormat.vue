@@ -8,7 +8,7 @@
                 </span>
             </div>
             <p class="mt-3 mb-6 common-description">
-                {{ description }} {{ totalAmount() }}
+                {{ description }}
             </p>
         </div>
         <div class="flex items-center">

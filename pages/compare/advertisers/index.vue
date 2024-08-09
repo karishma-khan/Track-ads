@@ -39,6 +39,9 @@
             </div>
             <compare-word-cloud :compareItems="[adv1.advertiser, adv2.advertiser]" :chartData="[firstAdvData?.word_cloud, secondAdvData?.word_cloud]" ></compare-word-cloud>
         </div>
+        <div v-else-if="noData" class="bg-[#326284] text-white text-black common-container">
+            <no-data></no-data>
+        </div>
     </div>
 </template>
 <script>
@@ -51,11 +54,15 @@ export default{
         {
             this.loading = true
             this.dataKey++
-            this.firstAdvData = await this.processData(await this.$store.dispatch('return_advertisers_action',[this.dateRange, this.nation,this.adv1.advertiser_ad_id]))
-            // this.firstAdvData = await this.processData(this.firstAdvData)
-            this.secondAdvData = await this.processData(await this.$store.dispatch('return_advertisers_action',[this.dateRange, this.nation,this.adv2.advertiser_ad_id]))
-            // console.log('store response',this.secondAdvData);
-            // this.secondAdvData = await this.processData(this.secondAdvData)
+            this.firstAdvData = await this.$store.dispatch('return_advertisers_action',[this.dateRange, this.nation,this.adv1.advertiser_ad_id])
+            this.secondAdvData = await this.$store.dispatch('return_advertisers_action',[this.dateRange, this.nation,this.adv2.advertiser_ad_id])
+            this.firstAdvData =  this.firstAdvData ? await this.processData( this.firstAdvData) : false
+            this.secondAdvData = this.secondAdvData ? await this.processData(this.secondAdvData) : false
+            console.log(this.firstAdvData == false,this.secondAdvData == false);
+            if(!this.firstAdvData ||!this.secondAdvData)
+            {
+                this.noData = true
+            }
             this.isData = true
             this.loading = false
         },
@@ -98,6 +105,7 @@ export default{
     },
     data(){
         return{
+            noData:false,
             // testData:advData,
             loading:false,
             dataKey:0,
