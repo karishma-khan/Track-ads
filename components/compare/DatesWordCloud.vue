@@ -41,25 +41,27 @@
             return {
                 title:'Most Used Phrases',
                 rotate: { from: 0, to: 0 },
-                maxFreq:0,
+                maxFirstFreq:0,
+                maxSecondFreq:0,
                 firstWords:{},
                 secondWords: [],
                 colorFirstArray:[],
                 colorSecondArray:[],
                 options: {},
                 loading:true,
-                isActive:1
+                isActive:1,
+                randomColor:['#4CB2AC', '#326284', '#162C3B', '#041520' ]
             };
         },
         async mounted(){
-            this.firstWords = await this.getMAx(this.chartData[0]);
-            this.secondWords = await this.getMAx(this.chartData[1]);
-            this.colorFirstArray = await this.getColors(this.firstWords);
-            this.colorSecondArray = await this.getColors(this.secondWords);
+            this.firstWords = await this.getMAx(this.chartData[0],true);
+            this.secondWords = await this.getMAx(this.chartData[1],false);
+            this.colorFirstArray = await this.getColors(this.firstWords,true);
+            this.colorSecondArray = await this.getColors(this.secondWords,false);
             this.loading = false
         },
         methods:{
-            getMAx(data)
+            getMAx(data,isFirst)
             {
                 let words = []
                 for(let item in data?.data)
@@ -68,20 +70,22 @@
                         name:data?.data[item]?.word,
                         value:data?.data[item]?.frequency * 10
                     })
-                    if(data?.data[item]?.frequency > this.maxFreq)
+                    if(data?.data[item]?.frequency > (isFirst ? this.maxFirstFreq : this.maxSecondFreq))
                     {
-                        this.maxFreq = (data?.data[item]?.frequency * 10)
+                        if(isFirst)
+                            this.maxFirstFreq = (data?.data[item]?.frequency * 10)
+                        else
+                            this.maxSecondFreq = (data?.data[item]?.frequency * 10)
                     }
                 }
                 return words
             },
-            async getColors(data) {
-                await this.getMAx()
+            async getColors(data,isFirst) {
                 let temp = []
-                let first = Math.floor(this.maxFreq/4)
-                let second = Math.floor(this.maxFreq/2)
-                let third = Math.floor(this.maxFreq * (3/4))
-                let forth = Math.floor(this.maxFreq)
+                const step = Math.floor((isFirst ? this.maxFirstFreq : this.maxSecondFreq)/4);  // Calculate the size of each part
+                const first = step;
+                const second = 2 * step;
+                const third = 3 * step;
                 for (let i = 0; i < data.length; i++) {
                     let tempVal = data[i].value
                     let tempColor = tempVal <= first ? '#4CB2AC' : tempVal <= second ? '#326284' : tempVal <= third ? '#162C3B' : '#041520'

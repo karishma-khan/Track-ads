@@ -25,6 +25,17 @@ export default {
   },
   props: ['chartData'],
   methods: {
+    formatNumber(value) {
+      if (value >= 1e9) {
+          return (value / 1e9).toFixed(1) + "b+";
+      } else if (value >= 1e6) {
+          return (value / 1e6).toFixed(1) + "m+";
+      } else if (value >= 1e3) {
+          return (value / 1e3).toFixed(1) + "k+";
+      } else {
+          return new Intl.NumberFormat('en-US').format(value);
+      }
+    },
     renderChart() {
       if (this.chartInstance) {
         this.chartInstance.destroy();
@@ -38,9 +49,10 @@ export default {
             label: '',
             data: this.chartData.values,
             backgroundColor: 'rgba(255, 255, 255, 1)',
-            cubicInterpolationMode: 'monotone',
+            // cubicInterpolationMode: 'monotone',
+            // tension: 0.3,
             fill: true,
-            // lineTension: 0.2,
+            lineTension: 0.2,
             borderColor: 'white',
             borderWidth: 1,
           }]
@@ -52,7 +64,8 @@ export default {
             y: {
               beginAtZero: true,
               ticks: {
-                color: 'white'
+                color: 'white',
+                callback: this.formatNumber, // Apply the number formatting to x-axis labels
               },
               title: {
                 display: true,
@@ -62,7 +75,7 @@ export default {
             },
             x: {
               ticks: {
-                color: 'white'
+                color: 'white',
               }
             }
           },

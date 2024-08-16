@@ -70,7 +70,8 @@ export default{
             else{
                 if(this.$route.name == 'advertiser-:id')
                 {
-                    await this.$store.dispatch("set_advertisers_action", [this.dateRange, val.target.value, this.$route.params.id]);
+                    this.$router.push('/overview')
+                    // await this.$store.dispatch("set_advertisers_action", [this.dateRange, val.target.value, this.$route.params.id]);
                 }
             }
         },

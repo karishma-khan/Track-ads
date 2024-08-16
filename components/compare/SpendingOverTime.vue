@@ -17,7 +17,7 @@
                 <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#0B2E48' }"></div> {{ compareItems[1] }}
             </div>
         </div>
-        <div>
+        <div class="mt-6">
             <div v-if="chartData.length > 0" class="chart-container">
                 <canvas ref="lineChartCanvasSOT" :key="'sot'+mapidx"></canvas>
             </div>

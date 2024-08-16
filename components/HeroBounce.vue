@@ -1,7 +1,6 @@
 <template>
   <div id="container" class="Herocontainer" ref="container">
-    <div id="canvas" ref="canvas">
-      <div v-for="(ball, idx) in balls" :ref="'ball'+idx" :key="idx" :style="ball.style" class="ball" @click="toggleHover(ball,true)"></div>
+    <div id="canvasHome" ref="forceGraph">
       <div v-if="isToolTip" class="absolute bottom-0 w-full flex justify-center">
       <div class="z-[20] px-[20px] h-[250px] w-[300px] bg-black rounded-t-[24px] text-left p-[10px] text-white flex flex-col justify-evenly" style="max-width: 300px !important;">
         <div class="flex justify-between">
@@ -16,10 +15,6 @@
           <div class="heroToolHead">&#8377; {{ toolTipVal.amount }}</div>
           <div class="heroToolValue">Total Ads Spent</div>
         </div>
-        <!-- <div class="my-2">
-          <div class="heroToolHead">7.883M+</div>
-          <div class="heroToolValue">Total Impressions</div>
-        </div> -->
       </div>
     </div>
     </div>
@@ -33,16 +28,9 @@ export default {
   data() {
     return {
       balls: [],
-      numCircles: 10,
-      speed: 2,
       isToolTip:false,
       infoDetail:false,
       toolTipVal:0,
-      canvasWidth: null,
-      canvasHeight: null,
-      gravity: 0.1,  // Set default gravity
-      damping: 1,  // Set default damping
-      canvas: null,
       monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
       randomRadius: [20, 50, 80, 150, 250],
       randomColors: ['#FBE69F','#C5D6B6','#4CB2AC','#326284','#133751'],
@@ -56,24 +44,107 @@ export default {
   mounted() {
     this.maxCount = Math.max(...this.indexData.map(item => item.count));
     this.maxAmount = Math.max(...this.indexData.map(item => item.amount));
-    this.initializeCanvas();
     this.addCircles();
-    this.moveBalls();
+    this.createForceDirectedGraph();
   },
   methods: {
+    createForceDirectedGraph() {
+    const width = window.innerWidth;
+    const height = window.innerHeight * 0.8;
+    const radius = (height/2);
+    const centerX = width / 2;
+    const centerY = 20;
+    const bounceLineY = (height / 2);
+
+    const svg = d3.select(this.$refs.forceGraph)
+      .append('svg')
+      .attr('width', width)
+      .attr('height', (height/3)*2);
+
+    const node = svg.selectAll('circle')
+      .data(this.balls)
+      .enter().append('circle')
+      .attr('r', d => d.radius / 2)
+      .attr('cx', d => d.x)  // Set initial x coordinate
+      .attr('cy', d => d.y)
+      .attr('fill', d => d.backgroundColor)
+      .style('stroke', '#a9b3a0')
+      .style('stroke-width', 2)
+      .on('click', (event, d) => this.toggleHover(d,true));
+
+    const bounceDuration = 1000;
+    const returnDuration = 1000; 
+    node.transition()
+      .duration(bounceDuration)
+      .attr('cy', bounceLineY)
+      .on('end', () => {
+        node.transition()
+          .duration(returnDuration)
+          .attr('cx', centerX)
+          .attr('cy', centerY)
+          .on('end', () => {
+            const simulation = d3.forceSimulation(this.balls)
+              .force('x', d3.forceX(centerX).strength(0))
+              .force('y', d3.forceY(centerY).strength(0))
+              .force('collide', d3.forceCollide().radius(d => (d.radius / 2) + 2).iterations(16))
+              .force('charge', d3.forceManyBody().strength(-1))
+              .on('tick', ticked);
+
+            function ticked() {
+              node
+                .attr('cx', d => {
+                  const dx = d.x - centerX;
+                  const dy = d.y - centerY;
+                  const distance = Math.sqrt(dx * dx + dy * dy);
+                  if (d.y < centerY) d.y = centerY + Math.abs(centerY - d.y);
+                  if (distance > radius) {
+                    const angle = Math.atan2(d.y - centerY, d.x - centerX);
+                    d.x = centerX + (radius) * Math.cos(angle);
+                    d.y = centerY + (radius) * Math.sin(angle);
+                  }
+                  return d.x;
+                })
+                .attr('cy', d => d.y);
+            }
+
+            function dragstarted(event, d) {
+              if (!event.active) simulation.alphaTarget(0.3).restart();
+              d.fx = d.x;
+              d.fy = d.y;
+            }
+
+            function dragged(event, d) {
+              d.fx = event.x;
+              d.fy = event.y;
+            }
+
+            function dragended(event, d) {
+              if (!event.active) simulation.alphaTarget(0);
+              d.fx = null;
+              d.fy = null;
+            }
+
+            node.call(d3.drag()
+              .on('start', dragstarted)
+              .on('drag', dragged)
+              .on('end', dragended));
+          });
+      });
+  },
     toggleHover(circle,bool)
     {
       this.isToolTip = bool
       this.toolTipVal = circle
     },
     addCircles() {
+      const width = window.innerWidth;
+      const height = window.innerHeight * 0.8;
       this.balls = this.indexData.map((item, idx) => {
         let radius = Math.floor(Math.random() * (91 - 39 + 1)) + 39;
         return {
-          x: Math.random() * this.canvasWidth,
-          y: Math.random() * this.canvasHeight,
-          dx: Math.random() * 2 - 1,
-          dy: Math.random() * 2 - 1,
+          i:idx,
+          x: Math.random() * width,
+          y: Math.random() * (height/4),
           radius: radius,
           style: {
             width: `${radius}px`,
@@ -82,6 +153,7 @@ export default {
             top: '0px',
             backgroundColor: this.randomColors[Math.floor(Math.random() * this.randomColors.length)],
           },
+          backgroundColor: this.randomColors[Math.floor(Math.random() * this.randomColors.length)],
           id: item.advertiser_ad_id,
           name: item.advertiser,
           amount: item.amount,
@@ -89,58 +161,28 @@ export default {
         };
       });
     },
-    moveBalls() {
-      this.balls.forEach(ball => {
-        ball.dy += this.gravity;
-        ball.x += ball.dx;
-        ball.y += ball.dy;
-
-        const radius = ball.radius;
-
-        // Check horizontal boundaries
-        if (ball.x - radius <= 0 || ball.x + radius >= this.canvasWidth) {
-          ball.dx = -ball.dx * this.damping;
-          ball.x = Math.max(radius, Math.min(ball.x, this.canvasWidth - radius));
-        }
-
-        // Check vertical boundaries
-        if (ball.y - radius <= 0 || ball.y + radius >= this.canvasHeight) {
-          ball.dy = -ball.dy * this.damping;
-          ball.y = Math.max(radius, Math.min(ball.y, this.canvasHeight - radius));
-        }
-
-        ball.style.left = `${ball.x - radius}px`;
-        ball.style.top = `${ball.y - radius}px`;
-      });
-
-      requestAnimationFrame(() => this.moveBalls());
-    },
-    initializeCanvas() {
-      this.canvas = this.$refs.canvas;
-      this.canvasWidth = this.canvas.offsetWidth+40;
-      this.canvasHeight = this.canvas.offsetHeight + 10;
-    },
   },
 };
 </script>
 
-<style>
-#canvas {
+<style scoped>
+#canvasHome {
   position: relative;
-  width: 100vw;
-  height: 40vh;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
 }
 .ball {
   position: absolute;
   border-radius: 50%;
   background-color: red;
 }
+svg {
+  display: block;
+  margin: auto;
+  width: 100vw;
+  overflow: hidden;
+}
 @media screen and (max-width:920px) {
-  #canvas{
+  #canvasHome{
     height: 50vh;
   }
 }

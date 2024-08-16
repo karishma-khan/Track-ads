@@ -21,7 +21,15 @@ export default {
   },
   methods: {
     formatNumber(value) {
-        return new Intl.NumberFormat('en-US').format(value);
+      if (value >= 1e9) {
+          return (value / 1e9).toFixed(1) + "b+";
+      } else if (value >= 1e6) {
+          return (value / 1e6).toFixed(1) + "m+";
+      } else if (value >= 1e3) {
+          return (value / 1e3).toFixed(1) + "k+";
+      } else {
+          return new Intl.NumberFormat('en-US').format(value);
+      }
     },
     customTooltip(context) {
       let tooltipEl = document.getElementById('chartjs-tooltip');
@@ -120,6 +128,9 @@ export default {
                 display: true,
                 text: 'Money Spent (in millions)'
               },
+              ticks: {
+                callback: this.formatNumber, // Apply the number formatting to x-axis labels
+              },
               min: 0
             },
             y: {
@@ -127,13 +138,16 @@ export default {
                 display: true,
                 text: 'No of Ads'
               },
-              ticks:{
-                display:false
+              ticks: {
+                callback: this.formatNumber, // Apply the number formatting to x-axis labels
               },
+              // ticks:{
+              //   display:false
+              // },
               grid: {
                 display: false
               },
-              min: -1000
+              min: 0
             }
           },
           plugins: {

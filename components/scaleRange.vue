@@ -6,7 +6,7 @@
         </div>
         <div class="flex w-full justify-between">
             <div v-for="(text, index) in range" :key="index" class="w-1/5 color-number relative left-[-10px]">
-             {{index == (range.length - 1) ? '+' : '' }} {{ formatNumber(text.toFixed(0)) }}
+              {{ formatNumber(text.toFixed(0)) }}
             </div>
         </div>
     </div>
@@ -22,7 +22,15 @@
     },
     methods:{
       formatNumber(value) {
-        return new Intl.NumberFormat('en-US').format(value);
+        if (value >= 1e9) {
+            return (value / 1e9).toFixed(1) + "b+";
+        } else if (value >= 1e6) {
+            return (value / 1e6).toFixed(1) + "m+";
+        } else if (value >= 1e3) {
+            return (value / 1e3).toFixed(1) + "k+";
+        } else {
+            return new Intl.NumberFormat('en-US').format(value)+ "+";
+        }
       }
     }
   }

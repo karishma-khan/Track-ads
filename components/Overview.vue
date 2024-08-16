@@ -11,8 +11,8 @@
                 {{ description }}
             </p>
         </div>
-        <div v-if="chartData">
-            <div class="flex justify-between common-tile py-5" v-for="(item,index) in chartData" :key="index">
+        <div class="grow flex flex-col justify-between" v-if="chartData">
+            <div class="flex justify-between common-tile py-5 grow items-center" v-for="(item,index) in chartData" :key="index">
                 <div class="tile-label capitalize">{{ item.param }}</div>
                 <div class="tile-value"> {{ item.param == 'Money Spent' ? '&#8377;' : '' }}  {{ formatNumber(item.value) }}</div>
             </div>
@@ -35,7 +35,15 @@ export default{
     },
     methods:{
         formatNumber(value) {
-            return new Intl.NumberFormat('en-US').format(value);
+            if (value >= 1e9) {
+                return (value / 1e9).toFixed(1) + "b+";
+            } else if (value >= 1e6) {
+                return (value / 1e6).toFixed(1) + "m+";
+            } else if (value >= 1e3) {
+                return (value / 1e3).toFixed(1) + "k+";
+            } else {
+                return new Intl.NumberFormat('en-US').format(value);
+            }
         }
     },
     data(){
