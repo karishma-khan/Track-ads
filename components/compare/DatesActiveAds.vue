@@ -8,9 +8,6 @@
       </div>
       <p class="mt-3 mb-6 common-description">
           {{ description }}
-          <!-- {{ firstSeriesData  }}
-          <hr>
-          {{ secondSeriesData }} -->
       </p>
       <div class="flex flex-wrap gap-3 md:justify-between">
             <div v-for="(color, index) in colorArray" :key="index" class="flex mb-4 gap-3 items-center legendActive">
@@ -22,7 +19,8 @@
         <div class="compareSlider"> {{ isActive == 1 ? compareItems[0] : compareItems[1] }} </div>
         <div @click="isActive = 2" :class="isActive == 1? 'bg-[black] text-[white]' : 'bg-[#0000001A] text-[#FFFFFF]'" class="h-[24px] w-[24px] rounded-[5px] flex justify-center items-center "> <span class="mdi-18px mdi mdi-chevron-right"></span> </div>
       </div>
-      <div v-if="chartData" ref="chart" style="width: 100%; height: 400px;"></div>
+      <compare-stream-graph v-if="isActive == 1 && chartData[0]" :chartData="chartData[0]"></compare-stream-graph>
+      <compare-stream-second-graph v-else-if="isActive == 2 && chartData[1]" :chartData="chartData[1]"></compare-stream-second-graph>
       <no-data v-else></no-data>
     </div>
   </template>
@@ -58,110 +56,17 @@
         }
       },
       formatDate(objDate)
-          {
-              let date = new Date(objDate)
-              const day = date.getDate();
-              const monthNames = ["January", "February", "March", "April", "May", "June",
-              "July", "August", "September", "October", "November", "December"];
-              const monthIndex = date.getMonth();
-              const month = monthNames[monthIndex];
-              const year = date.getFullYear();
-              return `${day} ${month} ${year}`;
-          },
-      processData(dataObj) {
-        this.flag = false
-        let range = null
-        let processedData = dataObj.map((item, index) => {
-          if(!this.flag)
-          {
-            this.flag = true
-            range = item?.ads?.map((ad,idx) => {
-            return this.formatDate(ad?.date)
-          })
-          }
-          let count = item?.ads?.map((ad,idx) => {
-            return ad?.count
-          })
-          return {
-            type: 'line',
-            stack: 'Total',
-            smooth: true,
-            lineStyle: {
-              width: 1,
-              color:'white'
-            },
-            showSymbol: false,
-            label: {
-              show: true,
-              position: 'top'
-            },
-            areaStyle: {
-              opacity: 1,
-              color: this.colorArray[index]
-            },
-            seriesName:this.rangeArray[index].min + '-' + this.rangeArray[index].max,
-            color: index,
-            emphasis: {
-              focus: 'series'
-            },
-            data: count
-          }
-        });
-        return [processedData,range];
+      {
+        let date = new Date(objDate)
+        const day = date.getDate();
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+        const monthIndex = date.getMonth();
+        const month = monthNames[monthIndex];
+        const year = date.getFullYear();
+        return `${day} ${month} ${year}`;
       },
-      setChart()
-      {
-        const echarts = require('echarts');
-        if (this.chartInstance) {
-          this.chartInstance.dispose();
-        }
-        this.chartInstance = echarts.init(this.$refs.chart);
-        // const chart = echarts.init(this.$refs.chart);
-    
-        const option = {
-          grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '10%',
-            containLabel: true
-          },
-          xAxis: [
-            {
-              type: 'category',
-              name: 'Ads spending range',
-              nameLocation: 'middle',
-              nameTextStyle: {
-                padding: [10, 0, 0, 0], 
-              },
-              boundaryGap: false,
-              data: this.isActive ? this.dateFirstRange : this.dateSecondRange
-            }
-          ],
-          yAxis: [
-            {
-              name: 'Number of Ads',
-              type: 'value'
-            }
-          ],
-          series: this.isActive ? this.firstSeriesData : this.secondSeriesData
-        };
-      
-        this.chartInstance.setOption(option);
-        window.addEventListener('resize', () => { this.chartInstance.resize(); });
-      }
     },
-    watch:
-    {
-      isActive()
-      {
-        this.setChart()
-      }
-    },
-    async mounted() {
-      [this.firstSeriesData,this.dateFirstRange] = await this.processData(this.chartData[0]);
-      [this.secondSeriesData,this.dateSecondRange] = await this.processData(this.chartData[1])
-      this.setChart()
-    }
   };
   </script>
   
