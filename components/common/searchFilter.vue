@@ -12,7 +12,7 @@
                 </div>
                 <date-range-picker class="ml-4"></date-range-picker>
             </div>
-            <div class="hidden md:block" ref="searchSec">
+            <div v-if="$route.path!='/compare/advertisers'" class="hidden md:block" ref="searchSec">
                 <div class="relative">
                     <input type="text" class="chip searchAdv" v-model="searchText" @input="search()" style="padding-left: 34px;" placeholder="Search for an advertiser here...">
                     <span class="mdi mdi-magnify absolute left-2 top-1 text-2xl"></span>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="common-container bg-white block md:hidden" style="padding: 10px;">
+        <div v-if="$route.path!='/compare/advertisers'" class="common-container bg-white block md:hidden" style="padding: 10px;">
             <div class="flex justify-center">
                 <div class=" w-[90%]" ref="searchSecMobile">
                     <div class="relative">

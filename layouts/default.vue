@@ -17,6 +17,11 @@ export default{
                     return 'mt-[207px]'
                 return 'mt-[134px]'
             }
+            else
+            if(routeData.path == '/compare/advertisers')
+            {
+                return 'mt-[134px]'
+            }
             return 'mt-[60px]'
         }
     },

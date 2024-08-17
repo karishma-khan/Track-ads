@@ -22,11 +22,11 @@ export default {
   methods: {
     formatNumber(value) {
       if (value >= 1e9) {
-          return (value / 1e9).toFixed(1) + "b+";
+          return (value / 1e9).toFixed(1) + "b";
       } else if (value >= 1e6) {
-          return (value / 1e6).toFixed(1) + "m+";
+          return (value / 1e6).toFixed(1) + "m";
       } else if (value >= 1e3) {
-          return (value / 1e3).toFixed(1) + "k+";
+          return (value / 1e3).toFixed(1) + "k";
       } else {
           return new Intl.NumberFormat('en-US').format(value);
       }
@@ -126,7 +126,7 @@ export default {
             x: {
               title: {
                 display: true,
-                text: 'Money Spent (in millions)'
+                text: 'Money Spent (in rupees)'
               },
               ticks: {
                 callback: this.formatNumber, // Apply the number formatting to x-axis labels

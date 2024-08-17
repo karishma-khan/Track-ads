@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <common-search-filter v-if="$route.path=='/overview' || $route.name=='advertiser-:id'"></common-search-filter>
+        <common-search-filter v-if="$route.path=='/overview' || $route.name=='advertiser-:id' || $route.path=='/compare/advertisers'"></common-search-filter>
     </div>
 </template>
 <script>

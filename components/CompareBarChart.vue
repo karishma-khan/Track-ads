@@ -169,8 +169,9 @@ export default {
       const positionY = context.chart.canvas.offsetTop;
       const positionX = context.chart.canvas.offsetLeft;
       tooltipEl.style.opacity = 1;
-      tooltipEl.style.left = positionX + context.tooltip.caretX + 'px';
+      tooltipEl.style.left = ((window.innerWidth < 460) || (positionX + context.tooltip.caretX) < 160 ? 160 : (positionX + context.tooltip.caretX)) + 'px';
       tooltipEl.style.top = positionY + (context.tooltip.caretY - 40) + 'px';
+      console.log(window.innerWidth < 460);
     }
   },
   mounted() {

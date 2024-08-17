@@ -98,7 +98,7 @@ export default{
 <style>
 .inactive-btn{
     width: 130px;
-    height: 34px;
+    min-height: 34px;
     text-align: center;
     border-radius: 6px;
     border: 1px 0px 0px 0px;
@@ -106,7 +106,7 @@ export default{
 }
 .active-btn{
     width: 112px;
-    height: 34px;
+    min-height: 34px;
     text-align: center;
     border-radius: 6px;
     border: 1px 0px 0px 0px;

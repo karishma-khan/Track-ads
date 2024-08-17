@@ -128,10 +128,10 @@ letter-spacing: 0.03em;
 }
 
 .heroInfo{
-    width: 204px;
-    height: 120px;
-    padding: 11px 12px 0px 12px;
+    width: 280px;
+    padding: 11px 12px 11px 12px;
     border-radius: 8px;
+    background-color: black;
     box-shadow: 4px 4px 21.7px 0px #00000087
 }
 

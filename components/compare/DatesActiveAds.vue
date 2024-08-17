@@ -11,7 +11,7 @@
       </p>
       <div class="flex flex-wrap gap-3 md:justify-between">
             <div v-for="(color, index) in colorArray" :key="index" class="flex mb-4 gap-3 items-center legendActive">
-              <div class="h-[16px] w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ formatNumber(rangeArray[index].min) }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;' + formatNumber(rangeArray[index].max) }}
+              <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ formatNumber(rangeArray[index].min) }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;' + formatNumber(rangeArray[index].max) }}
             </div>
       </div>
       <div class="flex justify-center items-center gap-6 h-[48px] w-full bg-[#0000001A] border-y border-[#00000033]">
@@ -59,12 +59,12 @@
       {
         let date = new Date(objDate)
         const day = date.getDate();
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sepr", "Oct", "Nov", "Dec"];
         const monthIndex = date.getMonth();
         const month = monthNames[monthIndex];
         const year = date.getFullYear();
-        return `${day} ${month} ${year}`;
+        return `${day} ${month}`;
       },
     },
   };

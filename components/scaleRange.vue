@@ -23,11 +23,11 @@
     methods:{
       formatNumber(value) {
         if (value >= 1e9) {
-            return (value / 1e9).toFixed(1) + "b+";
+            return (value / 1e9).toFixed(1) + "b";
         } else if (value >= 1e6) {
-            return (value / 1e6).toFixed(1) + "m+";
+            return (value / 1e6).toFixed(1) + "m";
         } else if (value >= 1e3) {
-            return (value / 1e3).toFixed(1) + "k+";
+            return (value / 1e3).toFixed(1) + "k";
         } else {
             return new Intl.NumberFormat('en-US').format(value)+ "+";
         }

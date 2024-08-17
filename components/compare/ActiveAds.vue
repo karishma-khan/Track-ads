@@ -10,11 +10,11 @@
             {{ description }}
         </p>
         <div class="flex items-center mb-4">
-            <div class="flex gap-2 items-center compareLegends">
-                <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#4CB2AC' }"></div> {{ compareItems[0] }}
+            <div class="flex gap-2 md:items-center compareLegends">
+                <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: '#4CB2AC' }"></div> {{ compareItems[0] }}
             </div>
-            <div class="flex gap-2 items-center compareLegends ml-4">
-                <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#326284' }"></div> {{ compareItems[1] }}
+            <div class="flex gap-2 md:items-center compareLegends ml-4">
+                <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: '#326284' }"></div> {{ compareItems[1] }}
             </div>
         </div>
       <div class="chart-container">
@@ -39,12 +39,13 @@
           {
             const date = new Date(dateObj);
               const day = date.getDate();
-              const monthNames = ["January", "February", "March", "April", "May", "June",
-              "July", "August", "September", "October", "November", "December"];
+              const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "Sepr", "Oct", "Nov", "Dec"];
               const monthIndex = date.getMonth();
               const month = monthNames[monthIndex];
               const year = date.getFullYear();
-              return `${day} ${month} ${year}`;
+              console.log(dateObj,`${day} ${month}`);
+              return `${day} ${month}`;
           },
       loadChart() {
         const data = this.computeData;
@@ -98,7 +99,7 @@
                 title: {
                   display: true,
                   text: 'Age (in years)'
-                }
+                },
               },
               y: {
                 title: {

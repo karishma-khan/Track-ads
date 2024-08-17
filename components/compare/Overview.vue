@@ -11,11 +11,11 @@
                 {{ description }}
             </p>
             <div>
-                <div class="flex gap-2 items-center compareLegends">
-                    <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#748762' }"></div> {{ compareItems[0] }}
+                <div class="flex gap-2 md:items-center compareLegends">
+                    <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: '#748762' }"></div> {{ compareItems[0] }}
                 </div>
-                <div class="flex gap-2 items-center compareLegends mt-2">
-                    <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#1D2713' }"></div> {{ compareItems[1] }}
+                <div class="flex gap-2 md:items-center compareLegends mt-2">
+                    <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: '#1D2713' }"></div> {{ compareItems[1] }}
                 </div>
             </div>
         </div>

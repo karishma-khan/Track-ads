@@ -12,11 +12,11 @@
             </p>
         </div>
         <div class="flex items-center">
-            <div class="flex gap-2 items-center compareLegends">
-                <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#748762' }"></div> image
+            <div class="flex gap-2 md:items-center compareLegends">
+                <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: '#748762' }"></div> image
             </div>
-            <div class="flex gap-2 items-center compareLegends ml-4">
-                <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#1D2713' }"></div> video
+            <div class="flex gap-2 md:items-center compareLegends ml-4">
+                <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: '#1D2713' }"></div> video
             </div>
         </div>
         <compare-bar-group-chart v-if="totalAmount() > 0" :chartData="chartData" :compareItems="compareItems" class="my-6"></compare-bar-group-chart>

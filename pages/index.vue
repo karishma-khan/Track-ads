@@ -8,10 +8,10 @@
             <p class="heroHead">Transparency</p>
             <p class="heroHead">For Democracy</p>
             <p class="mt-[6px] md:mt-[10px] heroUnlock">Unlock the insights on political ad</p>
-            <button class="bg-black redirectionBtn hover:bg-black text-white mt-[24px] md:mt-[39px] font-[500] text-[16px] py-2 flex items-center px-8 rounded-3xl" @click="$router.push('/overview')">
+            <button class="bg-black z-[10] redirectionBtn hover:bg-black text-white mt-[24px] md:mt-[39px] font-[500] text-[16px] py-2 flex items-center px-8 rounded-3xl" @click="$router.push('/overview')">
               Enter <span><img class="ml-[4px] relative top-[2px]" style="height: 22px !important;" src="../static/img/arrowUpRight.svg" alt=""></span>
             </button>
-            <div class="w-full flex justify-between absolute bottom-[10px] px-[10%]">
+            <div class="w-full flex justify-between absolute bottom-[-16px] px-[10%]">
               <div>
                 <img src="../static/img/HomeScroll.svg" alt="">
               </div>

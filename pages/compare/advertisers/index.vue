@@ -12,7 +12,6 @@
                     <p class="mt-3 mb-6 common-description">
                         {{ description }}
                     </p>
-                    <common-date-picker class="grow" @dateSet="(dateArray) => dateRange1 = dateArray"></common-date-picker>
                 </div>
                 <div class="flex flex-col  justify-center gap-4">
                     <common-search @selected="(id) => adv1 = id "></common-search>
@@ -22,7 +21,7 @@
                         <div class="border grow border-dashed border-[#00000033]"></div>
                     </div>
                     <common-search @selected="(id) => adv2 = id "></common-search>
-                    <button @click="fetchAdvData()" :disabled="adv1=='' || adv2=='' || dateRange1.length==0" class="h-[40px] rounded-[41px] w-full disabled:bg-[#32628499] bg-[#326284] flex items-center text-white justify-center">Compare</button>
+                    <button @click="fetchAdvData()" :disabled="adv1=='' || adv2==''" class="h-[40px] rounded-[41px] w-full disabled:bg-[#32628499] bg-[#326284] flex items-center text-white justify-center">Compare</button>
                 </div>
             </div>
         </div>
@@ -57,8 +56,8 @@ export default{
         {
             this.loading = true
             this.dataKey++
-            this.firstAdvData = await this.$store.dispatch('return_advertisers_action',[this.dateRange1, this.nation,this.adv1.advertiser_ad_id])
-            this.secondAdvData = await this.$store.dispatch('return_advertisers_action',[this.dateRange1, this.nation,this.adv2.advertiser_ad_id])
+            this.firstAdvData = await this.$store.dispatch('return_advertisers_action',[this.dateRange, this.nation,this.adv1.advertiser_ad_id])
+            this.secondAdvData = await this.$store.dispatch('return_advertisers_action',[this.dateRange, this.nation,this.adv2.advertiser_ad_id])
             this.firstAdvData =  this.firstAdvData ? await this.processData( this.firstAdvData) : false
             this.secondAdvData = this.secondAdvData ? await this.processData(this.secondAdvData) : false
             console.log(this.firstAdvData == false,this.secondAdvData == false);
@@ -110,7 +109,7 @@ export default{
         return{
             noData:false,
             // testData:advData,
-            dateRange1:[],
+            // dateRange1:[],
             loading:false,
             dataKey:0,
             adv1:'',

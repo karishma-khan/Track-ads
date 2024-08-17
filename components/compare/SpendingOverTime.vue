@@ -10,11 +10,11 @@
             {{ description }}
         </p>
         <div class="flex items-center">
-            <div class="flex gap-2 items-center compareLegends">
-                <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#B1D5EF' }"></div> {{ compareItems[0] }}
+            <div class="flex gap-2 compareLegends">
+                <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: '#B1D5EF' }"></div> {{ compareItems[0] }}
             </div>
-            <div class="flex gap-2 items-center compareLegends ml-4">
-                <div class="h-[16px] w-[16px]" :style="{ backgroundColor: '#0B2E48' }"></div> {{ compareItems[1] }}
+            <div class="flex gap-2 compareLegends ml-4">
+                <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: '#0B2E48' }"></div> {{ compareItems[1] }}
             </div>
         </div>
         <div class="mt-6">
@@ -31,6 +31,17 @@ import { mapGetters } from 'vuex';
 export default {
   props: ['compareItems','chartData'],
   methods: {
+    formatNumber(value) {
+      if (value >= 1e9) {
+          return (value / 1e9).toFixed(1) + "b";
+      } else if (value >= 1e6) {
+          return (value / 1e6).toFixed(1) + "m";
+      } else if (value >= 1e3) {
+          return (value / 1e3).toFixed(1) + "k";
+      } else {
+          return new Intl.NumberFormat('en-US').format(value);
+      }
+    },
     formatDate(dateObj)
         {
           const date = new Date(dateObj);
@@ -40,7 +51,7 @@ export default {
             const monthIndex = date.getMonth();
             const month = monthNames[monthIndex];
             const year = date.getFullYear();
-            return `${day} ${month} ${year}`;
+            return `${day} ${month}`;
         },
     loadChart() {
       const data = this.computeData;
@@ -98,7 +109,8 @@ export default {
             y: {
                 beginAtZero: true,
                 ticks: {
-                    color: 'white'
+                    color: 'white',
+                    callback: this.formatNumber
                 },
                 title: {
                     display: true,

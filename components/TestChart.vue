@@ -27,11 +27,11 @@ export default {
   methods: {
     formatNumber(value) {
       if (value >= 1e9) {
-          return (value / 1e9).toFixed(1) + "b+";
+          return (value / 1e9).toFixed(1) + "b";
       } else if (value >= 1e6) {
-          return (value / 1e6).toFixed(1) + "m+";
+          return (value / 1e6).toFixed(1) + "m";
       } else if (value >= 1e3) {
-          return (value / 1e3).toFixed(1) + "k+";
+          return (value / 1e3).toFixed(1) + "k";
       } else {
           return new Intl.NumberFormat('en-US').format(value);
       }
@@ -69,7 +69,7 @@ export default {
               },
               title: {
                 display: true,
-                text: '(in million rupees)',
+                text: '(in rupees)',
                 color: 'white',
               }
             },
@@ -134,7 +134,7 @@ export default {
       const positionY = context.chart.canvas.offsetTop;
       const positionX = context.chart.canvas.offsetLeft;
       tooltipEl.style.opacity = 1;
-      tooltipEl.style.left = positionX + context.tooltip.caretX + 'px';
+      tooltipEl.style.left = (window.innerWidth < 460 ? 160 :(positionX + context.tooltip.caretX)) + 'px';
       tooltipEl.style.top = positionY + (context.tooltip.caretY - 40) + 'px';
     }
   }

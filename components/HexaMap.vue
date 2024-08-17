@@ -107,7 +107,13 @@ export default {
     },
     async mounted()
     {
-        this.map = await L.map('map').setView([29.4737, 78.9629], 5);
+        this.map = await L.map('map', {
+            center: [29.4737, 78.9629],
+            zoom: 5,
+            scrollWheelZoom: false, 
+            doubleClickZoom: false, 
+            zoomControl: false 
+        });
         this.loadIndianBoundary();
     }
 }
@@ -123,5 +129,11 @@ export default {
     width: 300px;white-space: normal;
     word-wrap: break-word;
     word-break: break-word;
+}
+@media screen and (max-width: 460px) {
+    .leaflet-tooltip {
+        left: 16px !important; /* Ensure the tooltip is 160px from the left */
+        transform: none !important; /* Reset any transform applied by Leaflet */
+    }
 }
 </style>

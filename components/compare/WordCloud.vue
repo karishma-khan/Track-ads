@@ -16,7 +16,7 @@
                 </button>
             </div>
         </div>
-        <div class="block md:hidden mt-6">
+        <div class="block md:hidden flex flex-col gap-4 mt-6">
                 <button class="min-w-[130px] mr-4 px-2" @click="isActive = 1" :class="isActive == 1 ? 'active-btn' : 'inactive-btn'" style="width: unset !important;">
                     {{compareItems[0]}}
                 </button>

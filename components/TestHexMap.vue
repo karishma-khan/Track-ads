@@ -11,7 +11,7 @@
     </p>
     <div class="flex flex-wrap gap-3 md:justify-between">
           <div v-for="(color, index) in colorArray" :key="index" class="flex mb-4 gap-3 items-center legendActive">
-            <div class="h-[16px] w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ formatNumber(rangeArray[index].min) }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;' + formatNumber(rangeArray[index].max) }}
+            <div class="max-h-[16px] min-h-[16px] max-w-[16px] min-w-[16px]" :style="{ backgroundColor: color }"></div> &#8377;{{ formatNumber(rangeArray[index].min) }}{{ index == (colorArray.length -1) ? '+'  : ' - &#8377;' + formatNumber(rangeArray[index].max) }}
           </div>
     </div>
     <div v-if="chartData" ref="chart" style="width: 100%; height: 400px;"></div>
@@ -36,11 +36,11 @@ export default {
   methods: {
     formatNumber(value) {
       if (value >= 1e9) {
-          return (value / 1e9).toFixed(1) + "b+";
+          return (value / 1e9).toFixed(1) + "b";
       } else if (value >= 1e6) {
-          return (value / 1e6).toFixed(1) + "m+";
+          return (value / 1e6).toFixed(1) + "m";
       } else if (value >= 1e3) {
-          return (value / 1e3).toFixed(1) + "k+";
+          return (value / 1e3).toFixed(1) + "k";
       } else {
           return new Intl.NumberFormat('en-US').format(value);
       }

@@ -11,7 +11,7 @@
                 {{ description }}
             </p>
             <div class="flex flex-wrap md:flex-nowrap justify-center gap-4">
-                <div @click="$router.push('/compare/advertisers')" class="bg-[#326284] w-[299px] h-[150px] common-container cursor-pointer flex flex-col justify-between" style="border: 0px !important;padding: 20px 20px">
+                <div @click="routeTo('/compare/advertisers')" class="bg-[#326284] w-[299px] h-[150px] common-container cursor-pointer flex flex-col justify-between" style="border: 0px !important;padding: 20px 20px">
                     <div class="flex justify-between">
                         <div class="flex gap-2 items-center">
                             <img src="../../static/img/compare-guest.svg" alt="">
@@ -25,7 +25,7 @@
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi, saepe?
                     </div>
                 </div>
-                <div @click="$router.push('/compare/dates')" class="bg-[#326284] w-[299px] h-[150px] common-container cursor-pointer flex flex-col justify-between" style="border: 0px !important;padding: 20px 20px">
+                <div @click="routeTo('/compare/dates')" class="bg-[#326284] w-[299px] h-[150px] common-container cursor-pointer flex flex-col justify-between" style="border: 0px !important;padding: 20px 20px">
                     <div class="flex justify-between">
                         <div class="flex gap-2 items-center">
                             <img src="../../static/img/compare-dates.svg" alt="">
@@ -49,6 +49,11 @@ export default{
         return{
             title:'Compare',
             description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, molestiae? lorem ipsum dolor sit amet lorem. Lorem ipsum dolor sit sit amet consectetur adipisicing elit. Nemo, molestiae? lorem ipsum dolor sit amet lorem. Lorem ipsum dolor sit sit amet consectetur adipisicing elit. Nemo, molestiae?',
+        }
+    },
+    methods:{
+        routeTo(url){
+            window.location.href = url
         }
     }
 }

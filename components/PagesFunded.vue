@@ -24,7 +24,7 @@
                         <div class="grow flex justify-center">
                             <div>
                                 <div class="fundSubHead">Money Spent</div>
-                                <div class="fundSpend"> {{ formatNumber(item.spending?.min) }}m - {{ formatNumber(item.spending?.max) }}m </div>
+                                <div class="fundSpend"> {{ formatNumber(item.spending?.min) }} - {{ formatNumber(item.spending?.max) }} </div>
                             </div>
                         </div>
                     </div>
