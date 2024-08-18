@@ -20,8 +20,8 @@
       </div>
     </div>
     <div class="heroSubtitle z-10 relative">
-      <div class="flex gap-1 text-[#00000059] text-[13px] justify-center">
-        <img @click="infoDetail=true" class="h-[20px] w-[20px]" src="../static/img/heroInfo.svg" /> 
+      <div class="flex gap-1 text-[#00000059] text-[13px] justify-center cursor-pointer" @click="infoDetail=true">
+        <img class="h-[20px] w-[20px]" src="../static/img/heroInfo.svg" /> 
         50 Political Advertisers, since {{ today.getDate() + ' ' + monthNames[today.getMonth()] +', '+ today.getFullYear() }}
       </div>
       <div class="heroInfo absolute bottom-[-130px] left-1/2 transform -translate-x-1/2 -translate-y-[0px] bg-[white]" v-if="infoDetail">

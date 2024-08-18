@@ -12,7 +12,7 @@
                     <p class="mt-3 mb-6 common-description">
                         {{ description }}
                     </p>
-                    <common-search class="md:my-0 my-8" @selected="(id) => advertiser = id "></common-search>
+                    <common-search class="md:my-0 my-8 relative" @selected="(id) => advertiser = id "></common-search>
                 </div>
                 <div class="flex flex-col justify-center gap-4">
                     <div class="flex gap-4 min-w-[350px] w-full">
@@ -82,8 +82,7 @@ export default{
         {
             let date = new Date(objDate)
             const day = date.getDate();
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"];
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sepr", "Oct", "Nov", "Dec"]
             const monthIndex = date.getMonth();
             const month = monthNames[monthIndex];
             const year = date.getFullYear();

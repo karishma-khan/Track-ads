@@ -121,7 +121,7 @@ export default {
                 display: false
               },
               min: 0,
-              max: (Math.max(...data.maleData.concat(data.femaleData).concat(data.unKnownData).map(d => d?.percent)) + 2)
+              max: (Math.max(...data.maleData.concat(data.femaleData).concat(data.unKnownData).map(d => d?.percent)) + 4)
             }
           }
         }

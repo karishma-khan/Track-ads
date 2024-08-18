@@ -29,7 +29,7 @@
         } else if (value >= 1e3) {
             return (value / 1e3).toFixed(1) + "k";
         } else {
-            return new Intl.NumberFormat('en-US').format(value)+ "+";
+            return new Intl.NumberFormat('en-US').format(value);
         }
       }
     }
