@@ -1,5 +1,6 @@
-// components/DateRangePicker.vue
+<!-- components/DateRangePicker.vue -->
 <template>
+  <!-- DatePicker component for selecting a date range -->
   <DatePicker 
     v-model="dates" 
     range 
@@ -28,22 +29,27 @@ export default {
         nation:"get_nation"
     })
   },
-  methods:{
-    async updateDate(){
-      this.$store.dispatch('set_date_range', this.dates)
-      if(this.$route.path == 'overview')
-          await this.$store.dispatch("set_dashboard_action", [this.dateRange, this.nation]);
-      else{
-          if(this.$route.name == 'advertiser-:id')
-          {
-              await this.$store.dispatch("set_advertisers_action", [this.dateRange, this.nation, this.$route.params.id, this.$route?.query?.pageId ? this.$route.query.pageId : false]);
-          }
+  methods: {
+    // Method to handle date range updates
+    async updateDate() {
+      // Dispatch Vuex action to update date range
+      this.$store.dispatch('set_date_range', this.dates);
+      
+      // Perform different actions based on the current route
+      if (this.$route.path == 'overview') {
+        // Dispatch action for dashboard with new date range and nation
+        await this.$store.dispatch("set_dashboard_action", [this.dateRange, this.nation]);
+      } else {
+        if (this.$route.name == 'advertiser-:id') {
+          // Dispatch action for advertiser with new date range, nation, and route params
+          await this.$store.dispatch("set_advertisers_action", [this.dateRange, this.nation, this.$route.params.id, this.$route?.query?.pageId ? this.$route.query.pageId : false]);
+        }
       }
     }
   },
-  mounted()
-  {
-    this.dates = this.dateRange
+  mounted() {
+    // Initialize dates with the current date range from Vuex store
+    this.dates = this.dateRange;
   }
 }
 </script>
