@@ -16,12 +16,8 @@
     </div>
 </template>
 <script>
-import containerBox from './common/containerBox.vue'
 export default{
     props:['chartData'],
-    components:{
-        containerBox
-    },
     computed:{
         getChartData(){
             let labels = []

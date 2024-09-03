@@ -21,12 +21,8 @@
     </div>
 </template>
 <script>
-// import containerBox from './common/containerBox.vue'
 export default{
     props:['chartData','compareItems'],
-    // components:{
-    //     containerBox
-    // },
     computed:{
         getFirstChartData(){
             let labels = []

@@ -41,11 +41,7 @@
     </div>
 </template>
 <script>
-import containerBox from './common/containerBox.vue'
 export default{
-    components:{
-        containerBox
-    },
     watch:{
         chartData()
         {

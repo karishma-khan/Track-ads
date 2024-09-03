@@ -17,7 +17,6 @@
     </div>
 </template>
 <script>
-import containerBox from './common/containerBox.vue'
 export default{
     props:['chartData','metaData'],
     data(){
