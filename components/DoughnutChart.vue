@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import Chart from 'chart.js/auto'; // Import Chart.js
 
 export default {
 data() {
