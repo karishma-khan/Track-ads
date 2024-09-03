@@ -40,7 +40,7 @@
             <no-data v-else></no-data>
         </div>
         <div v-if="isActive == 2">
-            <compare-bar-chart :key="ageKey" v-if="(getAgeData).length > 0" :chartData="{data : getAgeData}"></compare-bar-chart>
+            <compare-line-chart :key="ageKey" v-if="(getAgeData).length > 0" :chartData="{data : getAgeData}"></compare-line-chart>
             <no-data v-else></no-data>
         </div>
     </div>

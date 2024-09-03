@@ -88,6 +88,25 @@ export const actions = {
       return false;
     }
   },
+  async verifyLogin({commit},sesameToken){
+    try {
+      let data = {"sesame": sesameToken}
+      let resp = await fetch(`http://34.131.71.160:8085/auth/verify-login`,{
+        method: 'POST',
+        body: JSON.stringify(data),
+      })
+      const { access } = await resp.json();
+      if(access)
+      {
+        localStorage.setItem('access', access);
+        return true
+      }
+      return false
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  },
   async set_date_range({commit}, dateRange){
     commit("set_date", dateRange );
   },
