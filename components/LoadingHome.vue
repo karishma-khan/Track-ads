@@ -1,3 +1,4 @@
+<!-- Loader for Homepage Hero section -->
 <template>
     <div class="Herocontainer">
         <div class="semicircle flex justify-center items-center relative overflow-hidden">
@@ -27,7 +28,7 @@
     }
   }
 
-    .loader {
+  .loader {
     width: 60px;
     aspect-ratio: 1;
     border-radius: 50%;
@@ -37,6 +38,6 @@
     }
     @keyframes l8 {
         100% {background-size:100% 115%}
-    }
+  }
 </style>
   
