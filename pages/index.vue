@@ -34,6 +34,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
+  // middleware: 'auth',
   async mounted()
   {
     await this.$store.dispatch("get_advertisers",this.dateRange);

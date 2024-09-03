@@ -58,6 +58,36 @@ export const actions = {
       return false;
     }
   },
+  async applyAccess({commit},data){
+    try {
+      let resp = await fetch(`http://34.131.71.160:8085/auth/create-user`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      return await resp.json()
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  },
+  async getLoginLink({commit},data){
+    try {
+      let resp = await fetch(`http://34.131.71.160:8085/auth/login-with-link`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      return await resp.json()
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  },
   async set_date_range({commit}, dateRange){
     commit("set_date", dateRange );
   },

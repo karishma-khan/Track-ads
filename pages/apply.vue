@@ -12,16 +12,25 @@
                     </div>
                 </div>
                 <div class="loginDetail">
-                    <div>Already have access? <b class="cursor-pointer" @click="$router.push('/login')">Login here.</b></div>
+                    <div>Already have access? <b class="cursor-pointer" @click="redirectLogin()">Login here.</b></div>
                 </div>
             </div>
-            <div class="md:w-3/5">
-                <form @submit.prevent="submitFeedback()">
+            <div class="md:w-3/5 relative">
+                <form @submit.prevent="submitFeedback()" class="relative">
                     <input required type="text" placeholder="Your Name" v-model="name" class="text-[12px] md:text-[16px] block p-4 my-4 w-full rounded-lg bg-black border h-[48px] border-[#FFFFFF66]">
                     <input required type="email" placeholder="Your email" v-model="email" class="text-[12px] md:text-[16px] block p-4 my-4 w-full rounded-lg bg-black border h-[48px] border-[#FFFFFF66]">
                     <textarea required placeholder="Tell us about your area of interest?" v-model="message" rows="10" class="text-[12px] md:text-[16px] block p-4 my-4 w-full rounded-lg bg-black border  border-[#FFFFFF66]"></textarea>
                     <button type="submit" value="Submit" class="bg-[#212121] text-[14px] md:text-[20px] block  w-full rounded-lg border h-[48px] border-[#FFFFFF66] relative">Login
                     <span v-if="loading" class="mdi mdi-rotate-right mdi-spin relative left-[15px]"></span></button>
+                    <div v-if="sent" style="background: rgba(255, 255, 255, 0.2);backdrop-filter: blur(5px);" class="z-[10] absolute top-0 border-[#FFFFFF66] text-[20px] font-[800] rounded-lg border h-[420px] md:h-[500px] w-[100%] flex justify-center items-center">
+                        <div class="absolute right-[10px] top-[10px] cursor-pointer" @click="sent = false">
+                            <span class="mdi mdi-close text-xl"></span>
+                        </div>
+                        <div class="w-[80%] md:w-[60%] text-center">
+                            <div class="text-[14px] md:text-[20px] font-[800]">Thank You!</div>
+                            <div class="mt-[35px] text-[14px] md:text-[16px] font-[100]">We have received your request. We will review it and send a confirmation to your email soon.</div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -35,21 +44,25 @@ export default {
     return{
         name:'',
         email:'',
-        subject:'',
         message:'',
-        loading:false
+        loading:false,
+        sent:false
     }
   },
   methods:{
+    redirectLogin(){
+        window.location.href = "/login"
+    },
     async submitFeedback(){
         this.loading = true
-        let feedBack = await this.$store.dispatch('submitFeedback', {name: this.name, from_email: this.email, subject: this.subject, message: this.message})
-        if(feedBack?.message == 'Mail sent')
+        let feedBack = await this.$store.dispatch('applyAccess', { "name":this.name, "email": this.email, "area_of_interest": this.message })
+        if(feedBack?.message == 'User created successfully')
         {
             this.name = ''
             this.email = ''
             this.subject = ''
             this.message = ''
+            this.sent = true
             this.loading = false
         }
     }
