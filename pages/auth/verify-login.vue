@@ -1,6 +1,6 @@
 <template>
     <div class="bg-black bggridLogin min-h-[90vh] text-white px-[5%] py-[25px] md:py-[80px]">
-        {{ $route.fullPath }}
+
     </div>
 </template>
 <script>
@@ -24,7 +24,22 @@ export default {
   async mounted(){
     await this.getQueryParamValue(this.$route.fullPath)
     if(this.token)
-        this.$store.dispatch('verifyLogin',this.token)
+    {
+      const verify = await this.$store.dispatch('verifyLogin',this.token)
+      console.log(verify);
+      if(verify)
+      {
+        window.location.href = '/overview'
+      }
+      else{
+        window.location.href = '/login'
+        localStorage.removeItem('access');
+      }
+    }
+    else{
+      window.location.href = '/login'
+      localStorage.removeItem('access');
+    }
   }
 }
 </script>

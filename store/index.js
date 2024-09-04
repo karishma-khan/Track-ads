@@ -105,8 +105,8 @@ export const actions = {
           });
           const { access } = await resp.json();
           if (access) {
-              localStorage.setItem('access', access);
-              return true;
+            localStorage.setItem('access', access);
+            return true;
           }
           return false;
       } catch (error) {
@@ -154,8 +154,15 @@ export const actions = {
       try {
           let prevDate = new Date(value[0][0]);
           let newDate = new Date(value[0][1]);
+          const token = localStorage.getItem('access') || '';
           // Fetch data from API
-          let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}`);
+          let resp = await fetch(`http://34.131.71.160:8085/api/data?country=${value[1]}&start=${prevDate.toISOString().substring(0,10)}&end=${newDate.toISOString().substring(0,10)}`,{
+            method: 'GET', // or 'POST', etc.
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}` // Add the token to the Authorization header
+            }
+          });
           resp = await resp.json();
           commit("set_dashboard_data", resp);
           return resp;

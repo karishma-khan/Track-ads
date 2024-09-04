@@ -63,31 +63,34 @@ export default {
   
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: ["@nuxtjs/axios",
-    // '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next'
   ],
-  // auth: {
-  //   strategies: {
-  //     google: {
-  //       clientId: '832506559394-o0idocv8q43d1ri50oq0artf064cr5k3.apps.googleusercontent.com', // Replace with your Google Client ID
-  //       codeChallengeMethod: '', // Optional, defaults to 'S256'
-  //       responseType: 'token id_token', // Optional, defaults to 'token id_token'
-  //       redirectUri: 'http://localhost:3000/login', // Replace with your redirect URI
-  //       params: {
-  //         prompt: 'select_account' // This forces the Google login page to show the account selection screen
-  //       },
-  //       endpoints: {
-  //         userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'
-  //       },
-  //       scope: ['openid', 'profile', 'email'],
-  //     }
-  //   }
-  // },
+  auth: {
+    strategies: {
+      // google: {
+      //   clientId: '832506559394-o0idocv8q43d1ri50oq0artf064cr5k3.apps.googleusercontent.com', // Replace with your Google Client ID
+      //   codeChallengeMethod: '', // Optional, defaults to 'S256'
+      //   responseType: 'token id_token', // Optional, defaults to 'token id_token'
+      //   redirectUri: 'http://localhost:3000/login', // Replace with your redirect URI
+      //   params: {
+      //     prompt: 'select_account' // This forces the Google login page to show the account selection screen
+      //   },
+      //   endpoints: {
+      //     userInfo: 'https://www.googleapis.com/oauth2/v3/userinfo'
+      //   },
+      //   scope: ['openid', 'profile', 'email'],
+      // }
+    },
+    redirect: {
+      login: '/login', // Redirect user to this path if login is required
+      logout: '/', // Redirect user to this path after logout
+      home: '/overview' // Redirect user to this path after login
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
